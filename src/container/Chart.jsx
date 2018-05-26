@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
 import { VictoryChart, VictoryLine, VictoryTheme } from 'victory'
 import _set from 'lodash/set'
-import _get from 'lodash/get'
 
-import Attribute from '../presentational/Attribute.jsx'
+import Attributes from '../presentational/Attributes.jsx'
 
 const data = [
 	{ x : 0, y : 0 },
@@ -21,6 +20,7 @@ class Chart extends Component {
 			theme : VictoryTheme.material,
 			data : data,
 		}
+		this.onChange = this.onChange.bind( this )
 	}
 
 	onChange( field, e ) {
@@ -40,10 +40,9 @@ class Chart extends Component {
 				<VictoryChart theme={this.state.theme} >
 					<VictoryLine data={data} />
 				</VictoryChart>
-				<Attribute 
-					name='Line Color'
-					value={_get( this.state.theme, 'line.style.data.stroke' )}
-					onChange={this.onChange.bind( this, 'line.style.data.stroke' )}
+				<Attributes
+					onChange={this.onChange}
+					theme={this.state.theme}
 				/>
 			</div>
 		)
