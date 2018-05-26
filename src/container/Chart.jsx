@@ -38,7 +38,7 @@ class Chart extends Component {
 		return (
 			<div className='main'>
 				<VictoryChart theme={this.state.theme} >
-					<VictoryLine data={data} />
+					<VictoryLine data={this.state.data} />
 				</VictoryChart>
 				<Attributes
 					onChange={this.onChange}
