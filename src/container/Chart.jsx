@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
-import { VictoryChart, VictoryLine } from 'victory'
+import { VictoryChart, VictoryLine, VictoryTheme } from 'victory'
+import _set from 'lodash/set'
+import _get from 'lodash/get'
+
+import Attribute from '../presentational/Attribute.jsx'
 
 const data = [
 	{ x : 0, y : 0 },
@@ -13,14 +17,35 @@ class Chart extends Component {
 
 	constructor( props ) {
 		super( props )
-		this.state = {}
+		this.state = {
+			theme : VictoryTheme.material,
+			data : data,
+		}
+	}
+
+	onChange( field, e ) {
+		const c = e.target.value
+		this.setState( prevState => {
+			// need to do a deep clone because react is dumb
+			const newTheme = JSON.parse( JSON.stringify( prevState.theme ) )
+			_set( newTheme, field, c )
+			return { theme : newTheme }
+		})
+		e.preventDefault()
 	}
 
 	render() {
 		return (
-			<VictoryChart>
-				<VictoryLine data={data} />
-			</VictoryChart>
+			<div className='main'>
+				<VictoryChart theme={this.state.theme} >
+					<VictoryLine data={data} />
+				</VictoryChart>
+				<Attribute 
+					name='Line Color'
+					value={_get( this.state.theme, 'line.style.data.stroke' )}
+					onChange={this.onChange.bind( this, 'line.style.data.stroke' )}
+				/>
+			</div>
 		)
 	}
 }

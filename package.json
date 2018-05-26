@@ -13,6 +13,7 @@
   "devDependencies": {
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
     "html-loader": "^0.5.5",
@@ -24,6 +25,7 @@
     "webpack-dev-server": "^3.1.4"
   },
   "dependencies": {
+    "lodash": "^4.17.10",
     "re-resizable": "^4.4.8",
     "victory": "^0.26.1"
   }
