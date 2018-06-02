@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import Resizable from 're-resizable'
 
-import Chart from './Chart.jsx'
-
+// import Chart from './Chart.jsx'
+import Header from '../presentational/Header.jsx'
+import './App.css'
 
 class App extends Component {
 
@@ -13,12 +13,7 @@ class App extends Component {
 
 	render() {
 		return (
-			<Resizable
-				style={{border: 'solid 1px #ddd'}}
-			  defaultSize={{width: 400, height: 300}}
-			>
-			  <Chart/>
-			</Resizable>
+			<Header />
 		)
 	}
 }
