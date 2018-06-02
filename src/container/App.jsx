@@ -25,12 +25,16 @@ class App extends Component {
 
 	render() {
 		return (
-			<Fragment>
-				<Header />
-				{ this.state.view == DESIGN ? 
-	 				<DesignView /> : <CodeView />
-				}
-			</Fragment>
+			<div className='appContainer'>
+				<div className='headerContainer'>
+					<Header />
+				</div>
+				<div className='mainContent'>
+					{ this.state.view === DESIGN ? 
+		 				<DesignView /> : <CodeView />
+					}
+				</div>
+			</div>
 		)
 	}
 }
