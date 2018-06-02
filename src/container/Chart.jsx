@@ -25,7 +25,9 @@ class Chart extends Component {
 
 	onChange( field, e ) {
 		let c = e.target.value
-		c = Number.isNaN( Number(c) ) ? c : Number(c)
+		// apparently Number( '' ) === 0 🤔
+		c = c === '' ? null :
+			  Number.isNaN( Number(c) ) ? c : Number(c)
 		this.setState( prevState => {
 			// need to do a deep clone because react is dumb
 			const newTheme = JSON.parse( JSON.stringify( prevState.theme ) )
