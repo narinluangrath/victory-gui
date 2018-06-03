@@ -13,7 +13,9 @@ class App extends Component {
 
 	constructor( props ) {
 		super( props )
-		this.state = { view : DESIGN }
+		this.state = { 
+			view : DESIGN 
+		}
 	}
 
 	switchView() {
@@ -26,9 +28,7 @@ class App extends Component {
 	render() {
 		return (
 			<div className='appContainer'>
-				<div className='headerContainer'>
-					<Header />
-				</div>
+				<Header />
 				<div className='mainContent'>
 					{ this.state.view === DESIGN ? 
 		 				<DesignView /> : <CodeView />
