@@ -29,7 +29,7 @@ class App extends Component {
 		return (
 			<div className='appContainer'>
 				<Header />
-				<div className='mainContent'>
+				<div className='main'>
 					{ this.state.view === DESIGN ? 
 		 				<DesignView /> : <CodeView />
 					}

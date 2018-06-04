@@ -3,13 +3,12 @@ body {
 }
 
 .appContainer {
-	height: 100%;
 	width: 100%;
 	display: flex;
 	flex-direction: column;
-	align-items: stretch;
 }
 
-.mainContent {
-	height: 100%;
+.main {
+	box-sizing: border-box;
+	height: 88%;
 }

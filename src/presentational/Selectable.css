@@ -6,8 +6,8 @@
 }
 
 .selectable .item {
-	width: 100px;
-	height: 30px;
+	width: 50%;
+	height: 70px;
 }
 
 .selectable .item.selected {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 
 import Selectable from '../presentational/Selectable.jsx'
+import DropDown from './DropDown.jsx'
 
 const DATA = 'Data'
 const THEME = 'Theme'
@@ -25,6 +26,11 @@ class Editor extends Component {
 					selectedIndex={index} 
 					changeSelected={this.changeSelected}
 				/>
+				<DropDown title='DropDown Title'>
+					<h3> Hello </h3>
+					<h3> Hello </h3>
+					<h3> Hello </h3>
+				</DropDown>
 			</div>
 		)
 	}
