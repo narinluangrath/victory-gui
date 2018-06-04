@@ -3,7 +3,7 @@ import React, { Component } from 'react'
 class DropDown extends Component {
 	constructor() {
 		super()
-		this.state = { isOpen : true }
+		this.state = { isOpen : false }
 		this.toggle = this.toggle.bind( this )
 	}
 

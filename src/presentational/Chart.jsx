@@ -1,14 +1,23 @@
 import React from 'react'
-import { VictoryChart, VictoryLine } from 'victory'
+import { VictoryChart, VictoryLine, VictoryAxis } from 'victory'
 
 import './Chart.css'
 
 function Chart( props ) {
-	const { theme, data } = props
+	const { theme, data, chart } = props
+	const xAxis = chart.xAxis 
+	const yAxis = { 
+		...chart.yAxis,
+		dependentAxis : true
+	}
+	const line = chart.line
+
 	return (
 		<div className='chart'>
 			<VictoryChart theme={theme} >
-					<VictoryLine data={data} />
+				<VictoryAxis {...xAxis} />
+				<VictoryAxis {...yAxis} />
+				<VictoryLine data={data} {...line} />
 			</VictoryChart>
 		</div>
 	)

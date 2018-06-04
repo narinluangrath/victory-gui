@@ -14,3 +14,10 @@
 	border-bottom: 5px solid blue;
 }
 
+button.item:focus {
+	outline: none;
+}
+
+button.item:hover {
+	cursor: pointer;
+}

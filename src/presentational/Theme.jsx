@@ -23,6 +23,23 @@ function Theme( props ) {
 
 	return (
 		<div className='theme'>
+			<DropDown title='General'>
+				<Attribute 
+					name='Width'
+					value={ _get( theme, 'chart.width' ) }
+					onChange={ e => onChange( 'chart.width', e ) }
+				/>
+				<Attribute 
+					name='Height'
+					value={ _get( theme, 'chart.height' ) }
+					onChange={ e => onChange( 'chart.height', e ) }
+				/>
+				<Attribute 
+					name='Padding'
+					value={ _get( theme, 'chart.padding' ) }
+					onChange={ e => onChange( 'chart.padding', e ) }
+				/>
+			</DropDown>
 			<DropDown title='Line'>
 				<Attribute 
 					name='Line (Stroke) Color'
@@ -42,11 +59,6 @@ function Theme( props ) {
 			</DropDown>
 			<DropDown title='Axis'>
 				<Attribute 
-					name='Axis Fill'
-					value={ _get( theme, 'axis.style.axis.fill' ) }
-					onChange={ e => onChange( 'axis.style.axis.fill', e ) }
-				/>
-				<Attribute 
 					name='Axis (Stroke) Color'
 					value={ _get( theme, 'axis.style.axis.stroke' ) }
 					onChange={ e => onChange( 'axis.style.axis.stroke', e ) }
@@ -55,6 +67,11 @@ function Theme( props ) {
 					name='Axis (Stroke) Width'
 					value={ _get( theme, 'axis.style.axis.strokeWidth' ) }
 					onChange={ e => onChange( 'axis.style.axis.strokeWidth', e ) }
+				/>
+				<Attribute 
+					name='Axis Label Padding'
+					value={ _get( theme, 'axis.style.axisLabel.padding' ) }
+					onChange={ e => onChange( 'axis.style.axisLabel.padding', e ) }
 				/>
 			</DropDown>
 			<DropDown title='Grid'>

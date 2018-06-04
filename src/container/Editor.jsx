@@ -20,7 +20,7 @@ class Editor extends Component {
 	}
 	
 	render() {
-		const { theme, data, changeTheme, changeData } = this.props
+		const { theme, data, chart, changeTheme, changeData, changeChart } = this.props
 		const index = this.state.selected === DATA ? 0 : 1
 		return (
 			<div className='editor'>
@@ -30,7 +30,8 @@ class Editor extends Component {
 					changeSelected={this.changeSelected}
 				/>
 				{ this.state.selected === THEME ? 
-					<Theme theme={theme} changeTheme={changeTheme}/> : <Data data={data}/>}
+					<Theme theme={theme} changeTheme={changeTheme}/> : 
+					<Data data={data} chart={chart} changeData={changeData} changeChart={changeChart}/>}
 			</div>
 		)
 	}

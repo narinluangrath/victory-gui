@@ -6,7 +6,7 @@ function ColorBox( { color } ) {
 		width : '20px',
 		height : '20px',
 		border : '1px solid #ddd',
-		backgroundColor : color,
+		backgroundColor : color || 'white',
 	}
 	return <div style={style}/>
 }
@@ -21,8 +21,7 @@ function TextBox( { color, onChange } ) {
 	)
 }
 
-function Attribute( props ) {
-	const { onChange, name, value } = props
+function Attribute( { onChange, name, value } ) {
 	return (
 		<div className='attribute'>
 			<p>{name}</p>
