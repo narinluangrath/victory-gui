@@ -34,7 +34,7 @@ class DesignView extends Component {
 	changeTheme( field, value ) {
 		this.setState( prevState => {
 			const newTheme = this.deepClone( prevState.theme )
-			_set( newTheme, field, c )
+			_set( newTheme, field, value )
 			return { theme : newTheme }
 		})
 	}

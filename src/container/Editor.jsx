@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 
 import Selectable from '../presentational/Selectable.jsx'
-import DropDown from './DropDown.jsx'
+import Theme from '../presentational/Theme.jsx'
+import Data from '../presentational/Data.jsx'
+import './Editor.css'
 
 const DATA = 'Data'
 const THEME = 'Theme'
@@ -18,6 +20,7 @@ class Editor extends Component {
 	}
 	
 	render() {
+		const { theme, data, changeTheme, changeData } = this.props
 		const index = this.state.selected === DATA ? 0 : 1
 		return (
 			<div className='editor'>
@@ -26,11 +29,8 @@ class Editor extends Component {
 					selectedIndex={index} 
 					changeSelected={this.changeSelected}
 				/>
-				<DropDown title='DropDown Title'>
-					<h3> Hello </h3>
-					<h3> Hello </h3>
-					<h3> Hello </h3>
-				</DropDown>
+				{ this.state.selected === THEME ? 
+					<Theme theme={theme} changeTheme={changeTheme}/> : <Data data={data}/>}
 			</div>
 		)
 	}

@@ -16,7 +16,8 @@ function Item( props ) {
 function Selectable( props ) {
 	const { fields, selectedIndex, changeSelected } = props
 	const helper = (fld, i) => (
-		<Item 
+		<Item
+			key={fld} 
 			changeSelected={changeSelected} 
 			field={fld} 
 			selected={i==selectedIndex} 
