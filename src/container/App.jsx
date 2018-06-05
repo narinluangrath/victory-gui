@@ -29,11 +29,12 @@ class App extends Component {
 		return (
 			<div className='appContainer'>
 				<Header />
-				<div className='main'>
+{/*				<div className='main'>
 					{ this.state.view === DESIGN ? 
 		 				<DesignView /> : <CodeView />
 					}
 				</div>
+*/}
 			</div>
 		)
 	}

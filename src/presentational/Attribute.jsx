@@ -1,5 +1,5 @@
-import React, { Fragment } from 'react'
-import _get from 'lodash/get'
+import React from 'react'
+import { SketchPicker } from 'react-color'
 
 function ColorBox( { color } ) {
 	const style = {
@@ -21,11 +21,20 @@ function TextBox( { color, onChange } ) {
 	)
 }
 
-function Attribute( { onChange, name, value } ) {
+function ColorAttribute( { onChange, name, value, icon } ) {
+	return (
+		<SketchPicker 
+			color={value} 
+			onChange={e => onChange({target: {value :e.hex}})} 
+		/>
+	)
+}
+
+function Attribute( { onChange, name, value, icon, type } ) {
 	return (
 		<div className='attribute'>
 			<p>{name}</p>
-			<ColorBox color={value}/>
+			<ColorAttribute onChange={onChange} value={value} />
 			<TextBox color={value} onChange={onChange}/>
 		</div>
 	)
