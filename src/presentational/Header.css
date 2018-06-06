@@ -1,15 +1,67 @@
 .header {
-	width: 100%;
 	height: 40px;
 	background-color: #1C2022;
 	color: white;
-	border: 1px solid rgb(18,21,22);
+	border: 3px solid rgb(18,21,22);
 	font-family: 'Roboto', sans-serif;
 	font-weight: 350;
 	font-size: 1rem;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	padding-left: 20px;
+	justify-content: space-between;
+	padding: 0px 20px 0px 20px;
 }
+
+.left {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.dividor {
+	width: 0;
+	height: 20;
+	border-right: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+a.link {
+	margin-left: 10px;
+	width: 80px;
+	height: 100%;
+	transition: 0.2s;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	justify-content: center;
+	color: lightgrey;
+	fill: lightgrey;
+	box-sizing: border-box;
+	transition: 0.5s;
+	font-size: .8rem;
+  text-decoration: none;
+}
+
+a.link:hover {
+	cursor: pointer;
+	padding-top: 3px;
+	border-bottom: 3px solid rgb(108, 174, 221);
+	color: white;
+	fill: white;
+}
+
+a.link > p {
+	padding-left: 5px;
+}
+
+a.link svg {
+	height: 50%;
+}
+
+.right {
+	display: flex;
+	flex-direction: row;
+}
+
+
 
