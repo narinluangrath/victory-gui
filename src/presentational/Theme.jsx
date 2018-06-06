@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import _get from 'lodash/get'
 
 import Dropdown from '../container/Dropdown.jsx'
-import Attribute from './Attribute.jsx'
+import Attribute from '../container/Attribute.jsx'
 import './Theme.css'
 
 function Theme( props ) {
@@ -26,20 +26,54 @@ function Theme( props ) {
 		<div className='theme'>
 			<h3>Theme Design</h3>
 			<Dropdown title='Title'>
-				<p>Hello world</p>
-				<p>Hello world</p>
-				<p>Hello world</p>
+				<Attribute name='attribute' value='value'/>
+				<Attribute name='attribute' value='value'/>
+				<Attribute name='attribute' value='value'/>
+				<Attribute name='attribute' value='value'/>
 			</Dropdown>
 			<Dropdown title='Title'>
-				<p>Hello world</p>
-				<p>Hello world</p>
-				<p>Hello world</p>
+				<Attribute name='attribute' value='value'/>
+				<Attribute name='attribute' value='value'/>
+				<Attribute name='attribute' value='value'/>
+				<Attribute name='attribute' value='value'/>
 			</Dropdown>
 			<Dropdown title='Title'>
-				<p>Hello world</p>
-				<p>Hello world</p>
-				<p>Hello world</p>
+				<Attribute name='attribute' value='value'/>
+				<Attribute name='attribute' value='value'/>
+				<Attribute name='attribute' value='value'/>
+				<Attribute name='attribute' value='value'/>
 			</Dropdown>
+			<Dropdown title='Title'>
+				<Attribute name='attribute' value='value'/>
+				<Attribute name='attribute' value='value'/>
+				<Attribute name='attribute' value='value'/>
+				<Attribute name='attribute' value='value'/>
+			</Dropdown>
+			<Dropdown title='Title'>
+				<Attribute name='attribute' value='value'/>
+				<Attribute name='attribute' value='value'/>
+				<Attribute name='attribute' value='value'/>
+				<Attribute name='attribute' value='value'/>
+			</Dropdown>
+			<Dropdown title='Title'>
+				<Attribute name='attribute' value='value'/>
+				<Attribute name='attribute' value='value'/>
+				<Attribute name='attribute' value='value'/>
+				<Attribute name='attribute' value='value'/>
+			</Dropdown>
+			<Dropdown title='Title'>
+				<Attribute name='attribute' value='value'/>
+				<Attribute name='attribute' value='value'/>
+				<Attribute name='attribute' value='value'/>
+				<Attribute name='attribute' value='value'/>
+			</Dropdown>
+			<Dropdown title='Title'>
+				<Attribute name='attribute' value='value'/>
+				<Attribute name='attribute' value='value'/>
+				<Attribute name='attribute' value='value'/>
+				<Attribute name='attribute' value='value'/>
+			</Dropdown>
+
 		</div>
 	)
 }

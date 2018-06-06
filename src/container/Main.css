@@ -1,12 +1,6 @@
 .main {
-	display: flex;
 	width: 100%;
-}
-
-.chartContainer {
-	background-color: grey;
-	border-right: 2px solid black;
+	height: calc( 100% - 50px );
 	display: flex;
-	justify-content: center;
-	align-items: center;
+	flex-direction: row;
 }

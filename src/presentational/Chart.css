@@ -1,9 +1,14 @@
 .chart {
+	background-color: #141618;
+	width: 100%;
+	padding: 30px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.victory {
+	width: 100%;
+	height: 60%;
 	background-color: white;
-	border: 1px solid grey;
-	border-radius: 10px;
-	width: 90%;
-	height: 90%;
-	margin: 5%;
-	position: relative;
 }

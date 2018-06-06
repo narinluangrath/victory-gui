@@ -1,0 +1,28 @@
+.attr {
+	display: flex;
+	flex-direction: column;	
+	padding-left: 0px;
+}
+
+.attr .attr-header {
+	height: 30px;
+	font-size: 0.9rem;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	border-left: 2px solid transparent;
+	padding: 0px 20px 0px 20px ;
+	justify-content: space-between;
+	color: rgba(255, 255, 255, 0.5)
+}
+
+.attr-value {
+	font-size: 0.8rem;
+}
+
+.attr .attr-header:hover {
+	border-left: 2px solid rgb(108, 174, 221);
+	background-color: #3A464E;
+	color: lightgrey;
+}
+

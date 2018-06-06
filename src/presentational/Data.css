@@ -1,0 +1,56 @@
+.data {
+	min-width: 250px;
+	height: auto;
+	overflow-y: scroll;
+	background-color: rgb(36, 40, 42);
+	flex-direction: column;
+	padding: 20px;
+}
+
+.data h3 {
+	color: rgb(108, 174, 221);
+	font-weight: 390;
+	margin-top: 0px;
+}
+
+.datum {
+	display: flex;
+	flex-direction: row;
+	height: 30px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 10px;
+  background-color: #1C2022;
+  margin-bottom: 10px;
+}
+
+.datum:focus-within, .datum:hover {
+	border: 1px solid rgb(108, 174, 221);
+	transition: 0.2s;
+}
+
+.datum div input {
+	padding: 0px 0px 0px 5px;
+  width: 70px;
+  height: 100%;
+  box-sizing: content-box;
+  background-color: transparent;
+  border: none;
+  font-size: .8rem;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.datum div p {
+	padding: 0px 10px 0px 10px;
+  color: lightgrey;
+}
+
+.datum div input:focus {
+	outline: none;
+}
+
+.datum > div {
+	display: flex;
+	justify-content: space-between;
+  align-items: center;
+  padding-left: 10px;
+}

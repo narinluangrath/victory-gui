@@ -3,13 +3,16 @@ import { VictoryTheme } from 'victory'
 import _set from 'lodash/set'
 
 import Chart from '../presentational/Chart.jsx'
-import Editor from './Editor.jsx'
+// import Editor from './Editor.jsx'
+import Theme from '../presentational/Theme.jsx'
+import Data from '../presentational/Data.jsx'
+
 import './Main.css'
 
 const initData = Array.from( { length : 50 } )
 											.forEach( i => ({ x : i, y : Math.random() }) )
 
-class DesignView extends Component {
+class Main extends Component {
 	constructor() {
 		super()
 		this.state = {
@@ -60,17 +63,12 @@ class DesignView extends Component {
 		const { theme, data, dataTemp, chart } = this.state
 		return (
 			<div className='main'>
-				<Editor 
-					theme={theme} 
-					data={dataTemp}
-					chart={chart} 
-					changeTheme={this.changeTheme} 
-					changeData={this.changeData}
-					changeChart={this.changeChart}
-				/>
+				<Theme />
+				<Chart />
+				<Data />
 			</div>
 		)
 	}
 } 
 
-export default DesignView
+export default Main

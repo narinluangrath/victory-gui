@@ -7,7 +7,7 @@ import './Dropdown.css'
 class DropDown extends Component {
 	constructor() {
 		super()
-		this.state = { open : false }
+		this.state = { open : true }
 		this.toggle = this.toggle.bind( this )
 	}
 
