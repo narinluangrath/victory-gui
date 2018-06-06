@@ -4,25 +4,10 @@ import _set from 'lodash/set'
 
 import Chart from '../presentational/Chart.jsx'
 import Editor from './Editor.jsx'
-import './DesignView.css'
+import './Main.css'
 
-const initData = [
-	{ x : 0, y : 0 },
-	{ x : 1, y : 1 },
-	{ x : 2, y : 2 },
-	{ x : 3, y : 3 },
-	{ x : 4, y : 4 },	
-	{ x : 5, y : 0 },
-	{ x : 6, y : 10 },
-	{ x : 7, y : 3 },
-	{ x : 8, y : 3 },
-	{ x : 9, y : 7 },	
-	{ x : 10, y : 6 },
-	{ x : 11, y : 2 },
-	{ x : 12, y : 1 },
-	{ x : 13, y : 1 },
-	{ x : 14, y : 7 },	
-]
+const initData = Array.from( { length : 50 } )
+											.forEach( i => ({ x : i, y : Math.random() }) )
 
 class DesignView extends Component {
 	constructor() {
@@ -74,20 +59,15 @@ class DesignView extends Component {
 	render () {
 		const { theme, data, dataTemp, chart } = this.state
 		return (
-			<div className='designViewContainer'>
-				<div className='chartContainer'>
-					<Chart theme={theme} data={data} chart={chart}/>
-				</div>
-				<div className='editorContainer'>
-					<Editor 
-						theme={theme} 
-						data={dataTemp}
-						chart={chart} 
-						changeTheme={this.changeTheme} 
-						changeData={this.changeData}
-						changeChart={this.changeChart}
-					/>
-				</div>
+			<div className='main'>
+				<Editor 
+					theme={theme} 
+					data={dataTemp}
+					chart={chart} 
+					changeTheme={this.changeTheme} 
+					changeData={this.changeData}
+					changeChart={this.changeChart}
+				/>
 			</div>
 		)
 	}

@@ -2,15 +2,8 @@ body {
 	margin: 0px;
 	min-width: 500px;
 	overflow-x: scroll;
-}
-
-.appContainer {
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-}
-
-.main {
-	box-sizing: border-box;
-	height: 88%;
+	font-family: 'Roboto', sans-serif;
+	font-weight: 350;
+	font-size: 0.8rem;
+	color: lightgrey;
 }

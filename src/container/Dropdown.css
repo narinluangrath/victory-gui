@@ -1,0 +1,42 @@
+.dd {
+	display: flex;
+	flex-direction: column;
+	padding-bottom: 15px;
+}
+
+.dd-header:hover {
+	cursor: pointer;
+}
+
+.dd-header {
+	font-size: 0.9rem;
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.dd-header svg {
+	height: 10px;
+	width: 10px;
+	fill: lightgrey;
+	margin-right: 10px;
+	transition: transform .2s linear;
+}
+
+.open .dd-header svg {
+	transform: rotate(90deg);
+}
+
+.dd-children {
+	display: flex;
+	flex-direction: column;
+	max-height: 0;
+	overflow: hidden;
+	transition: max-height 0s;
+}
+
+.open .dd-children {
+	max-height: 2000px;
+	transition: max-height 1s ease-in;	
+}
+

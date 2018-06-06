@@ -1,17 +1,12 @@
-.designViewContainer {
+.main {
 	display: flex;
+	width: 100%;
 }
 
 .chartContainer {
-	width: 70%;
 	background-color: grey;
 	border-right: 2px solid black;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-}
-
-.editorContainer {
-	width: 30%;
-	background-color: green;
 }

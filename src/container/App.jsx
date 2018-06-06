@@ -1,8 +1,7 @@
 import React, { Component, Fragment } from 'react'
 
 import Header from '../presentational/Header.jsx'
-import Body from './Body.jsx'
-import CodeView from '../presentational/CodeView.jsx'
+import Main from './Main.jsx'
 import './App.css'
 
 class App extends Component {
@@ -15,7 +14,7 @@ class App extends Component {
 		return (
 			<div className='appContainer'>
 				<Header />
-				<Body />
+				<Main />
 			</div>
 		)
 	}

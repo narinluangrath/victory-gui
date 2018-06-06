@@ -1,27 +1,33 @@
 import React, { Component } from 'react'
+import cn from 'classnames'
+
+import ArrowIcon from '../icons/arrow.svg'
+import './Dropdown.css'
 
 class DropDown extends Component {
 	constructor() {
 		super()
-		this.state = { isOpen : false }
+		this.state = { open : false }
 		this.toggle = this.toggle.bind( this )
 	}
 
 	toggle() {
-		this.setState( prevState => ({ isOpen : !prevState.isOpen}) )
+		this.setState( prevState => ({ open : !prevState.open}) )
 	}
 
 	render() {
-		const { title, children } = this.props
+		const { title, children, childrenHeight } = this.props
+		const { open } = this.state
+		const height = open ? `${childrenHeight*(children.length)}px` : '0px'
 		return (
-			<div className='dropdown'>
-				<div className='dropdownHeader' onClick={this.toggle}>
-					<h2>{title}</h2>
+			<div className={cn('dd',{open})}>
+				<div className='dd-header' onClick={this.toggle}>
+					<ArrowIcon />
+					{title}
 				</div>
-				{ this.state.isOpen &&  
-					<div className='dropdownChildren'>
-						{ children }
-					</div> }
+				<div className='dd-children'>
+					{children}
+				</div>
 			</div>
 		)
 	}
