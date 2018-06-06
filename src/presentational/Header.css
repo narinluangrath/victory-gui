@@ -37,21 +37,22 @@ a.link {
 	color: lightgrey;
 	fill: lightgrey;
 	box-sizing: border-box;
-	transition: 0.5s;
 	font-size: .8rem;
   text-decoration: none;
+	transition: 0.2s;
+  border-bottom: 3px solid transparent;
+	margin-bottom: -3px;
 }
 
 a.link:hover {
 	cursor: pointer;
-	padding-top: 3px;
 	border-bottom: 3px solid rgb(108, 174, 221);
 	color: white;
 	fill: white;
 }
 
 a.link > p {
-	padding-left: 5px;
+	padding-left: 7px;
 }
 
 a.link svg {
