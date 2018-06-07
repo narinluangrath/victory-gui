@@ -40,6 +40,17 @@ function Theme( props ) {
 		onChangeNumber( 'chart.height', Number(height) )
 	}
 
+	function getGridStyle( theme, field ) {
+		const val = get( theme, field )
+		if ( val === '10, 5' ) return 'Dashed'
+		return 'Solid'
+	}
+
+	function setGridStyle( val, field ) {
+		if ( val === 'Dashed' ) onChangeNumber( field, '10, 5' )
+		else onChangeNumber( field, 'None' )
+	}
+
 //axis.style.grid.stroke
 
 	return (
@@ -51,7 +62,7 @@ function Theme( props ) {
 					value={getAspectRatio(theme)}
 				>
 					<Menu 
-						items={['500x200', '450x250', '400x300', '400x400', '300x400']}
+						items={['400x150', '400x200', '400x250', '400x300', '400x350', '400x400']}
 						selected={getAspectRatio(theme)}
 						onChange={setAspectRatio}
 					/>
@@ -74,6 +85,26 @@ function Theme( props ) {
 						onChange={e => onChangeColor('independentAxis.style.grid.stroke', e)}
 					/>					
 				</Attribute>
+				<Attribute 
+					name='Horizontal Grid Style' 
+					value={getGridStyle(theme, 'dependentAxis.style.grid.strokeDasharray')}
+				>
+					<Menu 
+						items={['Dashed', 'Solid']}
+						selected={getGridStyle(theme, 'dependentAxis.style.grid.strokeDasharray')}
+						onChange={v => setGridStyle(v, 'dependentAxis.style.grid.strokeDasharray')} 
+					/>					
+				</Attribute>				
+				<Attribute 
+					name='Vertical Grid Style' 
+					value={getGridStyle(theme, 'independentAxis.style.grid.strokeDasharray')}
+				>
+					<Menu 
+						items={['Dashed', 'Solid']}
+						selected={getGridStyle(theme, 'independentAxis.style.grid.strokeDasharray')}
+						onChange={v => setGridStyle(v, 'independentAxis.style.grid.strokeDasharray')} 
+					/>				
+				</Attribute>				
 			</Dropdown>
 			<Dropdown title='Line'>
 				<Attribute 
@@ -171,7 +202,7 @@ function Theme( props ) {
 					value={get(theme, 'independentAxis.style.tickLabels.fontSize')}
 				>
 					<Menu 
-						items={['0px', '8px', '12px', '16px']}
+						items={['0px', '2px', '4px', '6px', '8px', '10px', '12px', '14px']}
 						selected={get(theme,'independentAxis.style.tickLabels.fontSize')}
 						onChange={v => onChangeNumber('independentAxis.style.tickLabels.fontSize',v)} 
 					/>				
@@ -229,7 +260,7 @@ function Theme( props ) {
 					value={get(theme, 'dependentAxis.style.tickLabels.fontSize')}
 				>
 					<Menu 
-						items={['0px', '8px', '12px', '16px']}
+						items={['0px', '2px', '4px', '6px', '8px', '10px', '12px', '14px']}
 						selected={get(theme,'dependentAxis.style.tickLabels.fontSize')}
 						onChange={v => onChangeNumber('dependentAxis.style.tickLabels.fontSize',v)} 
 					/>				
