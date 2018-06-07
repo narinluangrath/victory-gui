@@ -6,13 +6,14 @@
 	border: 2px solid transparent;
 }
 
-.box:hover {
+.box:hover, .box.selected {
 	cursor: pointer;
 	border: 2px solid white;
 }
 
 .colorPicker {
 	padding: 0px 20px 0px 20px;
+	margin: 5px 0px 0px 10px;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
@@ -36,10 +37,21 @@
   padding: 0px 4px;
 }
 
+.hex:focus-within {
+	border: 2px solid lightblue;
+}
+
 .colorPicker input {
   width: 78px;
   margin-left: 5px !important;
   height: 15px;
   border: none;
   border-radius: 0px 4px 4px 0px;
+  font-family: 'Roboto' !important;
+  color: white !important;
+  background-color: black;
+}
+
+.colorPicker input:focus {
+	outline: none;
 }

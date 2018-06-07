@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import _get from 'lodash/get'
+import get from 'lodash/get'
 
 import Dropdown from '../container/Dropdown.jsx'
 import Attribute from '../container/Attribute.jsx'
@@ -10,7 +10,7 @@ import './Theme.css'
 function Theme( props ) {
 	const { theme, changeTheme } = props
 	
-	function onChange( field, event ) {
+	function onChangeColor( field, event ) {
 		let text = event.target.value
 		if ( text && text !== '' ) {
 			const asNum = Number( text )
@@ -18,68 +18,242 @@ function Theme( props ) {
 			if ( isNum ) { 
 				text = asNum
 			}
-			changeTheme( field, text )
+			changeTheme( field, '#' + text )
 		} else {
 			changeTheme( field, '' )
 		} 
 	}
 
+	function onChangeNumber( field, value ) {
+		changeTheme( field, value )
+	}
+
+	function getAspectRatio( theme ) {
+		const width = get( theme, 'chart.width' )
+		const height = get( theme, 'chart.height' )
+		return `${width}x${height}`
+	}
+
+	function setAspectRatio( ar ) {
+		const [ width, height ] = ar.split( 'x' )
+		onChangeNumber( 'chart.width', Number(width) )
+		onChangeNumber( 'chart.height', Number(height) )
+	}
+
+//axis.style.grid.stroke
+
 	return (
 		<div className='theme'>
 			<h3>Theme Design</h3>
-			<Dropdown title='Title'>
-				<Attribute name='attribute' value='value'>
-					<ColorPicker />
+			<Dropdown title='General'>
+				<Attribute
+					name='Aspect Ratio'
+					value={getAspectRatio(theme)}
+				>
+					<Menu 
+						items={['500x200', '450x250', '400x300', '400x400', '300x400']}
+						selected={getAspectRatio(theme)}
+						onChange={setAspectRatio}
+					/>
 				</Attribute>
-				<Attribute name='attribute' value='value'>
-					<Menu items={['item', 'item', 'item']} />
+				<Attribute 
+					name='Horizontal Grid Color' 
+					value={get(theme, 'dependentAxis.style.grid.stroke')}
+				>
+					<ColorPicker 
+						value={get(theme,'dependentAxis.style.grid.stroke')} 
+						onChange={e => onChangeColor('dependentAxis.style.grid.stroke', e)}
+					/>					
+				</Attribute>				
+				<Attribute 
+					name='Vertical Grid Color' 
+					value={get(theme, 'independentAxis.style.grid.stroke')}
+				>
+					<ColorPicker 
+						value={get(theme,'independentAxis.style.grid.stroke')} 
+						onChange={e => onChangeColor('independentAxis.style.grid.stroke', e)}
+					/>					
 				</Attribute>
-				<Attribute name='attribute' value='value'/>
-				<Attribute name='attribute' value='value'/>
 			</Dropdown>
-			<Dropdown title='Title'>
-				<Attribute name='attribute' value='value'/>
-				<Attribute name='attribute' value='value'/>
-				<Attribute name='attribute' value='value'/>
-				<Attribute name='attribute' value='value'/>
+			<Dropdown title='Line'>
+				<Attribute 
+					name='Color' 
+					value={get(theme,'line.style.data.stroke')}
+				>
+					<ColorPicker 
+						value={get(theme,'line.style.data.stroke')} 
+						onChange={e => onChangeColor('line.style.data.stroke', e)}
+					/>
+				</Attribute>
+				<Attribute 
+					name='Width' 
+					value={get(theme,'line.style.data.strokeWidth')}
+				>
+					<Menu 
+						items={['0px', '1px', '2px', '3px', '4px', '5px']}
+						selected={get(theme,'line.style.data.strokeWidth')}
+						onChange={v => onChangeNumber('line.style.data.strokeWidth',v)} 
+					/>
+				</Attribute>
 			</Dropdown>
-			<Dropdown title='Title'>
-				<Attribute name='attribute' value='value'/>
-				<Attribute name='attribute' value='value'/>
-				<Attribute name='attribute' value='value'/>
-				<Attribute name='attribute' value='value'/>
+			<Dropdown title='Axis'>
+				<Attribute 
+					name='X-Axis Color' 
+					value={get(theme, 'independentAxis.style.axis.stroke')}
+				>
+					<ColorPicker 
+						value={get(theme,'independentAxis.style.axis.stroke')} 
+						onChange={e => onChangeColor('independentAxis.style.axis.stroke', e)}
+					/>					
+				</Attribute>
+				<Attribute 
+					name='X-Axis Width' 
+					value={get(theme, 'independentAxis.style.axis.strokeWidth')}
+				>
+					<Menu 
+						items={['0px', '1px', '2px', '3px', '4px', '5px']}
+						selected={get(theme,'independentAxis.style.axis.strokeWidth')}
+						onChange={v => onChangeNumber('independentAxis.style.axis.strokeWidth',v)} 
+					/>				
+				</Attribute>
+				<Attribute 
+					name='Y-Axis Color' 
+					value={get(theme, 'dependentAxis.style.axis.stroke')}
+				>
+					<ColorPicker 
+						value={get(theme,'dependentAxis.style.axis.stroke')} 
+						onChange={e => onChangeColor('dependentAxis.style.axis.stroke', e)}
+					/>					
+				</Attribute>	
+				<Attribute 
+					name='Y-Axis Width' 
+					value={get(theme, 'dependentAxis.style.axis.strokeWidth')}
+				>
+					<Menu 
+						items={['0px', '1px', '2px', '3px', '4px', '5px']}
+						selected={get(theme,'dependentAxis.style.axis.strokeWidth')}
+						onChange={v => onChangeNumber('dependentAxis.style.axis.strokeWidth',v)} 
+					/>				
+				</Attribute>			
 			</Dropdown>
-			<Dropdown title='Title'>
-				<Attribute name='attribute' value='value'/>
-				<Attribute name='attribute' value='value'/>
-				<Attribute name='attribute' value='value'/>
-				<Attribute name='attribute' value='value'/>
+			<Dropdown title='Tick Marks'>
+				<Attribute 
+					name='X-Axis Color' 
+					value={get(theme, 'independentAxis.style.ticks.stroke')}
+				>
+					<ColorPicker 
+						value={get(theme,'independentAxis.style.ticks.stroke')} 
+						onChange={e => onChangeColor('independentAxis.style.ticks.stroke', e)}
+					/>					
+				</Attribute>
+				<Attribute 
+					name='X-Axis Width' 
+					value={get(theme, 'independentAxis.style.ticks.strokeWidth')}
+				>
+					<Menu 
+						items={['0px', '1px', '2px', '3px', '4px', '5px']}
+						selected={get(theme,'independentAxis.style.ticks.strokeWidth')}
+						onChange={v => onChangeNumber('independentAxis.style.ticks.strokeWidth',v)} 
+					/>				
+				</Attribute>
+				<Attribute 
+					name='X-Axis Label Font' 
+					value={get(theme, 'independentAxis.style.tickLabels.fontFamily')}
+				>
+					<Menu 
+						items={['Sans-serif', 'Roboto', 'Times', 'Lato', 'Montserrat']}
+						selected={get(theme,'independentAxis.style.tickLabels.fontFamily')}
+						onChange={v => onChangeNumber('independentAxis.style.tickLabels.fontFamily',v)} 
+					/>				
+				</Attribute>		
+				<Attribute 
+					name='X-Axis Label Font Size' 
+					value={get(theme, 'independentAxis.style.tickLabels.fontSize')}
+				>
+					<Menu 
+						items={['0px', '8px', '12px', '16px']}
+						selected={get(theme,'independentAxis.style.tickLabels.fontSize')}
+						onChange={v => onChangeNumber('independentAxis.style.tickLabels.fontSize',v)} 
+					/>				
+				</Attribute>							
+				<Attribute 
+					name='X-Axis Label Color' 
+					value={get(theme, 'independentAxis.style.tickLabels.fill')}
+				>
+					<ColorPicker 
+						value={get(theme,'independentAxis.style.tickLabels.fill')} 
+						onChange={e => onChangeColor('independentAxis.style.tickLabels.fill', e)}
+					/>				
+				</Attribute>	
+				<Attribute 
+					name='X-Axis Label Padding' 
+					value={get(theme, 'independentAxis.style.tickLabels.padding')}
+				>
+					<Menu 
+						items={[0, 2, 4, 6, 8, 10]}
+						selected={get(theme,'independentAxis.style.tickLabels.padding')}
+						onChange={v => onChangeNumber('independentAxis.style.tickLabels.padding',v)} 
+					/>			
+				</Attribute>						
+				<Attribute 
+					name='Y-Axis Color' 
+					value={get(theme, 'dependentAxis.style.ticks.stroke')}
+				>
+					<ColorPicker 
+						value={get(theme,'dependentAxis.style.ticks.stroke')} 
+						onChange={e => onChangeColor('dependentAxis.style.ticks.stroke', e)}
+					/>					
+				</Attribute>	
+				<Attribute 
+					name='Y-Axis Width' 
+					value={get(theme, 'dependentAxis.style.ticks.strokeWidth')}
+				>
+					<Menu 
+						items={['0px', '1px', '2px', '3px', '4px', '5px']}
+						selected={get(theme,'dependentAxis.style.ticks.strokeWidth')}
+						onChange={v => onChangeNumber('dependentAxis.style.ticks.strokeWidth',v)} 
+					/>				
+				</Attribute>		
+				<Attribute 
+					name='Y-Axis Label Font' 
+					value={get(theme, 'dependentAxis.style.tickLabels.fontFamily')}
+				>
+					<Menu 
+						items={['Sans-serif', 'Roboto', 'Times', 'Lato', 'Montserrat']}
+						selected={get(theme,'dependentAxis.style.tickLabels.fontFamily')}
+						onChange={v => onChangeNumber('dependentAxis.style.tickLabels.fontFamily',v)} 
+					/>				
+				</Attribute>		
+				<Attribute 
+					name='Y-Axis Label Font Size' 
+					value={get(theme, 'dependentAxis.style.tickLabels.fontSize')}
+				>
+					<Menu 
+						items={['0px', '8px', '12px', '16px']}
+						selected={get(theme,'dependentAxis.style.tickLabels.fontSize')}
+						onChange={v => onChangeNumber('dependentAxis.style.tickLabels.fontSize',v)} 
+					/>				
+				</Attribute>							
+				<Attribute 
+					name='Y-Axis Label Color' 
+					value={get(theme, 'dependentAxis.style.tickLabels.fill')}
+				>
+					<ColorPicker 
+						value={get(theme,'dependentAxis.style.tickLabels.fill')} 
+						onChange={e => onChangeColor('dependentAxis.style.tickLabels.fill', e)}
+					/>				
+				</Attribute>					
+				<Attribute 
+					name='Y-Axis Label Padding' 
+					value={get(theme, 'dependentAxis.style.tickLabels.padding')}
+				>
+					<Menu 
+						items={[0, 2, 4, 6, 8, 10]}
+						selected={get(theme,'dependentAxis.style.tickLabels.padding')}
+						onChange={v => onChangeNumber('dependentAxis.style.tickLabels.padding',v)} 
+					/>			
+				</Attribute>		
 			</Dropdown>
-			<Dropdown title='Title'>
-				<Attribute name='attribute' value='value'/>
-				<Attribute name='attribute' value='value'/>
-				<Attribute name='attribute' value='value'/>
-				<Attribute name='attribute' value='value'/>
-			</Dropdown>
-			<Dropdown title='Title'>
-				<Attribute name='attribute' value='value'/>
-				<Attribute name='attribute' value='value'/>
-				<Attribute name='attribute' value='value'/>
-				<Attribute name='attribute' value='value'/>
-			</Dropdown>
-			<Dropdown title='Title'>
-				<Attribute name='attribute' value='value'/>
-				<Attribute name='attribute' value='value'/>
-				<Attribute name='attribute' value='value'/>
-				<Attribute name='attribute' value='value'/>
-			</Dropdown>
-			<Dropdown title='Title'>
-				<Attribute name='attribute' value='value'/>
-				<Attribute name='attribute' value='value'/>
-				<Attribute name='attribute' value='value'/>
-				<Attribute name='attribute' value='value'/>
-			</Dropdown>
-
 		</div>
 	)
 }

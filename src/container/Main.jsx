@@ -9,16 +9,16 @@ import Data from '../presentational/Data.jsx'
 
 import './Main.css'
 
-const initData = Array.from( { length : 50 } )
-											.forEach( i => ({ x : i, y : Math.random() }) )
+const data = Array
+						.from( { length : 50 }, (_, i) => i )
+						.map( i => ({ x : i, y : Math.random() }) )
 
 class Main extends Component {
 	constructor() {
 		super()
 		this.state = {
 			theme : VictoryTheme.material,
-			data : initData,
-			dataTemp : JSON.stringify( initData ),
+			data : data,
 			chart : {
 				xAxis : { label : 'X-Axis label' },
 				yAxis : { label : 'Y-Axis label' },
@@ -63,9 +63,8 @@ class Main extends Component {
 		const { theme, data, dataTemp, chart } = this.state
 		return (
 			<div className='main'>
-				<Theme />
-				<Chart />
-				<Data />
+				<Theme theme={theme} changeTheme={this.changeTheme}/>
+				<Chart theme={theme} data={data}/>
 			</div>
 		)
 	}

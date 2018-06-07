@@ -41,7 +41,6 @@ class Attribute extends Component {
 	}
 
 	toggle() {
-		console.log( 'fuck' )
 		this.setState( prev => ({ open : !prev.open }))
 	}
 
