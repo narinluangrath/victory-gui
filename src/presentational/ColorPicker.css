@@ -1,0 +1,45 @@
+.box {
+	width: 15px;
+	height: 15px;
+	border-radius: 4px;
+	margin: 0px 5px 5px 0px;
+	border: 2px solid transparent;
+}
+
+.box:hover {
+	cursor: pointer;
+	border: 2px solid white;
+}
+
+.colorPicker {
+	padding: 0px 20px 0px 20px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	width: auto;
+	height: auto;
+	align-content: flex-start;
+}
+
+.hex {
+  border-radius: 4px;
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(36, 40, 42);
+  height: 15px;
+  color: darkgrey;
+  border: 2px solid transparent;
+  align-items: center;
+}
+
+.hashtag {
+  padding: 0px 4px;
+}
+
+.colorPicker input {
+  width: 78px;
+  margin-left: 5px !important;
+  height: 15px;
+  border: none;
+  border-radius: 0px 4px 4px 0px;
+}

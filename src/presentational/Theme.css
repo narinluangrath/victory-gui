@@ -1,5 +1,6 @@
 .theme {
 	min-width: 250px;
+	max-width: 250px;
 	height: auto;
 	overflow-y: scroll;
 	background-color: rgb(36, 40, 42);
@@ -12,4 +13,32 @@
 	font-weight: 390;
 	margin-top: 0px;
 	padding-left: 20px;
+}
+
+.twitter-picker {
+	width: auto !important;
+  background-color: transparent !important;
+  border: 0px solid rgba(0, 0, 0, 0.25) !important;
+  box-shadow: rgba(0, 0, 0, 0.25) 0px 1px 4px !important;
+  border-radius: none !important;
+  position: relative !important;
+  margin-left: 20px !important;
+  padding: 0px !important;
+}
+
+.twitter-picker div:nth-child(3) {
+	padding: 0px !important;
+}
+
+.twitter-picker span div {
+	width: 20px !important;
+	height: 20px !important;
+}
+
+.twitter-picker input {
+	height: 23px !important;
+}
+
+.twitter-picker div {
+	height: 25px !important;
 }

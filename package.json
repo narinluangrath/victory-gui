@@ -30,7 +30,6 @@
   },
   "dependencies": {
     "lodash": "^4.17.10",
-    "react-color": "^2.14.1",
     "victory": "^0.26.1"
   }
 }

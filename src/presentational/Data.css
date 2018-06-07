@@ -1,5 +1,5 @@
 .data {
-	min-width: 250px;
+	min-width: 150px;
 	height: auto;
 	overflow-y: scroll;
 	background-color: rgb(36, 40, 42);
@@ -30,7 +30,7 @@
 
 .datum div input {
 	padding: 0px 0px 0px 5px;
-  width: 70px;
+  width: 25px;
   height: 100%;
   box-sizing: content-box;
   background-color: transparent;

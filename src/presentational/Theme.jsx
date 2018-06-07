@@ -3,6 +3,8 @@ import _get from 'lodash/get'
 
 import Dropdown from '../container/Dropdown.jsx'
 import Attribute from '../container/Attribute.jsx'
+import ColorPicker from './ColorPicker.jsx'
+import Menu from './Menu.jsx'
 import './Theme.css'
 
 function Theme( props ) {
@@ -26,8 +28,12 @@ function Theme( props ) {
 		<div className='theme'>
 			<h3>Theme Design</h3>
 			<Dropdown title='Title'>
-				<Attribute name='attribute' value='value'/>
-				<Attribute name='attribute' value='value'/>
+				<Attribute name='attribute' value='value'>
+					<ColorPicker />
+				</Attribute>
+				<Attribute name='attribute' value='value'>
+					<Menu items={['item', 'item', 'item']} />
+				</Attribute>
 				<Attribute name='attribute' value='value'/>
 				<Attribute name='attribute' value='value'/>
 			</Dropdown>
@@ -77,6 +83,9 @@ function Theme( props ) {
 		</div>
 	)
 }
+
+// 					<TwitterPicker triangle="hide" colors={['#FF6900', '#FCB900', '#7BDCB5', '#00D084', '#8ED1FC', '#0693E3', '#ABB8C3', '#EB144C', '#F78DA7']}/>
+
 
 
 		// <div className='theme'>

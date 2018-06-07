@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { SketchPicker } from 'react-color'
+
+import cn from 'classnames'
 
 import './Attribute.css'
 
@@ -36,13 +37,20 @@ class Attribute extends Component {
 	constructor() {
 		super( )
 		this.state = { open : false }
+		this.toggle = this.toggle.bind( this )
+	}
+
+	toggle() {
+		console.log( 'fuck' )
+		this.setState( prev => ({ open : !prev.open }))
 	}
 
 	render() {
 		const { name, value, children } = this.props
+		const { open } = this.state
 		return (
-			<div className='attr'>
-				<div className='attr-header'>
+			<div className={cn('attr',{open})}>
+				<div className='attr-header' onClick={this.toggle}>
 					<div className='attr-name'>{name}</div>
 					<div className='attr-value'>{value}</div>
 				</div>

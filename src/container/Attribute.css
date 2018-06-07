@@ -20,9 +20,25 @@
 	font-size: 0.8rem;
 }
 
-.attr .attr-header:hover {
+.attr .attr-header:hover, .attr.open .attr-header {
+	cursor: pointer;
 	border-left: 2px solid rgb(108, 174, 221);
 	background-color: #3A464E;
 	color: lightgrey;
 }
 
+.attr .attr-children {
+	display: flex;
+	flex-direction: column;
+	max-height: 0;
+	transition: max-height 0s;
+	overflow: hidden;
+	border-left: 2px solid rgb(108, 174, 221);
+	background-color: #3A464E;
+}
+
+.attr.open .attr-children {
+	max-height: 2000px;
+	transition: max-height 1s ease-in;	
+	padding-bottom: 5px;
+}
