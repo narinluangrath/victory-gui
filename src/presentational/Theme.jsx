@@ -28,17 +28,17 @@ function Theme( props ) {
 		changeTheme( field, value )
 	}
 
-	function getAspectRatio( theme ) {
-		const width = get( theme, 'chart.width' )
-		const height = get( theme, 'chart.height' )
-		return `${width}x${height}`
-	}
+	// function getAspectRatio( theme ) {
+	// 	const width = get( theme, 'chart.width' )
+	// 	const height = get( theme, 'chart.height' )
+	// 	return `${width}x${height}`
+	// }
 
-	function setAspectRatio( ar ) {
-		const [ width, height ] = ar.split( 'x' )
-		onChangeNumber( 'chart.width', Number(width) )
-		onChangeNumber( 'chart.height', Number(height) )
-	}
+	// function setAspectRatio( ar ) {
+	// 	const [ width, height ] = ar.split( 'x' )
+	// 	onChangeNumber( 'chart.width', Number(width) )
+	// 	onChangeNumber( 'chart.height', Number(height) )
+	// }
 
 	function getGridStyle( theme, field ) {
 		const val = get( theme, field )
@@ -51,22 +51,70 @@ function Theme( props ) {
 		else onChangeNumber( field, 'None' )
 	}
 
-//axis.style.grid.stroke
-
 	return (
 		<div className='theme'>
 			<h3>Theme Design</h3>
 			<Dropdown title='General'>
 				<Attribute
-					name='Aspect Ratio'
-					value={getAspectRatio(theme)}
+					name='Width'
+					value={get(theme, 'chart.width')}
 				>
 					<Menu 
-						items={['400x150', '400x200', '400x250', '400x300', '400x350', '400x400']}
-						selected={getAspectRatio(theme)}
-						onChange={setAspectRatio}
+						items={[200, 300, 400, 500, 600, 700, 800]}
+						selected={get(theme, 'chart.width')}
+						onChange={e => onChangeNumber('chart.width', e)}
 					/>
-				</Attribute>
+				</Attribute>	
+				<Attribute
+					name='Height'
+					value={get(theme, 'chart.height')}
+				>
+					<Menu 
+						items={[200, 300, 400, 500, 600, 700, 800]}
+						selected={get(theme, 'chart.height')}
+						onChange={e => onChangeNumber('chart.height', e)}
+					/>
+				</Attribute>					
+				<Attribute
+					name='Padding (Left)'
+					value={get(theme, 'chart.padding.left')}
+				>
+					<Menu 
+						items={[0, 10, 20, 30, 40, 50, 60]}
+						selected={get(theme, 'chart.padding.left')}
+						onChange={e => onChangeNumber('chart.padding.left', e)}
+					/>
+				</Attribute>			
+				<Attribute
+					name='Padding (Top)'
+					value={get(theme, 'chart.padding.top')}
+				>
+					<Menu 
+						items={[0, 10, 20, 30, 40, 50, 60]}
+						selected={get(theme, 'chart.padding.top')}
+						onChange={e => onChangeNumber('chart.padding.top', e)}
+					/>
+				</Attribute>		
+				<Attribute
+					name='Padding (Right)'
+					value={get(theme, 'chart.padding.right')}
+				>
+					<Menu 
+						items={[0, 10, 20, 30, 40, 50, 60]}
+						selected={get(theme, 'chart.padding.right')}
+						onChange={e => onChangeNumber('chart.padding.right', e)}
+					/>
+				</Attribute>	
+				<Attribute
+					name='Padding (Bottom)'
+					value={get(theme, 'chart.padding.bottom')}
+				>
+					<Menu 
+						items={[0, 10, 20, 30, 40, 50, 60]}
+						selected={get(theme, 'chart.padding.bottom')}
+						onChange={e => onChangeNumber('chart.padding.bottom', e)}
+					/>
+				</Attribute>																
 				<Attribute 
 					name='Horizontal Grid Color' 
 					value={get(theme, 'dependentAxis.style.grid.stroke')}
@@ -109,23 +157,42 @@ function Theme( props ) {
 			<Dropdown title='Line'>
 				<Attribute 
 					name='Color' 
-					value={get(theme,'line.style.data.stroke')}
+					value={get(theme,'area.style.data.stroke')}
 				>
 					<ColorPicker 
-						value={get(theme,'line.style.data.stroke')} 
-						onChange={e => onChangeColor('line.style.data.stroke', e)}
+						value={get(theme,'area.style.data.stroke')} 
+						onChange={e => onChangeColor('area.style.data.stroke', e)}
 					/>
 				</Attribute>
 				<Attribute 
 					name='Width' 
-					value={get(theme,'line.style.data.strokeWidth')}
+					value={get(theme,'area.style.data.strokeWidth')}
 				>
 					<Menu 
 						items={['0px', '1px', '2px', '3px', '4px', '5px']}
-						selected={get(theme,'line.style.data.strokeWidth')}
-						onChange={v => onChangeNumber('line.style.data.strokeWidth',v)} 
+						selected={get(theme,'area.style.data.strokeWidth')}
+						onChange={v => onChangeNumber('area.style.data.strokeWidth',v)} 
 					/>
 				</Attribute>
+				<Attribute 
+					name='Fill' 
+					value={get(theme,'area.style.data.fill')}
+				>
+					<ColorPicker 
+						value={get(theme,'area.style.data.fill')} 
+						onChange={e => onChangeColor('area.style.data.fill', e)}
+					/>
+				</Attribute>		
+				<Attribute 
+					name='Fill Opacity' 
+					value={get(theme,'area.style.data.fillOpacity')}
+				>
+					<Menu 
+						items={[0, 0.2, 0.4, 0.6, 0.8, 1]}
+						selected={get(theme,'area.style.data.fillOpacity')}
+						onChange={v => onChangeNumber('area.style.data.fillOpacity',v)} 
+					/>
+				</Attribute>								
 			</Dropdown>
 			<Dropdown title='Axis'>
 				<Attribute 
@@ -291,6 +358,16 @@ function Theme( props ) {
 
 // 					<TwitterPicker triangle="hide" colors={['#FF6900', '#FCB900', '#7BDCB5', '#00D084', '#8ED1FC', '#0693E3', '#ABB8C3', '#EB144C', '#F78DA7']}/>
 
+				// <Attribute
+				// 	name='Aspect Ratio'
+				// 	value={getAspectRatio(theme)}
+				// >
+				// 	<Menu 
+				// 		items={['400x150', '400x200', '400x250', '400x300', '400x350', '400x400']}
+				// 		selected={getAspectRatio(theme)}
+				// 		onChange={setAspectRatio}
+				// 	/>
+				// </Attribute>
 
 
 		// <div className='theme'>

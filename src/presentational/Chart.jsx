@@ -1,5 +1,5 @@
 import React from 'react'
-import { VictoryChart, VictoryLine, VictoryAxis } from 'victory'
+import { VictoryChart, VictoryLine, VictoryAxis, VictoryArea } from 'victory'
 
 import './Chart.css'
 
@@ -16,17 +16,9 @@ function Chart( props ) {
 		<div className='chart'>
 			<div className='victory'>
 				<VictoryChart theme={theme}>
-					<VictoryLine data={data} />
+					<VictoryArea data={data} />
 				</VictoryChart>
 			</div>
-
-{ /*
-			<VictoryChart theme={theme} >
-				<VictoryAxis {...xAxis} />
-				<VictoryAxis {...yAxis} />
-				<VictoryLine data={data} {...line} />
-			</VictoryChart>
-*/ }
 		</div>
 	)
 }
