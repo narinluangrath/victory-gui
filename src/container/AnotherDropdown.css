@@ -1,0 +1,52 @@
+.anotherDropdown {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+}
+
+.anotherDropdown .header {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	fill: lightgrey;
+	width: 120px;
+	height: 40px;
+	text-transform: uppercase;
+	font-weight: 400;	
+	color: lightgrey;
+	font-size: 0.8rem;
+	border: none;
+}
+
+.anotherDropdown .header p {
+	margin-right: 13px;
+}
+
+.anotherDropdown .header svg {
+	width: 10px;
+	height: 10px;
+	transform: rotate(180deg);
+}
+
+.anotherDropdown .header:hover, .anotherDropdown .header.open {
+	cursor: pointer;
+	background-color: #141618;
+}
+
+.anotherDropdown .header.open svg {
+	transform: rotate(0deg);
+	/*transition: 1s;*/
+}
+
+.anotherDropdown .body {
+	display: flex;
+	flex-direction: column;
+	position: absolute;
+	width: 140px;
+	padding: 10px 20px 10px 0px;
+	top: 50px;
+	left: 0px;
+	background-color: #1C2022;
+	z-index: 3;
+}

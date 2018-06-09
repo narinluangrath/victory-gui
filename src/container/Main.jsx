@@ -19,15 +19,35 @@ class Main extends Component {
 		this.state = {
 			theme : VictoryTheme.material,
 			data : data,
-			chart : {
-				xAxis : { label : 'X-Axis label' },
-				yAxis : { label : 'Y-Axis label' },
-				line : { interpolation : 'basis' }
-			}
+			interpolation : 'linear',
+			backgroundColor : 'white',
+			enableZoom : true,
+			enableTooltips : false,
+			enablePoints : false,
 		}
 		this.changeData = this.changeData.bind( this )
 		this.changeTheme = this.changeTheme.bind( this )
-		this.changeChart = this.changeChart.bind( this )
+		this.toggleZoom = this.toggleZoom.bind( this )
+	}
+
+	changeInterpolation( interpolation ) {
+		this.setState({ interpolation })
+	}
+
+	changeBackground( color ) {
+		this.setState({ backgroundColor : color })
+	}
+
+	toggleZoom() {
+		this.setState( prev => ({ enableZoom : !prev.enableZoom }) )
+	}
+
+	toggleTooltips( ) {
+		this.setState( prev => ({ enableTooltips : !prev.enableTooltips }) )
+	}
+
+	togglePoints( ) {
+		this.setState( prev => ({ enablePoints : !prev.enablePoints }) )
 	}
 
 	deepClone( obj ) {
@@ -51,20 +71,17 @@ class Main extends Component {
 		})
 	}
 
-	changeChart( field, value ) {
-		this.setState( prevState => {
-			const newChart = this.deepClone( prevState.chart )
-			_set( newChart, field, value )
-			return { chart : newChart }
-		})
-	}
-
 	render () {
-		const { theme, data, dataTemp, chart } = this.state
+		const { theme, data, dataTemp, chart, enableZoom } = this.state
 		return (
 			<div className='main'>
 				<Theme theme={theme} changeTheme={this.changeTheme}/>
-				<Chart theme={theme} data={data}/>
+				<Chart 
+					theme={theme} 
+					data={data}
+					enableZoom={enableZoom}
+					toggleZoom={this.toggleZoom}
+				/>
 			</div>
 		)
 	}

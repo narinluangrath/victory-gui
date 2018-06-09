@@ -4,7 +4,7 @@ import cn from 'classnames'
 import ArrowIcon from '../icons/arrow.svg'
 import './Dropdown.css'
 
-class DropDown extends Component {
+class Dropdown extends Component {
 	constructor() {
 		super()
 		this.state = { open : true }
@@ -16,9 +16,8 @@ class DropDown extends Component {
 	}
 
 	render() {
-		const { title, children, childrenHeight } = this.props
+		const { title, children } = this.props
 		const { open } = this.state
-		const height = open ? `${childrenHeight*(children.length)}px` : '0px'
 		return (
 			<div className={cn('dd',{open})}>
 				<div className='dd-header' onClick={this.toggle}>
@@ -33,4 +32,4 @@ class DropDown extends Component {
 	}
 }
 
-export default DropDown
+export default Dropdown
