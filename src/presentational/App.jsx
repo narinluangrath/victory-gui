@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 
-import Header from '../presentational/Header.jsx'
-import Main from './Main.jsx'
+import Header from './Header.jsx'
+import Main from '../container/Main.jsx'
 import './App.css'
 
 class App extends Component {

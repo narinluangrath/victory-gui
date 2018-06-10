@@ -22,7 +22,7 @@ class Dropdown extends Component {
 			<div className={cn('dd',{open})}>
 				<div className='dd-header' onClick={this.toggle}>
 					<ArrowIcon />
-					{title}
+					<h2>{title}</h2>
 				</div>
 				<div className='dd-children'>
 					{children}

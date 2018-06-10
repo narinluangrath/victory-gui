@@ -1,9 +1,9 @@
 .header {
+	box-sizing: border-box;
 	height: 50px;
+	width: 100%;
 	background-color: #1C2022;
-	color: white;
 	border: 1px solid rgb(18,21,22);
-	font-size: 1rem;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -17,7 +17,7 @@
 	align-items: center;
 }
 
-.dividor {
+.divider {
 	width: 0;
 	height: 20;
 	border-right: 1px solid rgba(255, 255, 255, 0.3);

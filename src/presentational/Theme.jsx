@@ -41,7 +41,9 @@ function Theme( props ) {
 
 	return (
 		<div className='theme'>
-			<h3>Theme Design</h3>
+			<div className='title'>
+				<h2>Theme Design</h2>
+			</div>
 			<Dropdown title='General'>
 				<Attribute
 					name='Width'

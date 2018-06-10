@@ -7,3 +7,15 @@ body {
 	font-size: 0.8rem;
 	color: lightgrey;
 }
+
+h1 {
+	color: white;
+	font-size: 1rem;
+	font-weight: 300;
+}
+
+h2 {
+	color: lightgrey;
+	font-size: 0.9rem;
+	font-weight: 300;
+}
