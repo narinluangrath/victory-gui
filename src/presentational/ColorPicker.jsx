@@ -28,8 +28,11 @@ function ColorPicker( props ) {
 		'#ff00bf', '#ff0080', '#ff0040',
 	]
 
-	function onClickBox(color) {
-		return () => onChange( { target : { value : color.substring(1, ) } } )
+	function handleInputChange( event ) {
+		const text = event.target.value
+		if ( text.length <= 6) {
+			onChange( `#${text}` )
+		}
 	}
 
 	return (
@@ -40,13 +43,13 @@ function ColorPicker( props ) {
 							key={color} 
 							selected={value===color} 
 							color={color} 
-							onClick={onClickBox(color)}
+							onClick={() => onChange(color)}
 						/> )
 				) }
 			</div>
 			<div className='hex'>
 				<div className='hashtag'>#</div>
-				<input value={value.substring(1,)} onChange={onChange}/>
+				<input value={value.substring(1,)} onChange={handleInputChange}/>
 			</div>		
 		</div>
 	)

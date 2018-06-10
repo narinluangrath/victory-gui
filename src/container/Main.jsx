@@ -1,11 +1,9 @@
 import React, { Component } from 'react'
 import { VictoryTheme } from 'victory'
-import _set from 'lodash/set'
+import set from 'lodash/set'
 
 import Chart from '../presentational/Chart.jsx'
-// import Editor from './Editor.jsx'
 import Theme from '../presentational/Theme.jsx'
-// import Data from '../presentational/Data.jsx'
 
 import './Main.css'
 
@@ -66,9 +64,9 @@ class Main extends Component {
 	}
 
 	changeTheme( field, value ) {
-		this.setState( prevState => {
-			const newTheme = this.deepClone( prevState.theme )
-			_set( newTheme, field, value )
+		this.setState( prev => {
+			const newTheme = this.deepClone( prev.theme )
+			set( newTheme, field, value )
 			return { theme : newTheme }
 		})
 	}
@@ -77,7 +75,10 @@ class Main extends Component {
 		const { theme, data, dataTemp, chart, enableZoom, interpolation, backgroundColor } = this.state
 		return (
 			<div className='main'>
-				<Theme theme={theme} changeTheme={this.changeTheme}/>
+				<Theme 
+					theme={theme} 
+					changeTheme={this.changeTheme}
+				/>
 				<Chart 
 					theme={theme} 
 					data={data}

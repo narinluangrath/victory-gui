@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import get from 'lodash/get'
 
 import Dropdown from '../container/Dropdown.jsx'
@@ -8,20 +8,22 @@ import Menu from './Menu.jsx'
 import './Theme.css'
 
 function Theme( props ) {
+
 	const { theme, changeTheme } = props
-	
-	function onChangeColor( field, event ) {
-		let text = event.target.value
-		if ( text && text !== '' ) {
-			const asNum = Number( text )
-			const isNum = !Number.isNaN( asNum )
-			if ( isNum ) { 
-				text = asNum
-			}
-			changeTheme( field, '#' + text )
-		} else {
-			changeTheme( field, '' )
-		} 
+
+	function ColorAttribute( props ) {
+		const { name, accessor } = props
+		return (
+			<Attribute 
+				name={name}
+				value={get( theme, accessor )}
+			>
+				<ColorPicker
+					value={get( theme, accessor )}
+					onChange={color => changeTheme( accessor, color )}
+				/>
+			</Attribute>
+		)
 	}
 
 	function onChangeNumber( field, value ) {
@@ -105,24 +107,14 @@ function Theme( props ) {
 						onChange={e => onChangeNumber('chart.padding.bottom', e)}
 					/>
 				</Attribute>																
-				<Attribute 
-					name='Horizontal Grid Color' 
-					value={get(theme, 'dependentAxis.style.grid.stroke')}
-				>
-					<ColorPicker 
-						value={get(theme,'dependentAxis.style.grid.stroke')} 
-						onChange={e => onChangeColor('dependentAxis.style.grid.stroke', e)}
-					/>					
-				</Attribute>				
-				<Attribute 
-					name='Vertical Grid Color' 
-					value={get(theme, 'independentAxis.style.grid.stroke')}
-				>
-					<ColorPicker 
-						value={get(theme,'independentAxis.style.grid.stroke')} 
-						onChange={e => onChangeColor('independentAxis.style.grid.stroke', e)}
-					/>					
-				</Attribute>
+				<ColorAttribute
+					name='Horizontal Grid Color'
+					accessor='dependentAxis.style.grid.stroke'
+				/>			
+				<ColorAttribute
+					name='Vertical Grid Color'
+					accessor='independentAxis.style.grid.stroke'
+				/>					
 				<Attribute 
 					name='Horizontal Grid Style' 
 					value={getGridStyle(theme, 'dependentAxis.style.grid.strokeDasharray')}
@@ -151,7 +143,7 @@ function Theme( props ) {
 				>
 					<ColorPicker 
 						value={get(theme,'area.style.data.stroke')} 
-						onChange={e => onChangeColor('area.style.data.stroke', e)}
+						onChange={color => changeTheme('area.style.data.stroke', color)}
 					/>
 				</Attribute>
 				<Attribute 
@@ -170,7 +162,7 @@ function Theme( props ) {
 				>
 					<ColorPicker 
 						value={get(theme,'area.style.data.fill')} 
-						onChange={e => onChangeColor('area.style.data.fill', e)}
+						onChange={color => changeTheme('area.style.data.fill', color)}
 					/>
 				</Attribute>		
 				<Attribute 
@@ -191,7 +183,7 @@ function Theme( props ) {
 				>
 					<ColorPicker 
 						value={get(theme,'independentAxis.style.axis.stroke')} 
-						onChange={e => onChangeColor('independentAxis.style.axis.stroke', e)}
+						onChange={color => changeTheme('independentAxis.style.axis.stroke', color)}
 					/>					
 				</Attribute>
 				<Attribute 
@@ -210,7 +202,7 @@ function Theme( props ) {
 				>
 					<ColorPicker 
 						value={get(theme,'dependentAxis.style.axis.stroke')} 
-						onChange={e => onChangeColor('dependentAxis.style.axis.stroke', e)}
+						onChange={color => changeTheme('dependentAxis.style.axis.stroke', color)}
 					/>					
 				</Attribute>	
 				<Attribute 
@@ -231,7 +223,7 @@ function Theme( props ) {
 				>
 					<ColorPicker 
 						value={get(theme,'independentAxis.style.ticks.stroke')} 
-						onChange={e => onChangeColor('independentAxis.style.ticks.stroke', e)}
+						onChange={color => changeTheme('independentAxis.style.ticks.stroke', color)}
 					/>					
 				</Attribute>
 				<Attribute 
@@ -270,7 +262,7 @@ function Theme( props ) {
 				>
 					<ColorPicker 
 						value={get(theme,'independentAxis.style.tickLabels.fill')} 
-						onChange={e => onChangeColor('independentAxis.style.tickLabels.fill', e)}
+						onChange={color => changeTheme('independentAxis.style.tickLabels.fill', color)}
 					/>				
 				</Attribute>	
 				<Attribute 
@@ -289,7 +281,7 @@ function Theme( props ) {
 				>
 					<ColorPicker 
 						value={get(theme,'dependentAxis.style.ticks.stroke')} 
-						onChange={e => onChangeColor('dependentAxis.style.ticks.stroke', e)}
+						onChange={color => changeTheme('dependentAxis.style.ticks.stroke', color)}
 					/>					
 				</Attribute>	
 				<Attribute 
@@ -328,7 +320,7 @@ function Theme( props ) {
 				>
 					<ColorPicker 
 						value={get(theme,'dependentAxis.style.tickLabels.fill')} 
-						onChange={e => onChangeColor('dependentAxis.style.tickLabels.fill', e)}
+						onChange={color => changeTheme('dependentAxis.style.tickLabels.fill', color)}
 					/>				
 				</Attribute>					
 				<Attribute 
