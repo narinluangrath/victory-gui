@@ -1,6 +1,7 @@
 .chart {
 	background-color: #141618;
-	width: 100%;
+	display: flex;
+	width: calc( 100% - 250px );
 	padding: 30px;
 	display: flex;
 	flex-direction: column;
