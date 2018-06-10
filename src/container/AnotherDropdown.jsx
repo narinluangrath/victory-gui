@@ -14,15 +14,18 @@ class AnotherDropdown extends Component {
 
 	toggle(event) {
     event.preventDefault();
-		this.setState( prev => ({ open : !prev.open}), 
+		this.setState( prev => ({ open : true}), 
 									() => document.addEventListener('click', this.closeMenu)
 		)
 	}
 
-  closeMenu() {
-    this.setState({ open: false }, () => {
-      document.removeEventListener('click', this.closeMenu);
-    });
+  closeMenu(e) {
+  	e.preventDefault()
+  	if ( !this.dropdownMenu.contains( e.target ) ) {
+	    this.setState({ open: false }, () => {
+	      document.removeEventListener('click', this.closeMenu);
+	    })
+	  }
   }
 
 	render() {
@@ -31,14 +34,17 @@ class AnotherDropdown extends Component {
 
 		return (
 			<div className='anotherDropdown'>
-				<div className={cn('testing', 'header',{open})} onClick={this.toggle}>
+				<div className={cn('header',{open})} onClick={this.toggle}>
 					<p>{title}</p>
 					<TriangleIcon />
 				</div>
 				{ open && 
-				<div className='body'>
-				{children}
-				</div>
+					<div 
+						className='body'       
+						ref={(element) => {this.dropdownMenu = element;}}
+					>
+						{children}
+					</div>
 				}
 			</div>
 		)

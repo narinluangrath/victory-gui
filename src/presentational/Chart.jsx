@@ -5,7 +5,7 @@ import Toggles from './Toggles.jsx'
 import './Chart.css'
 
 function Chart( props ) {
-	const { theme, data, chart, enableZoom, toggleZoom } = props
+	const { theme, data, chart, enableZoom, toggleZoom, changeInterpolation, interpolation, backgroundColor, changeBackground } = props
 	// const xAxis = chart.xAxis 
 	// const yAxis = { 
 	// 	...chart.yAxis,
@@ -15,10 +15,20 @@ function Chart( props ) {
 
 	return (
 		<div className='chart'>
-			<Toggles toggleZoom={toggleZoom} enableZoom={enableZoom}/>
+			<Toggles 
+				toggleZoom={toggleZoom}
+				enableZoom={enableZoom}
+				changeInterpolation={changeInterpolation}
+				interpolation={interpolation}
+				backgroundColor={backgroundColor}
+				changeBackground={changeBackground}
+			/>
 			<div className='victory'>
-				<VictoryChart theme={theme} containerComponent={enableZoom ? <VictoryZoomContainer/> : undefined}>
-					<VictoryArea data={data} />
+				<VictoryChart 
+					theme={theme} 
+					containerComponent={enableZoom ? <VictoryZoomContainer/> : undefined}
+				>
+					<VictoryArea data={data} interpolation={interpolation}/>
 				</VictoryChart>
 			</div>
 		</div>

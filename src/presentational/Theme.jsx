@@ -28,18 +28,6 @@ function Theme( props ) {
 		changeTheme( field, value )
 	}
 
-	// function getAspectRatio( theme ) {
-	// 	const width = get( theme, 'chart.width' )
-	// 	const height = get( theme, 'chart.height' )
-	// 	return `${width}x${height}`
-	// }
-
-	// function setAspectRatio( ar ) {
-	// 	const [ width, height ] = ar.split( 'x' )
-	// 	onChangeNumber( 'chart.width', Number(width) )
-	// 	onChangeNumber( 'chart.height', Number(height) )
-	// }
-
 	function getGridStyle( theme, field ) {
 		const val = get( theme, field )
 		if ( val === '10, 5' ) return 'Dashed'

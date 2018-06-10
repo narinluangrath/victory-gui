@@ -28,6 +28,8 @@ class Main extends Component {
 		this.changeData = this.changeData.bind( this )
 		this.changeTheme = this.changeTheme.bind( this )
 		this.toggleZoom = this.toggleZoom.bind( this )
+		this.changeInterpolation = this.changeInterpolation.bind( this )
+		this.changeBackground = this.changeBackground.bind( this )
 	}
 
 	changeInterpolation( interpolation ) {
@@ -72,7 +74,7 @@ class Main extends Component {
 	}
 
 	render () {
-		const { theme, data, dataTemp, chart, enableZoom } = this.state
+		const { theme, data, dataTemp, chart, enableZoom, interpolation, backgroundColor } = this.state
 		return (
 			<div className='main'>
 				<Theme theme={theme} changeTheme={this.changeTheme}/>
@@ -81,6 +83,10 @@ class Main extends Component {
 					data={data}
 					enableZoom={enableZoom}
 					toggleZoom={this.toggleZoom}
+					interpolation={interpolation}
+					changeInterpolation={this.changeInterpolation}
+					backgroundColor={backgroundColor}
+					changeBackground={this.changeBackground}
 				/>
 			</div>
 		)
