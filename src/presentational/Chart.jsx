@@ -6,12 +6,6 @@ import './Chart.css'
 
 function Chart( props ) {
 	const { theme, data, chart, enableZoom, toggleZoom, changeInterpolation, interpolation, backgroundColor, changeBackground } = props
-	// const xAxis = chart.xAxis 
-	// const yAxis = { 
-	// 	...chart.yAxis,
-	// 	dependentAxis : true
-	// }
-	// const line = chart.line
 
 	return (
 		<div className='chart'>
@@ -28,7 +22,10 @@ function Chart( props ) {
 					theme={theme} 
 					containerComponent={enableZoom ? <VictoryZoomContainer/> : undefined}
 				>
-					<VictoryArea data={data} interpolation={interpolation}/>
+					<VictoryArea 
+						data={data} 
+						interpolation={interpolation}
+					/>
 				</VictoryChart>
 			</div>
 		</div>

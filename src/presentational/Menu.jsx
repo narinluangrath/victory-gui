@@ -17,7 +17,15 @@ function Menu( props ) {
 	const { items, selected, onChange } = props
 	return (
 		<div className='menu'>
-			{items.map( item => <MenuItem name={item} onChange={onChange} selected={item===selected} />)}
+			{ items.map( item => (
+					<MenuItem 
+						key={item} 
+						name={item} 
+						onChange={onChange} 
+						selected={item===selected} 
+					/> )
+				)
+			}
 		</div>
 	)
 }

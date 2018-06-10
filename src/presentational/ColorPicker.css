@@ -1,57 +1,63 @@
-.box {
-	width: 15px;
-	height: 15px;
-	border-radius: 4px;
-	margin: 0px 5px 5px 0px;
-	border: 2px solid transparent;
-}
-
-.box:hover, .box.selected {
-	cursor: pointer;
-	border: 2px solid white;
-}
-
 .colorPicker {
 	padding: 0px 20px 0px 20px;
 	margin: 5px 0px 0px 10px;
 	display: flex;
+	flex-direction: column;
+}
+
+.colors {
+	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
-	width: auto;
-	height: auto;
-	align-content: flex-start;
+}
+
+.color {
+	width: 23px;
+	height: 23px;
+	border-radius: 4px;
+	margin: 0px 5px 5px 0px;
+	box-sizing: border-box;
+}
+
+.color:hover, .color.selected {
+	cursor: pointer;
+	border: 2px solid white;
 }
 
 .hex {
-  border-radius: 4px;
+  height: 30px;
   display: flex;
   flex-direction: row;
-  background-color: rgb(36, 40, 42);
-  height: 15px;
-  color: darkgrey;
-  border: 2px solid transparent;
   align-items: center;
-}
-
-.hashtag {
-  padding: 0px 4px;
+  color: darkgrey;
+  background-color: rgb(36, 40, 42);
+	border-radius: 4px;
+  border: 2px solid transparent;
+  box-sizing: border-box;
+  font-size: 1rem;
 }
 
 .hex:focus-within {
 	border: 2px solid lightblue;
 }
 
-.colorPicker input {
-  width: 78px;
-  margin-left: 5px !important;
-  height: 15px;
+.hashtag {
+  padding: 0px 10px 0px 10px;
+}
+
+.hex input {
+  width: auto;
+  margin-left: 0px !important;
+  height: 30px;
   border: none;
   border-radius: 0px 4px 4px 0px;
   font-family: 'Roboto' !important;
   color: white !important;
-  background-color: black;
+  background-color: transparent;
+  padding-left: 5px;
+  font-size: .9rem !important;
 }
 
-.colorPicker input:focus {
+.hex input:focus {
 	outline: none;
 }

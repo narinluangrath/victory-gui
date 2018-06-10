@@ -3,11 +3,11 @@ import cn from 'classnames'
 
 import './ColorPicker.css'
 
-function ColorBox( { color, onClick, selected } ) {
+function Color( { color, onClick, selected } ) {
 	return (
 		<div 
 			onClick={onClick}
-			className={cn('box',{selected})} 
+			className={cn('color',{selected})} 
 			style={{backgroundColor: color}} 
 		/>
 	)
@@ -17,7 +17,7 @@ function ColorPicker( props ) {
 
 	const { value='#', onChange } = props
 
-	const basicColors = [
+	const template = [
 		'#ff0000', '#ff4000', '#ff8000',
 		'#ffbf00', '#ffff00', '#bfff00',
 		'#80ff00', '#40ff00', '#00ff00',
@@ -26,7 +26,6 @@ function ColorPicker( props ) {
 		'#0040ff', '#0000ff', '#4000ff',
 		'#8000ff', '#bf00ff', '#ff00ff',
 		'#ff00bf', '#ff0080', '#ff0040',
-		'#ff0000'
 	]
 
 	function onClickBox(color) {
@@ -35,7 +34,16 @@ function ColorPicker( props ) {
 
 	return (
 		<div className='colorPicker'>
-			{basicColors.map(color => <ColorBox selected={value===color} color={color} onClick={onClickBox(color)}/>)}
+			<div className='colors'>
+				{ template.map(color => ( 
+						<Color 
+							key={color} 
+							selected={value===color} 
+							color={color} 
+							onClick={onClickBox(color)}
+						/> )
+				) }
+			</div>
 			<div className='hex'>
 				<div className='hashtag'>#</div>
 				<input value={value.substring(1,)} onChange={onChange}/>
