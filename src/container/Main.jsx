@@ -5,7 +5,7 @@ import _set from 'lodash/set'
 import Chart from '../presentational/Chart.jsx'
 // import Editor from './Editor.jsx'
 import Theme from '../presentational/Theme.jsx'
-import Data from '../presentational/Data.jsx'
+// import Data from '../presentational/Data.jsx'
 
 import './Main.css'
 
