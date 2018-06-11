@@ -21,7 +21,24 @@
 
 .color:hover, .color.selected {
 	cursor: pointer;
-	border: 2px solid white;
+	border: 2px solid white !important;
+}
+
+.colorPicker .colors .transparent {
+  border: 2px solid transparent;
+  width: 23px;
+  height: 23px;  
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  box-sizing: border-box;  
+}
+
+.colorPicker .colors .transparent svg {
+  fill: white;
+  width: 80%;
+  height: 80%;
 }
 
 .hex {

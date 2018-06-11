@@ -1,6 +1,7 @@
 import React from 'react'
 import cn from 'classnames'
 
+import TransparentIcon from '../icons/transparent.svg'
 import './ColorPicker.css'
 
 function Color( { color, onClick, selected } ) {
@@ -26,6 +27,7 @@ function ColorPicker( props ) {
 		'#0040ff', '#0000ff', '#4000ff',
 		'#8000ff', '#bf00ff', '#ff00ff',
 		'#ff00bf', '#ff0080', '#ff0040',
+		'#000000', '#404040', '#FFFFFF',
 	]
 
 	function handleInputChange( event ) {
@@ -46,10 +48,13 @@ function ColorPicker( props ) {
 							onClick={() => onChange(color)}
 						/> )
 				) }
+				<div className={cn('transparent color', {selected:value==='transparent'})} onClick={() => onChange('transparent')}>
+					<TransparentIcon />
+				</div>
 			</div>
 			<div className='hex'>
 				<div className='hashtag'>#</div>
-				<input value={value.substring(1,)} onChange={handleInputChange}/>
+				<input value={value.split('#')[1] || ''} onChange={handleInputChange}/>
 			</div>		
 		</div>
 	)

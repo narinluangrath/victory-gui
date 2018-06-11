@@ -86,6 +86,7 @@ class Main extends Component {
 		this.setState( prev => {
 			const newTheme = this.deepClone( prev.theme )
 			set( newTheme, field, value )
+			console.log( JSON.stringify( newTheme, null, 2 ) )
 			return { theme : newTheme }
 		})
 	}

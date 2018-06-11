@@ -2,7 +2,7 @@
 		- Background color [x]
 		- Interpolation [x]
 		- Zooming [x]
-		- Tooltips
+		- Tooltips [x]
 		- Show Points
 
 - Additional menu bar
@@ -18,5 +18,5 @@
 		- Basic table displaying data
 
 - Export React component (JSX file)
-- Add transparent option to colorpicker
+- Add transparent option to colorpicker (and some greyscale colors)
 - About -> About Me
