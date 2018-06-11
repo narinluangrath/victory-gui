@@ -24,11 +24,7 @@ function ColorAttribute( props ) {
 
 function Theme( props ) {
 
-	const { theme, changeTheme } = props
-
-	function onChangeNumber( field, value ) {
-		changeTheme( field, value )
-	}
+	const { theme, changeTheme, changeWidth, changeHeight } = props
 
 	function getGridStyle( theme, field ) {
 		const val = get( theme, field )
@@ -37,8 +33,8 @@ function Theme( props ) {
 	}
 
 	function setGridStyle( val, field ) {
-		if ( val === 'Dashed' ) onChangeNumber( field, '10, 5' )
-		else onChangeNumber( field, 'None' )
+		if ( val === 'Dashed' ) changeTheme( field, '10, 5' )
+		else changeTheme( field, 'None' )
 	}
 
 	return (
@@ -54,7 +50,7 @@ function Theme( props ) {
 					<Menu 
 						items={[200, 300, 400, 500, 600, 700, 800]}
 						selected={get(theme, 'chart.width')}
-						onChange={e => onChangeNumber('chart.width', e)}
+						onChange={e => {changeTheme('chart.width', e); changeWidth(String(e) + 'px')}}
 					/>
 				</Attribute>	
 				<Attribute
@@ -64,7 +60,7 @@ function Theme( props ) {
 					<Menu 
 						items={[200, 300, 400, 500, 600, 700, 800]}
 						selected={get(theme, 'chart.height')}
-						onChange={e => onChangeNumber('chart.height', e)}
+						onChange={e => {changeTheme('chart.height', e); changeHeight(String(e) + 'px')}}
 					/>
 				</Attribute>					
 				<Attribute
@@ -74,7 +70,7 @@ function Theme( props ) {
 					<Menu 
 						items={[0, 10, 20, 30, 40, 50, 60]}
 						selected={get(theme, 'chart.padding.left')}
-						onChange={e => onChangeNumber('chart.padding.left', e)}
+						onChange={e => changeTheme('chart.padding.left', e)}
 					/>
 				</Attribute>			
 				<Attribute
@@ -84,7 +80,7 @@ function Theme( props ) {
 					<Menu 
 						items={[0, 10, 20, 30, 40, 50, 60]}
 						selected={get(theme, 'chart.padding.top')}
-						onChange={e => onChangeNumber('chart.padding.top', e)}
+						onChange={e => changeTheme('chart.padding.top', e)}
 					/>
 				</Attribute>		
 				<Attribute
@@ -94,7 +90,7 @@ function Theme( props ) {
 					<Menu 
 						items={[0, 10, 20, 30, 40, 50, 60]}
 						selected={get(theme, 'chart.padding.right')}
-						onChange={e => onChangeNumber('chart.padding.right', e)}
+						onChange={e => changeTheme('chart.padding.right', e)}
 					/>
 				</Attribute>	
 				<Attribute
@@ -104,7 +100,7 @@ function Theme( props ) {
 					<Menu 
 						items={[0, 10, 20, 30, 40, 50, 60]}
 						selected={get(theme, 'chart.padding.bottom')}
-						onChange={e => onChangeNumber('chart.padding.bottom', e)}
+						onChange={e => changeTheme('chart.padding.bottom', e)}
 					/>
 				</Attribute>																
 				<ColorAttribute
@@ -154,7 +150,7 @@ function Theme( props ) {
 					<Menu 
 						items={['0px', '1px', '2px', '3px', '4px', '5px']}
 						selected={get(theme,'area.style.data.strokeWidth')}
-						onChange={v => onChangeNumber('area.style.data.strokeWidth',v)} 
+						onChange={v => changeTheme('area.style.data.strokeWidth',v)} 
 					/>
 				</Attribute>
 				<ColorAttribute
@@ -170,7 +166,7 @@ function Theme( props ) {
 					<Menu 
 						items={[0, 0.2, 0.4, 0.6, 0.8, 1]}
 						selected={get(theme,'area.style.data.fillOpacity')}
-						onChange={v => onChangeNumber('area.style.data.fillOpacity',v)} 
+						onChange={v => changeTheme('area.style.data.fillOpacity',v)} 
 					/>
 				</Attribute>								
 			</Dropdown>
@@ -188,7 +184,7 @@ function Theme( props ) {
 					<Menu 
 						items={['0px', '1px', '2px', '3px', '4px', '5px']}
 						selected={get(theme,'independentAxis.style.axis.strokeWidth')}
-						onChange={v => onChangeNumber('independentAxis.style.axis.strokeWidth',v)} 
+						onChange={v => changeTheme('independentAxis.style.axis.strokeWidth',v)} 
 					/>				
 				</Attribute>
 				<ColorAttribute
@@ -204,7 +200,7 @@ function Theme( props ) {
 					<Menu 
 						items={['0px', '1px', '2px', '3px', '4px', '5px']}
 						selected={get(theme,'dependentAxis.style.axis.strokeWidth')}
-						onChange={v => onChangeNumber('dependentAxis.style.axis.strokeWidth',v)} 
+						onChange={v => changeTheme('dependentAxis.style.axis.strokeWidth',v)} 
 					/>				
 				</Attribute>			
 			</Dropdown>
@@ -222,7 +218,7 @@ function Theme( props ) {
 					<Menu 
 						items={['0px', '1px', '2px', '3px', '4px', '5px']}
 						selected={get(theme,'independentAxis.style.ticks.strokeWidth')}
-						onChange={v => onChangeNumber('independentAxis.style.ticks.strokeWidth',v)} 
+						onChange={v => changeTheme('independentAxis.style.ticks.strokeWidth',v)} 
 					/>				
 				</Attribute>
 				<Attribute 
@@ -232,7 +228,7 @@ function Theme( props ) {
 					<Menu 
 						items={['Sans-serif', 'Roboto', 'Times', 'Lato', 'Montserrat']}
 						selected={get(theme,'independentAxis.style.tickLabels.fontFamily')}
-						onChange={v => onChangeNumber('independentAxis.style.tickLabels.fontFamily',v)} 
+						onChange={v => changeTheme('independentAxis.style.tickLabels.fontFamily',v)} 
 					/>				
 				</Attribute>		
 				<Attribute 
@@ -242,7 +238,7 @@ function Theme( props ) {
 					<Menu 
 						items={['0px', '2px', '4px', '6px', '8px', '10px', '12px', '14px']}
 						selected={get(theme,'independentAxis.style.tickLabels.fontSize')}
-						onChange={v => onChangeNumber('independentAxis.style.tickLabels.fontSize',v)} 
+						onChange={v => changeTheme('independentAxis.style.tickLabels.fontSize',v)} 
 					/>				
 				</Attribute>	
 				<ColorAttribute
@@ -258,7 +254,7 @@ function Theme( props ) {
 					<Menu 
 						items={[0, 2, 4, 6, 8, 10]}
 						selected={get(theme,'independentAxis.style.tickLabels.padding')}
-						onChange={v => onChangeNumber('independentAxis.style.tickLabels.padding',v)} 
+						onChange={v => changeTheme('independentAxis.style.tickLabels.padding',v)} 
 					/>			
 				</Attribute>	
 				<ColorAttribute
@@ -274,7 +270,7 @@ function Theme( props ) {
 					<Menu 
 						items={['0px', '1px', '2px', '3px', '4px', '5px']}
 						selected={get(theme,'dependentAxis.style.ticks.strokeWidth')}
-						onChange={v => onChangeNumber('dependentAxis.style.ticks.strokeWidth',v)} 
+						onChange={v => changeTheme('dependentAxis.style.ticks.strokeWidth',v)} 
 					/>				
 				</Attribute>		
 				<Attribute 
@@ -284,7 +280,7 @@ function Theme( props ) {
 					<Menu 
 						items={['Sans-serif', 'Roboto', 'Times', 'Lato', 'Montserrat']}
 						selected={get(theme,'dependentAxis.style.tickLabels.fontFamily')}
-						onChange={v => onChangeNumber('dependentAxis.style.tickLabels.fontFamily',v)} 
+						onChange={v => changeTheme('dependentAxis.style.tickLabels.fontFamily',v)} 
 					/>				
 				</Attribute>		
 				<Attribute 
@@ -294,7 +290,7 @@ function Theme( props ) {
 					<Menu 
 						items={['0px', '2px', '4px', '6px', '8px', '10px', '12px', '14px']}
 						selected={get(theme,'dependentAxis.style.tickLabels.fontSize')}
-						onChange={v => onChangeNumber('dependentAxis.style.tickLabels.fontSize',v)} 
+						onChange={v => changeTheme('dependentAxis.style.tickLabels.fontSize',v)} 
 					/>				
 				</Attribute>	
 				<ColorAttribute
@@ -310,7 +306,7 @@ function Theme( props ) {
 					<Menu 
 						items={[0, 2, 4, 6, 8, 10]}
 						selected={get(theme,'dependentAxis.style.tickLabels.padding')}
-						onChange={v => onChangeNumber('dependentAxis.style.tickLabels.padding',v)} 
+						onChange={v => changeTheme('dependentAxis.style.tickLabels.padding',v)} 
 					/>			
 				</Attribute>		
 			</Dropdown>

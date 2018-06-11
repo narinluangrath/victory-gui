@@ -5,11 +5,22 @@ import Toggles from './Toggles.jsx'
 import './Chart.css'
 
 function Chart( props ) {
-	const { theme, data, chart, enableZoom, toggleZoom, changeInterpolation, interpolation, backgroundColor, changeBackground, toggleTooltips, enableTooltips } = props
+	const { 
+		width, 
+		height,
+		theme, 
+		data, 
+		chart, 
+		enableZoom, 
+		toggleZoom, 
+		changeInterpolation, 
+		interpolation, 
+		backgroundColor, 
+		changeBackground, 
+		toggleTooltips, 
+		enableTooltips } = props
 	const opts = [ enableZoom && 'zoom', enableTooltips && 'voronoi' ].filter( x => x != null && x != false )
 	const VictoryZoomVoronoiContainer = createContainer( ...opts )
-
-	console.log( opts )
 
 	return (
 		<div className='chart'>
@@ -23,7 +34,7 @@ function Chart( props ) {
 				backgroundColor={backgroundColor}
 				changeBackground={changeBackground}
 			/>
-			<div className='victory' style={{backgroundColor}}>
+			<div className='victory' style={{backgroundColor, width, height}}>
 				<VictoryChart 
 					theme={theme} 
 					containerComponent={<VictoryZoomVoronoiContainer />}
@@ -31,8 +42,8 @@ function Chart( props ) {
 					<VictoryArea 
 						data={data} 
 						interpolation={interpolation}
-				    labels={(d) => d.y}
-						labelComponent={<VictoryTooltip/>}
+				    labels={d => d.y}
+						labelComponent={<VictoryTooltip />}
 					/>
 				</VictoryChart>
 			</div>

@@ -22,6 +22,8 @@ class Main extends Component {
 			enableZoom : true,
 			enableTooltips : false,
 			enablePoints : false,
+			width : '400px',
+			height : '400px',
 		}
 		this.changeData = this.changeData.bind( this )
 		this.changeTheme = this.changeTheme.bind( this )
@@ -29,7 +31,16 @@ class Main extends Component {
 		this.changeInterpolation = this.changeInterpolation.bind( this )
 		this.changeBackground = this.changeBackground.bind( this )
 		this.toggleTooltips = this.toggleTooltips.bind( this )
+		this.changeWidth = this.changeWidth.bind( this )
+		this.changeHeight = this.changeHeight.bind( this )
+	}
 
+	changeWidth( width ) {
+		this.setState( { width } )
+	}
+
+	changeHeight( height ) {
+		this.setState( { height } )
 	}
 
 	changeInterpolation( interpolation ) {
@@ -74,12 +85,14 @@ class Main extends Component {
 	}
 
 	render () {
-		const { theme, data, dataTemp, chart, enableZoom, interpolation, backgroundColor, enableTooltips } = this.state
+		const { theme, data, dataTemp, chart, enableZoom, interpolation, backgroundColor, enableTooltips, width, height } = this.state
 		return (
 			<div className='main'>
 				<Theme 
 					theme={theme} 
 					changeTheme={this.changeTheme}
+					changeWidth={this.changeWidth}
+					changeHeight={this.changeHeight}
 				/>
 				<Chart 
 					theme={theme} 
@@ -92,6 +105,8 @@ class Main extends Component {
 					changeBackground={this.changeBackground}
 					enableTooltips={enableTooltips}
 					toggleTooltips={this.toggleTooltips}
+					width={width}
+					height={height}
 				/>
 			</div>
 		)
