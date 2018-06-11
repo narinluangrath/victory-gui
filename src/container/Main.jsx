@@ -21,17 +21,7 @@ const data = Array
 class Main extends Component {
 	constructor() {
 		super()
-		this.state = {
-			theme : DesignFiles.Google,
-			data : data,
-			interpolation : 'linear',
-			backgroundColor : '#FFFFFF',
-			enableZoom : true,
-			enableTooltips : false,
-			enablePoints : false,
-			width : '800px',
-			height : '300px',
-		}
+		this.state = DesignFiles.Google
 		this.changeData = this.changeData.bind( this )
 		this.changeTheme = this.changeTheme.bind( this )
 		this.toggleZoom = this.toggleZoom.bind( this )
@@ -41,6 +31,7 @@ class Main extends Component {
 		this.changeWidth = this.changeWidth.bind( this )
 		this.changeHeight = this.changeHeight.bind( this )
 		this.togglePoints = this.togglePoints.bind( this )
+		this.loadTheme = this.loadTheme.bind( this )
 	}
 
 	changeWidth( width ) {
@@ -88,12 +79,16 @@ class Main extends Component {
 		this.setState( prev => {
 			const newTheme = this.deepClone( prev.theme )
 			set( newTheme, field, value )
-			console.log( JSON.stringify( newTheme, null, 2 ) )
 			return { theme : newTheme }
 		})
 	}
 
+	loadTheme( name ) {
+		this.setState( DesignFiles[name] )
+	}
+
 	render () {
+		console.log( JSON.stringify( this.state, null , 2 ) )
 		const { theme, data, dataTemp, chart, enableZoom, interpolation, backgroundColor, enableTooltips, width, height, enablePoints } = this.state
 		return (
 			<div className='main'>
@@ -118,6 +113,7 @@ class Main extends Component {
 					togglePoints={this.togglePoints}
 					width={width}
 					height={height}
+					loadTheme={this.loadTheme}
 				/>
 			</div>
 		)

@@ -3,10 +3,10 @@ export default {
     "area": {
       "style": {
         "data": {
-          "fill": "transparent",
-          "strokeWidth": "4px",
-          "stroke": "#2C98F0",
-          "fillOpacity": 0
+          "fill": "#4DC6DC",
+          "strokeWidth": "2px",
+          "stroke": "#4DC6DC",
+          "fillOpacity": 0.2
         },
         "labels": {
           "textAnchor": "middle",
@@ -134,11 +134,11 @@ export default {
     "scatter": {
       "style": {
         "data": {
-          "fill": "#455A64",
+          "fill": "#4DC6DC",
           "opacity": 1,
           "stroke": "transparent",
-          "strokeWidth": 0,
-          "size": 2
+          "strokeWidth": "2px",
+          "size": 5
         },
         "labels": {
           "textAnchor": "middle",
@@ -221,7 +221,7 @@ export default {
     "dependentAxis": {
       "style": {
         "grid": {
-          "stroke": "#E0E0E0",
+          "stroke": "transparent",
           "strokeDasharray": "None"
         },
         "axis": {
@@ -229,9 +229,9 @@ export default {
           "strokeWidth": "0px"
         },
         "tickLabels": {
-          "fill": "#9e9e9e",
-          "padding": 0,
-          "fontFamily": "Roboto",
+          "fill": "#A095B7",
+          "padding": 6,
+          "fontFamily": "Lato",
           "fontSize": "12px"
         },
         "ticks": {
@@ -246,17 +246,18 @@ export default {
     "independentAxis": {
       "style": {
         "grid": {
-          "stroke": "transparent"
+          "stroke": "#462E71",
+          "strokeDasharray": "None"
         },
         "tickLabels": {
-          "fontFamily": "Roboto",
-          "fill": "#9e9e9e",
+          "fontFamily": "Lato",
+          "fill": "#A095B7",
           "padding": 2,
           "fontSize": "12px"
         },
         "ticks": {
           "strokeWidth": "0px",
-          "stroke": "transparent"
+          "stroke": "#"
         },
         "axis": {
           "stroke": "#404040",
@@ -471,7 +472,7 @@ export default {
     }
   ],
   "interpolation": "linear",
-  "backgroundColor": "#FFFFFF",
+  "backgroundColor": "#392068",
   "enableZoom": true,
   "enableTooltips": false,
   "enablePoints": false,

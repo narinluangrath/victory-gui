@@ -4,8 +4,8 @@ export default {
       "style": {
         "data": {
           "fill": "transparent",
-          "strokeWidth": "4px",
-          "stroke": "#2C98F0",
+          "strokeWidth": "2px",
+          "stroke": "#F1CB86",
           "fillOpacity": 0
         },
         "labels": {
@@ -134,11 +134,11 @@ export default {
     "scatter": {
       "style": {
         "data": {
-          "fill": "#455A64",
+          "fill": "#202C3B",
           "opacity": 1,
-          "stroke": "transparent",
-          "strokeWidth": 0,
-          "size": 2
+          "stroke": "#F1CB86",
+          "strokeWidth": "2px",
+          "size": 5
         },
         "labels": {
           "textAnchor": "middle",
@@ -221,7 +221,7 @@ export default {
     "dependentAxis": {
       "style": {
         "grid": {
-          "stroke": "#E0E0E0",
+          "stroke": "transparent",
           "strokeDasharray": "None"
         },
         "axis": {
@@ -229,9 +229,9 @@ export default {
           "strokeWidth": "0px"
         },
         "tickLabels": {
-          "fill": "#9e9e9e",
-          "padding": 0,
-          "fontFamily": "Roboto",
+          "fill": "#8CEFBD",
+          "padding": 6,
+          "fontFamily": "Lato",
           "fontSize": "12px"
         },
         "ticks": {
@@ -246,17 +246,17 @@ export default {
     "independentAxis": {
       "style": {
         "grid": {
-          "stroke": "transparent"
+          "stroke": "#363B41"
         },
         "tickLabels": {
-          "fontFamily": "Roboto",
-          "fill": "#9e9e9e",
+          "fontFamily": "Lato",
+          "fill": "#8CEFBD",
           "padding": 2,
           "fontSize": "12px"
         },
         "ticks": {
           "strokeWidth": "0px",
-          "stroke": "transparent"
+          "stroke": "#"
         },
         "axis": {
           "stroke": "#404040",
@@ -471,7 +471,7 @@ export default {
     }
   ],
   "interpolation": "linear",
-  "backgroundColor": "#FFFFFF",
+  "backgroundColor": "#1E2A38",
   "enableZoom": true,
   "enableTooltips": false,
   "enablePoints": false,

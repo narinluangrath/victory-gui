@@ -4,7 +4,7 @@ import Toggle from './Toggle.jsx'
 import AnotherDropdown from '../container/AnotherDropdown.jsx'
 import ColorPicker from './ColorPicker.jsx'
 import CheckIcon from '../icons/check.svg'
-import './Toggles.css'
+import './ToggleBar.css'
 
 function Item( props ) {
 	const { selected, title, onClick, id } = props 

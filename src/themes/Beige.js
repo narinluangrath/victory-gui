@@ -3,10 +3,10 @@ export default {
     "area": {
       "style": {
         "data": {
-          "fill": "transparent",
-          "strokeWidth": "4px",
-          "stroke": "#2C98F0",
-          "fillOpacity": 0
+          "fill": "#EBE3DF",
+          "strokeWidth": "2px",
+          "stroke": "#CE9A85",
+          "fillOpacity": 0.8
         },
         "labels": {
           "textAnchor": "middle",
@@ -134,11 +134,11 @@ export default {
     "scatter": {
       "style": {
         "data": {
-          "fill": "#455A64",
+          "fill": "#CE9A85",
           "opacity": 1,
           "stroke": "transparent",
-          "strokeWidth": 0,
-          "size": 2
+          "strokeWidth": "2px",
+          "size": 3
         },
         "labels": {
           "textAnchor": "middle",
@@ -221,7 +221,7 @@ export default {
     "dependentAxis": {
       "style": {
         "grid": {
-          "stroke": "#E0E0E0",
+          "stroke": "transparent",
           "strokeDasharray": "None"
         },
         "axis": {
@@ -229,9 +229,9 @@ export default {
           "strokeWidth": "0px"
         },
         "tickLabels": {
-          "fill": "#9e9e9e",
-          "padding": 0,
-          "fontFamily": "Roboto",
+          "fill": "#9FA0A0",
+          "padding": 6,
+          "fontFamily": "Montserrat",
           "fontSize": "12px"
         },
         "ticks": {
@@ -246,20 +246,21 @@ export default {
     "independentAxis": {
       "style": {
         "grid": {
-          "stroke": "transparent"
+          "stroke": "transparent",
+          "strokeDasharray": "None"
         },
         "tickLabels": {
-          "fontFamily": "Roboto",
-          "fill": "#9e9e9e",
+          "fontFamily": "Montserrat",
+          "fill": "#9FA0A0",
           "padding": 2,
           "fontSize": "12px"
         },
         "ticks": {
           "strokeWidth": "0px",
-          "stroke": "transparent"
+          "stroke": "#"
         },
         "axis": {
-          "stroke": "#404040",
+          "stroke": "transparent",
           "strokeWidth": "1px"
         }
       },
@@ -474,7 +475,7 @@ export default {
   "backgroundColor": "#FFFFFF",
   "enableZoom": true,
   "enableTooltips": false,
-  "enablePoints": false,
+  "enablePoints": true,
   "width": "800px",
   "height": "300px"
 }

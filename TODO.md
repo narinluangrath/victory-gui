@@ -3,7 +3,7 @@
 		- Interpolation [x]
 		- Zooming [x]
 		- Tooltips [x]
-		- Show Points
+		- Show Points [x]
 
 - Additional menu bar
 		- Load Prebuilt Theme:

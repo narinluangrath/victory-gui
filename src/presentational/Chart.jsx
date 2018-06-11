@@ -2,7 +2,8 @@ import React from 'react'
 import { VictoryChart, VictoryScatter, VictoryTooltip, VictoryLine, VictoryAxis, VictoryArea, VictoryZoomContainer, createContainer, VictoryVoronoiContainer } from 'victory'
 import get from 'lodash/get'
 
-import Toggles from './Toggles.jsx'
+import ToggleBar from './ToggleBar.jsx'
+import ThemeBar from './ThemeBar.jsx'
 import './Chart.css'
 
 function Chart( props ) {
@@ -21,13 +22,14 @@ function Chart( props ) {
 		toggleTooltips, 
 		enableTooltips,
 		enablePoints,
-		togglePoints } = props
+		togglePoints,
+		loadTheme } = props
 	const opts = [ enableZoom && 'zoom', enableTooltips && 'voronoi' ].filter( x => x != null && x != false )
 	const VictoryZoomVoronoiContainer = createContainer( ...opts )
 
 	return (
 		<div className='chart'>
-			<Toggles 
+			<ToggleBar
 				toggleZoom={toggleZoom}
 				enableZoom={enableZoom}
 				toggleTooltips={toggleTooltips}
@@ -39,6 +41,7 @@ function Chart( props ) {
 				backgroundColor={backgroundColor}
 				changeBackground={changeBackground}
 			/>
+			<ThemeBar loadTheme={loadTheme}/>
 			<div className='victory' style={{backgroundColor, width, height}}>
 				<VictoryChart 
 					theme={theme} 

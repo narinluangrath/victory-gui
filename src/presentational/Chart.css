@@ -2,6 +2,7 @@
 	background-color: #141618;
 	width: calc( 100% - 250px );
 	padding: 30px;
+	padding-top: 10px;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
