@@ -109,12 +109,6 @@ function Theme( props ) {
 					theme={theme}
 					changeTheme={changeTheme}
 				/>			
-				<ColorAttribute
-					name='Vertical Grid Color'
-					accessor='independentAxis.style.grid.stroke'
-					theme={theme}
-					changeTheme={changeTheme}
-				/>									
 				<Attribute 
 					name='Horizontal Grid Style' 
 					value={getGridStyle(theme, 'dependentAxis.style.grid.strokeDasharray')}
@@ -125,6 +119,12 @@ function Theme( props ) {
 						onChange={v => setGridStyle(v, 'dependentAxis.style.grid.strokeDasharray')} 
 					/>					
 				</Attribute>				
+				<ColorAttribute
+					name='Vertical Grid Color'
+					accessor='independentAxis.style.grid.stroke'
+					theme={theme}
+					changeTheme={changeTheme}
+				/>									
 				<Attribute 
 					name='Vertical Grid Style' 
 					value={getGridStyle(theme, 'independentAxis.style.grid.strokeDasharray')}
@@ -204,15 +204,15 @@ function Theme( props ) {
 					/>				
 				</Attribute>			
 			</Dropdown>
-			<Dropdown title='Tick Marks'>
+			<Dropdown title='X-Axis Tick Marks'>
 				<ColorAttribute
-					name='X-Axis Color'
+					name='Tick Color'
 					accessor='independentAxis.style.ticks.stroke'
 					theme={theme}
 					changeTheme={changeTheme}
 				/>								
 				<Attribute 
-					name='X-Axis Width' 
+					name='Tick Width' 
 					value={get(theme, 'independentAxis.style.ticks.strokeWidth')}
 				>
 					<Menu 
@@ -222,7 +222,7 @@ function Theme( props ) {
 					/>				
 				</Attribute>
 				<Attribute 
-					name='X-Axis Label Font' 
+					name='Tick Label Font' 
 					value={get(theme, 'independentAxis.style.tickLabels.fontFamily')}
 				>
 					<Menu 
@@ -232,7 +232,7 @@ function Theme( props ) {
 					/>				
 				</Attribute>		
 				<Attribute 
-					name='X-Axis Label Font Size' 
+					name='Tick Label Font Size' 
 					value={get(theme, 'independentAxis.style.tickLabels.fontSize')}
 				>
 					<Menu 
@@ -242,13 +242,13 @@ function Theme( props ) {
 					/>				
 				</Attribute>	
 				<ColorAttribute
-					name='X-Axis Label Color'
+					name='Tick Label Color'
 					accessor='independentAxis.style.tickLabels.fill'
 					theme={theme}
 					changeTheme={changeTheme}
 				/>											
 				<Attribute 
-					name='X-Axis Label Padding' 
+					name='Tick Label Padding' 
 					value={get(theme, 'independentAxis.style.tickLabels.padding')}
 				>
 					<Menu 
@@ -257,14 +257,16 @@ function Theme( props ) {
 						onChange={v => changeTheme('independentAxis.style.tickLabels.padding',v)} 
 					/>			
 				</Attribute>	
+			</Dropdown>
+			<Dropdown title='Y-Axis Tick Marks'>
 				<ColorAttribute
-					name='Y-Axis Color'
+					name='Tick Color'
 					accessor='dependentAxis.style.ticks.stroke'
 					theme={theme}
 					changeTheme={changeTheme}
 				/>										
 				<Attribute 
-					name='Y-Axis Width' 
+					name='Tick Width' 
 					value={get(theme, 'dependentAxis.style.ticks.strokeWidth')}
 				>
 					<Menu 
@@ -274,7 +276,7 @@ function Theme( props ) {
 					/>				
 				</Attribute>		
 				<Attribute 
-					name='Y-Axis Label Font' 
+					name='Tick Label Font' 
 					value={get(theme, 'dependentAxis.style.tickLabels.fontFamily')}
 				>
 					<Menu 
@@ -284,7 +286,7 @@ function Theme( props ) {
 					/>				
 				</Attribute>		
 				<Attribute 
-					name='Y-Axis Label Font Size' 
+					name='Tick Label Font Size' 
 					value={get(theme, 'dependentAxis.style.tickLabels.fontSize')}
 				>
 					<Menu 
@@ -294,13 +296,13 @@ function Theme( props ) {
 					/>				
 				</Attribute>	
 				<ColorAttribute
-					name='Y-Axis Label Color'
+					name='Tick Label Color'
 					accessor='dependentAxis.style.tickLabels.fill'
 					theme={theme}
 					changeTheme={changeTheme}
 				/>																
 				<Attribute 
-					name='Y-Axis Label Padding' 
+					name='Tick Label Padding' 
 					value={get(theme, 'dependentAxis.style.tickLabels.padding')}
 				>
 					<Menu 
