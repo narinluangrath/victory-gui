@@ -7,9 +7,15 @@ import Theme from '../presentational/Theme.jsx'
 
 import './Main.css'
 
+const numbers = [ 
+	69,70,69,64,73,75,74,73,76,78,81,84,84,90,94,
+	94,90,94,94,90,93,97,73,98,94,94,80,64,78,93,89,97,
+	97,96,91,97,93,86,89,86,84,89,89,93,90,87,83,83,75,76,
+]
+
 const data = Array
 						.from( { length : 50 }, (_, i) => i )
-						.map( i => ({ x : i, y : Math.sin(i/5) }) )
+						.map( i => ({ x : i, y : numbers[i%(numbers.length)] }) )
 
 class Main extends Component {
 	constructor() {
