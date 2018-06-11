@@ -38,6 +38,7 @@ function Chart( props ) {
 				<VictoryChart 
 					theme={theme} 
 					containerComponent={<VictoryZoomVoronoiContainer />}
+					domainPadding={{y : [0,5]}}
 				>
 					<VictoryArea 
 						data={data} 
