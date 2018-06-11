@@ -1,5 +1,5 @@
 - Add top menu bar
-		- Background color
+		- Background color [x]
 		- Interpolation [x]
 		- Zooming [x]
 		- Tooltips

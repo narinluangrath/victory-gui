@@ -9,7 +9,7 @@ import './Main.css'
 
 const data = Array
 						.from( { length : 50 }, (_, i) => i )
-						.map( i => ({ x : i, y : Math.random() }) )
+						.map( i => ({ x : i, y : Math.sin(i/5) }) )
 
 class Main extends Component {
 	constructor() {
@@ -28,6 +28,8 @@ class Main extends Component {
 		this.toggleZoom = this.toggleZoom.bind( this )
 		this.changeInterpolation = this.changeInterpolation.bind( this )
 		this.changeBackground = this.changeBackground.bind( this )
+		this.toggleTooltips = this.toggleTooltips.bind( this )
+
 	}
 
 	changeInterpolation( interpolation ) {
@@ -38,7 +40,7 @@ class Main extends Component {
 		this.setState({ backgroundColor : color })
 	}
 
-	toggleZoom() {
+	toggleZoom( ) {
 		this.setState( prev => ({ enableZoom : !prev.enableZoom }) )
 	}
 
@@ -72,7 +74,7 @@ class Main extends Component {
 	}
 
 	render () {
-		const { theme, data, dataTemp, chart, enableZoom, interpolation, backgroundColor } = this.state
+		const { theme, data, dataTemp, chart, enableZoom, interpolation, backgroundColor, enableTooltips } = this.state
 		return (
 			<div className='main'>
 				<Theme 
@@ -88,6 +90,8 @@ class Main extends Component {
 					changeInterpolation={this.changeInterpolation}
 					backgroundColor={backgroundColor}
 					changeBackground={this.changeBackground}
+					enableTooltips={enableTooltips}
+					toggleTooltips={this.toggleTooltips}
 				/>
 			</div>
 		)

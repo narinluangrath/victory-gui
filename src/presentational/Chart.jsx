@@ -1,16 +1,22 @@
 import React from 'react'
-import { VictoryChart, VictoryAxis, VictoryArea, VictoryZoomContainer } from 'victory'
+import { VictoryChart, VictoryTooltip, VictoryLine, VictoryAxis, VictoryArea, VictoryZoomContainer, createContainer, VictoryVoronoiContainer } from 'victory'
 
 import Toggles from './Toggles.jsx'
 import './Chart.css'
 
 function Chart( props ) {
-	const { theme, data, chart, enableZoom, toggleZoom, changeInterpolation, interpolation, backgroundColor, changeBackground } = props
+	const { theme, data, chart, enableZoom, toggleZoom, changeInterpolation, interpolation, backgroundColor, changeBackground, toggleTooltips, enableTooltips } = props
+	const opts = [ enableZoom && 'zoom', enableTooltips && 'voronoi' ].filter( x => x != null && x != false )
+	const VictoryZoomVoronoiContainer = createContainer( ...opts )
+
+	console.log( opts )
 
 	return (
 		<div className='chart'>
 			<Toggles 
 				toggleZoom={toggleZoom}
+				enableZoom={enableZoom}
+				toggleTooltips={toggleTooltips}
 				enableZoom={enableZoom}
 				changeInterpolation={changeInterpolation}
 				interpolation={interpolation}
@@ -20,11 +26,13 @@ function Chart( props ) {
 			<div className='victory' style={{backgroundColor}}>
 				<VictoryChart 
 					theme={theme} 
-					containerComponent={enableZoom ? <VictoryZoomContainer/> : undefined}
+					containerComponent={<VictoryZoomVoronoiContainer />}
 				>
 					<VictoryArea 
 						data={data} 
 						interpolation={interpolation}
+				    labels={(d) => d.y}
+						labelComponent={<VictoryTooltip/>}
 					/>
 				</VictoryChart>
 			</div>
