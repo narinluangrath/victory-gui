@@ -17,7 +17,7 @@ function Chart( props ) {
 				backgroundColor={backgroundColor}
 				changeBackground={changeBackground}
 			/>
-			<div className='victory'>
+			<div className='victory' style={{backgroundColor}}>
 				<VictoryChart 
 					theme={theme} 
 					containerComponent={enableZoom ? <VictoryZoomContainer/> : undefined}

@@ -18,7 +18,7 @@ class Main extends Component {
 			theme : VictoryTheme.material,
 			data : data,
 			interpolation : 'linear',
-			backgroundColor : 'white',
+			backgroundColor : '#FFFFFF',
 			enableZoom : true,
 			enableTooltips : false,
 			enablePoints : false,

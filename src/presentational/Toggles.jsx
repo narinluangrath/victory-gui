@@ -50,7 +50,7 @@ function Toggles( props ) {
 			</div>
 			<div className='toggles-item'>
 				<AnotherDropdown title='Background Color'>
-					<ColorPicker onChange={() => {}} value={'#123445'}/>
+					<ColorPicker onChange={changeBackground} value={backgroundColor}/>
 				</AnotherDropdown>
 			</div>
 			<div className='toggles-item'>

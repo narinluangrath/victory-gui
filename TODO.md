@@ -1,7 +1,7 @@
 - Add top menu bar
 		- Background color
-		- Interpolation
-		- Zooming
+		- Interpolation [x]
+		- Zooming [x]
 		- Tooltips
 		- Show Points
 
