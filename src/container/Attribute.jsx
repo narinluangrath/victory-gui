@@ -1,61 +1,47 @@
 import React, { Component } from 'react'
-
 import cn from 'classnames'
 
 import './Attribute.css'
-
-// function ColorBox( { color } ) {
-// 	const style = {
-// 		width : '20px',
-// 		height : '20px',
-// 		border : '1px solid #ddd',
-// 		backgroundColor : color || 'white',
-// 	}
-// 	return <div style={style}/>
-// }
-
-// function TextBox( { color, onChange } ) {
-// 	return (
-// 		<input 
-// 			type='text' 
-// 			value={color} 
-// 			onChange={onChange}
-// 		/>
-// 	)
-// }
-
-// function ColorAttribute( { onChange, name, value, icon } ) {
-// 	return (
-// 		<SketchPicker 
-// 			color={value} 
-// 			onChange={e => onChange({target: {value :e.hex}})} 
-// 		/>
-// 	)
-// }
 
 class Attribute extends Component {
 	constructor() {
 		super( )
 		this.state = { open : false }
-		this.toggle = this.toggle.bind( this )
+		this.openMenu = this.openMenu.bind( this )
+    this.closeMenu = this.closeMenu.bind( this )
+    this.dropdownMenu = React.createRef()
 	}
 
-	toggle() {
-		this.setState( prev => ({ open : !prev.open }))
+	openMenu( event ) {
+    event.preventDefault()
+		this.setState( prev => ({ open : true }), 
+									() => document.addEventListener('click', this.closeMenu)
+		)
 	}
+
+  closeMenu( event ) {
+  	event.preventDefault()
+  	if ( !this.dropdownMenu.current.contains( event.target ) ) {
+	    this.setState({ open : false }, () => {
+	      document.removeEventListener('click', this.closeMenu);
+	    })
+	  }
+  }
 
 	render() {
 		const { name, value, children } = this.props
 		const { open } = this.state
 		return (
-			<div className={cn('attr',{open})}>
-				<div className='attr-header' onClick={this.toggle}>
+			<div className='attr'>
+				<div className={cn('attr-header',{open})} onClick={this.openMenu}>
 					<div className='attr-name'>{name}</div>
 					<div className='attr-value'>{value}</div>
 				</div>
-				<div className='attr-children'>
-					{children}
-				</div>
+				{ open && 
+					<div className='attr-children' ref={this.dropdownMenu}>
+						{children}
+					</div>
+				}
 			</div>
 		)
 	}

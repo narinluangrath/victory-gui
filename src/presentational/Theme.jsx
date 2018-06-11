@@ -7,24 +7,24 @@ import ColorPicker from './ColorPicker.jsx'
 import Menu from './Menu.jsx'
 import './Theme.css'
 
+function ColorAttribute( props ) {
+	const { name, accessor, theme, changeTheme } = props
+	return (
+		<Attribute 
+			name={name}
+			value={get( theme, accessor )}
+		>
+			<ColorPicker
+				value={get( theme, accessor )}
+				onChange={color => changeTheme( accessor, color )}
+			/>
+		</Attribute>
+	)
+}
+
 function Theme( props ) {
 
 	const { theme, changeTheme } = props
-
-	function ColorAttribute( props ) {
-		const { name, accessor } = props
-		return (
-			<Attribute 
-				name={name}
-				value={get( theme, accessor )}
-			>
-				<ColorPicker
-					value={get( theme, accessor )}
-					onChange={color => changeTheme( accessor, color )}
-				/>
-			</Attribute>
-		)
-	}
 
 	function onChangeNumber( field, value ) {
 		changeTheme( field, value )
@@ -110,11 +110,15 @@ function Theme( props ) {
 				<ColorAttribute
 					name='Horizontal Grid Color'
 					accessor='dependentAxis.style.grid.stroke'
+					theme={theme}
+					changeTheme={changeTheme}
 				/>			
 				<ColorAttribute
 					name='Vertical Grid Color'
 					accessor='independentAxis.style.grid.stroke'
-				/>					
+					theme={theme}
+					changeTheme={changeTheme}
+				/>									
 				<Attribute 
 					name='Horizontal Grid Style' 
 					value={getGridStyle(theme, 'dependentAxis.style.grid.strokeDasharray')}
@@ -137,15 +141,12 @@ function Theme( props ) {
 				</Attribute>				
 			</Dropdown>
 			<Dropdown title='Line'>
-				<Attribute 
-					name='Color' 
-					value={get(theme,'area.style.data.stroke')}
-				>
-					<ColorPicker 
-						value={get(theme,'area.style.data.stroke')} 
-						onChange={color => changeTheme('area.style.data.stroke', color)}
-					/>
-				</Attribute>
+				<ColorAttribute
+					name='Color'
+					accessor='area.style.data.stroke'
+					theme={theme}
+					changeTheme={changeTheme}
+				/>					
 				<Attribute 
 					name='Width' 
 					value={get(theme,'area.style.data.strokeWidth')}
@@ -156,15 +157,12 @@ function Theme( props ) {
 						onChange={v => onChangeNumber('area.style.data.strokeWidth',v)} 
 					/>
 				</Attribute>
-				<Attribute 
-					name='Fill' 
-					value={get(theme,'area.style.data.fill')}
-				>
-					<ColorPicker 
-						value={get(theme,'area.style.data.fill')} 
-						onChange={color => changeTheme('area.style.data.fill', color)}
-					/>
-				</Attribute>		
+				<ColorAttribute
+					name='Fill'
+					accessor='area.style.data.fill'
+					theme={theme}
+					changeTheme={changeTheme}
+				/>						
 				<Attribute 
 					name='Fill Opacity' 
 					value={get(theme,'area.style.data.fillOpacity')}
@@ -177,15 +175,12 @@ function Theme( props ) {
 				</Attribute>								
 			</Dropdown>
 			<Dropdown title='Axis'>
-				<Attribute 
-					name='X-Axis Color' 
-					value={get(theme, 'independentAxis.style.axis.stroke')}
-				>
-					<ColorPicker 
-						value={get(theme,'independentAxis.style.axis.stroke')} 
-						onChange={color => changeTheme('independentAxis.style.axis.stroke', color)}
-					/>					
-				</Attribute>
+				<ColorAttribute
+					name='X-Axis Color'
+					accessor='independentAxis.style.axis.stroke'
+					theme={theme}
+					changeTheme={changeTheme}
+				/>	
 				<Attribute 
 					name='X-Axis Width' 
 					value={get(theme, 'independentAxis.style.axis.strokeWidth')}
@@ -196,15 +191,12 @@ function Theme( props ) {
 						onChange={v => onChangeNumber('independentAxis.style.axis.strokeWidth',v)} 
 					/>				
 				</Attribute>
-				<Attribute 
-					name='Y-Axis Color' 
-					value={get(theme, 'dependentAxis.style.axis.stroke')}
-				>
-					<ColorPicker 
-						value={get(theme,'dependentAxis.style.axis.stroke')} 
-						onChange={color => changeTheme('dependentAxis.style.axis.stroke', color)}
-					/>					
-				</Attribute>	
+				<ColorAttribute
+					name='Y-Axis Color'
+					accessor='dependentAxis.style.axis.stroke'
+					theme={theme}
+					changeTheme={changeTheme}
+				/>					
 				<Attribute 
 					name='Y-Axis Width' 
 					value={get(theme, 'dependentAxis.style.axis.strokeWidth')}
@@ -217,15 +209,12 @@ function Theme( props ) {
 				</Attribute>			
 			</Dropdown>
 			<Dropdown title='Tick Marks'>
-				<Attribute 
-					name='X-Axis Color' 
-					value={get(theme, 'independentAxis.style.ticks.stroke')}
-				>
-					<ColorPicker 
-						value={get(theme,'independentAxis.style.ticks.stroke')} 
-						onChange={color => changeTheme('independentAxis.style.ticks.stroke', color)}
-					/>					
-				</Attribute>
+				<ColorAttribute
+					name='X-Axis Color'
+					accessor='independentAxis.style.ticks.stroke'
+					theme={theme}
+					changeTheme={changeTheme}
+				/>								
 				<Attribute 
 					name='X-Axis Width' 
 					value={get(theme, 'independentAxis.style.ticks.strokeWidth')}
@@ -255,16 +244,13 @@ function Theme( props ) {
 						selected={get(theme,'independentAxis.style.tickLabels.fontSize')}
 						onChange={v => onChangeNumber('independentAxis.style.tickLabels.fontSize',v)} 
 					/>				
-				</Attribute>							
-				<Attribute 
-					name='X-Axis Label Color' 
-					value={get(theme, 'independentAxis.style.tickLabels.fill')}
-				>
-					<ColorPicker 
-						value={get(theme,'independentAxis.style.tickLabels.fill')} 
-						onChange={color => changeTheme('independentAxis.style.tickLabels.fill', color)}
-					/>				
 				</Attribute>	
+				<ColorAttribute
+					name='X-Axis Label Color'
+					accessor='independentAxis.style.tickLabels.fill'
+					theme={theme}
+					changeTheme={changeTheme}
+				/>											
 				<Attribute 
 					name='X-Axis Label Padding' 
 					value={get(theme, 'independentAxis.style.tickLabels.padding')}
@@ -274,16 +260,13 @@ function Theme( props ) {
 						selected={get(theme,'independentAxis.style.tickLabels.padding')}
 						onChange={v => onChangeNumber('independentAxis.style.tickLabels.padding',v)} 
 					/>			
-				</Attribute>						
-				<Attribute 
-					name='Y-Axis Color' 
-					value={get(theme, 'dependentAxis.style.ticks.stroke')}
-				>
-					<ColorPicker 
-						value={get(theme,'dependentAxis.style.ticks.stroke')} 
-						onChange={color => changeTheme('dependentAxis.style.ticks.stroke', color)}
-					/>					
 				</Attribute>	
+				<ColorAttribute
+					name='Y-Axis Color'
+					accessor='dependentAxis.style.ticks.stroke'
+					theme={theme}
+					changeTheme={changeTheme}
+				/>										
 				<Attribute 
 					name='Y-Axis Width' 
 					value={get(theme, 'dependentAxis.style.ticks.strokeWidth')}
@@ -313,16 +296,13 @@ function Theme( props ) {
 						selected={get(theme,'dependentAxis.style.tickLabels.fontSize')}
 						onChange={v => onChangeNumber('dependentAxis.style.tickLabels.fontSize',v)} 
 					/>				
-				</Attribute>							
-				<Attribute 
-					name='Y-Axis Label Color' 
-					value={get(theme, 'dependentAxis.style.tickLabels.fill')}
-				>
-					<ColorPicker 
-						value={get(theme,'dependentAxis.style.tickLabels.fill')} 
-						onChange={color => changeTheme('dependentAxis.style.tickLabels.fill', color)}
-					/>				
-				</Attribute>					
+				</Attribute>	
+				<ColorAttribute
+					name='Y-Axis Label Color'
+					accessor='dependentAxis.style.tickLabels.fill'
+					theme={theme}
+					changeTheme={changeTheme}
+				/>																
 				<Attribute 
 					name='Y-Axis Label Padding' 
 					value={get(theme, 'dependentAxis.style.tickLabels.padding')}

@@ -8,21 +8,22 @@ class AnotherDropdown extends Component {
 	constructor() {
 		super()
 		this.state = { open : false } 
-		this.toggle = this.toggle.bind( this )
-    this.closeMenu = this.closeMenu.bind( this );
+		this.openMenu = this.openMenu.bind( this )
+    this.closeMenu = this.closeMenu.bind( this )
+    this.dropdownMenu = React.createRef()
 	}
 
-	toggle(event) {
+	openMenu( event ) {
     event.preventDefault();
-		this.setState( prev => ({ open : true}), 
+		this.setState( prev => ({ open : true }), 
 									() => document.addEventListener('click', this.closeMenu)
 		)
 	}
 
-  closeMenu(e) {
-  	e.preventDefault()
-  	if ( !this.dropdownMenu.contains( e.target ) ) {
-	    this.setState({ open: false }, () => {
+  closeMenu( event ) {
+  	event.preventDefault()
+  	if ( !this.dropdownMenu.current.contains( event.target ) ) {
+	    this.setState({ open : false }, () => {
 	      document.removeEventListener('click', this.closeMenu);
 	    })
 	  }
@@ -34,14 +35,14 @@ class AnotherDropdown extends Component {
 
 		return (
 			<div className='anotherDropdown'>
-				<div className={cn('header',{open})} onClick={this.toggle}>
+				<div className={cn('header', {open})} onClick={this.openMenu}>
 					<p>{title}</p>
 					<TriangleIcon />
 				</div>
 				{ open && 
 					<div 
 						className='body'       
-						ref={(element) => {this.dropdownMenu = element;}}
+						ref={this.dropdownMenu}
 					>
 						{children}
 					</div>

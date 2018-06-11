@@ -30,6 +30,7 @@ const interpolationTypes = [
 ]
 
 function Toggles( props ) {
+	
 	const { enableZoom, toggleZoom, interpolation, changeInterpolation, changeBackground, backgroundColor } = props
 
 	return (
