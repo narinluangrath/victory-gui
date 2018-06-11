@@ -40,6 +40,7 @@ class Main extends Component {
 		this.toggleTooltips = this.toggleTooltips.bind( this )
 		this.changeWidth = this.changeWidth.bind( this )
 		this.changeHeight = this.changeHeight.bind( this )
+		this.togglePoints = this.togglePoints.bind( this )
 	}
 
 	changeWidth( width ) {
@@ -93,7 +94,7 @@ class Main extends Component {
 	}
 
 	render () {
-		const { theme, data, dataTemp, chart, enableZoom, interpolation, backgroundColor, enableTooltips, width, height } = this.state
+		const { theme, data, dataTemp, chart, enableZoom, interpolation, backgroundColor, enableTooltips, width, height, enablePoints } = this.state
 		return (
 			<div className='main'>
 				<Theme 
@@ -113,6 +114,8 @@ class Main extends Component {
 					changeBackground={this.changeBackground}
 					enableTooltips={enableTooltips}
 					toggleTooltips={this.toggleTooltips}
+					enablePoints={enablePoints}
+					togglePoints={this.togglePoints}
 					width={width}
 					height={height}
 				/>

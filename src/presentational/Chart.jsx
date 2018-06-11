@@ -1,5 +1,6 @@
 import React from 'react'
-import { VictoryChart, VictoryTooltip, VictoryLine, VictoryAxis, VictoryArea, VictoryZoomContainer, createContainer, VictoryVoronoiContainer } from 'victory'
+import { VictoryChart, VictoryScatter, VictoryTooltip, VictoryLine, VictoryAxis, VictoryArea, VictoryZoomContainer, createContainer, VictoryVoronoiContainer } from 'victory'
+import get from 'lodash/get'
 
 import Toggles from './Toggles.jsx'
 import './Chart.css'
@@ -18,7 +19,9 @@ function Chart( props ) {
 		backgroundColor, 
 		changeBackground, 
 		toggleTooltips, 
-		enableTooltips } = props
+		enableTooltips,
+		enablePoints,
+		togglePoints } = props
 	const opts = [ enableZoom && 'zoom', enableTooltips && 'voronoi' ].filter( x => x != null && x != false )
 	const VictoryZoomVoronoiContainer = createContainer( ...opts )
 
@@ -28,7 +31,9 @@ function Chart( props ) {
 				toggleZoom={toggleZoom}
 				enableZoom={enableZoom}
 				toggleTooltips={toggleTooltips}
-				enableZoom={enableZoom}
+				enableTooltips={enableTooltips}
+				togglePoints={togglePoints}
+				enablePoints={enablePoints}
 				changeInterpolation={changeInterpolation}
 				interpolation={interpolation}
 				backgroundColor={backgroundColor}
@@ -46,6 +51,7 @@ function Chart( props ) {
 				    labels={d => d.y}
 						labelComponent={<VictoryTooltip />}
 					/>
+					{ enablePoints && <VictoryScatter data={data} size={get(theme, 'scatter.style.data.size') || 3}/> }
 				</VictoryChart>
 			</div>
 		</div>

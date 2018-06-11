@@ -31,7 +31,17 @@ const interpolationTypes = [
 
 function Toggles( props ) {
 	
-	const { enableZoom, toggleZoom, interpolation, changeInterpolation, changeBackground, backgroundColor, enableTooltips, toggleTooltips } = props
+	const { 
+		enableZoom, 
+		toggleZoom, 
+		interpolation, 
+		changeInterpolation, 
+		changeBackground, 
+		backgroundColor, 
+		enableTooltips, 
+		toggleTooltips, 
+		enablePoints,
+		togglePoints, } = props
 
 	return (
 		<div className='toggles'>
@@ -60,7 +70,11 @@ function Toggles( props ) {
 			<div className='toggles-item'>
 				<div style={{paddingLeft: '10px'}}><p>Enable Tooltips</p></div>
 				<Toggle checked={enableTooltips} onChange={toggleTooltips} />
-			</div>			
+			</div>		
+			<div className='toggles-item'>
+				<div style={{paddingLeft: '10px'}}><p>Enable Points</p></div>
+				<Toggle checked={enablePoints} onChange={togglePoints} />
+			</div>						
 		</div>
 	)
 }

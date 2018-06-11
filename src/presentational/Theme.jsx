@@ -138,13 +138,13 @@ function Theme( props ) {
 			</Dropdown>
 			<Dropdown title='Line'>
 				<ColorAttribute
-					name='Color'
+					name='Line Color'
 					accessor='area.style.data.stroke'
 					theme={theme}
 					changeTheme={changeTheme}
-				/>					
+				/>
 				<Attribute 
-					name='Width' 
+					name='Line Width' 
 					value={get(theme,'area.style.data.strokeWidth')}
 				>
 					<Menu 
@@ -153,6 +153,38 @@ function Theme( props ) {
 						onChange={v => changeTheme('area.style.data.strokeWidth',v)} 
 					/>
 				</Attribute>
+				<ColorAttribute
+					name='Dot Color'
+					accessor='scatter.style.data.fill'
+					theme={theme}
+					changeTheme={changeTheme}
+				/>	
+				<Attribute 
+					name='Dot Size' 
+					value={get(theme,'scatter.style.data.size')}
+				>
+					<Menu 
+						items={[1, 2, 3, 4, 5]}
+						selected={get(theme,'scatter.style.data.size')}
+						onChange={v => changeTheme('scatter.style.data.size',v)} 
+					/>
+				</Attribute>					
+				<ColorAttribute
+					name='Dot Outline Color'
+					accessor='scatter.style.data.stroke'
+					theme={theme}
+					changeTheme={changeTheme}
+				/>													
+				<Attribute 
+					name='Dot Outline Size' 
+					value={get(theme,'scatter.style.data.strokeWidth')}
+				>
+					<Menu 
+						items={['0px', '1px', '2px', '3px', '4px', '5px']}
+						selected={get(theme,'scatter.style.data.strokeWidth')}
+						onChange={v => changeTheme('scatter.style.data.strokeWidth',v)} 
+					/>
+				</Attribute>				
 				<ColorAttribute
 					name='Fill'
 					accessor='area.style.data.fill'
