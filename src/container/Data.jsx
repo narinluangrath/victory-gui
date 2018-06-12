@@ -25,6 +25,7 @@ class Data extends Component {
 	}
 
 	render() {
+		const { data } = this.props
 		const { open } = this.state
 
 		return (
@@ -33,7 +34,7 @@ class Data extends Component {
 					<div className='menu-icon' onClick={this.openSidebar}>
 						<MenuIcon />
 					</div>
-					{ open && <DataSidebar /> }
+					{ open && <DataSidebar data={data} /> }
 				</div>
 			</div>
 		)

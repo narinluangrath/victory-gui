@@ -116,7 +116,7 @@ class Main extends Component {
 					height={height}
 					loadTheme={this.loadTheme}
 				/>
-				<Data />
+				<Data data={data} />
 			</div>
 		)
 	}

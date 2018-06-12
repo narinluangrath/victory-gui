@@ -19,7 +19,7 @@
 }
 
 .data .sidebar.open {
-	width: 300px;
+	width: 250px;
 	transition: width .1s linear;
 }
 
