@@ -3,4 +3,5 @@
 	height: calc( 100% - 50px );
 	display: flex;
 	flex-direction: row;
+	box-sizing: border-box;
 }

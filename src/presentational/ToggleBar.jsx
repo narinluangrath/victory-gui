@@ -58,7 +58,7 @@ function Toggles( props ) {
 					))}
 				</AnotherDropdown>
 			</div>
-			<div className='toggles-item'>
+			<div className='toggles-item' style={{minWidth: '195px'}}>
 				<AnotherDropdown title='Background Color'>
 					<ColorPicker onChange={changeBackground} value={backgroundColor}/>
 				</AnotherDropdown>
