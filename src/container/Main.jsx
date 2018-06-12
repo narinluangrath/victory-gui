@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { VictoryTheme } from 'victory'
-import set from 'lodash/set'
+import { set } from '../utils'
 
 import Chart from '../presentational/Chart.jsx'
 import Theme from '../presentational/Theme.jsx'
@@ -84,7 +84,7 @@ class Main extends Component {
 	}
 
 	render () {
-		console.log( JSON.stringify( this.state, null , 2 ) )
+
 		const { theme, data, changeData, chart, enableZoom, interpolation, backgroundColor, enableTooltips, width, height, enablePoints } = this.state
 		return (
 			<div className='main'>

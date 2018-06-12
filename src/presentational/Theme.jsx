@@ -1,5 +1,5 @@
 import React from 'react'
-import get from 'lodash/get'
+import { get, set } from '../utils'
 
 import Dropdown from '../container/Dropdown.jsx'
 import Attribute from '../container/Attribute.jsx'
@@ -19,6 +19,13 @@ function ColorAttribute( props ) {
 				onChange={color => changeTheme( accessor, color )}
 			/>
 		</Attribute>
+	)
+}
+
+function MenuAttribute( props ) {
+	const { name, accessor, theme, changeTheme } = props
+	return (
+		<div/>
 	)
 }
 
@@ -50,7 +57,7 @@ function Theme( props ) {
 					<Menu 
 						items={[200, 300, 400, 500, 600, 700, 800]}
 						selected={get(theme, 'chart.width')}
-						onChange={e => {changeTheme('chart.width', e); changeWidth(String(e) + 'px')}}
+						onChange={e => {changeTheme('chart.width', e); changeWidth(e)}}
 					/>
 				</Attribute>	
 				<Attribute
@@ -60,7 +67,7 @@ function Theme( props ) {
 					<Menu 
 						items={[200, 300, 400, 500, 600, 700, 800]}
 						selected={get(theme, 'chart.height')}
-						onChange={e => {changeTheme('chart.height', e); changeHeight(String(e) + 'px')}}
+						onChange={e => {changeTheme('chart.height', e); changeHeight(e)}}
 					/>
 				</Attribute>					
 				<Attribute

@@ -53,7 +53,7 @@ class DataSidebar extends Component {
 			changeData( json )
 			this.closeModal
 		} else {
-			console.log( 'wtf dude' )
+			console.error( 'invalid json' )
 		}
 	}
 
