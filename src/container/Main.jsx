@@ -4,6 +4,7 @@ import set from 'lodash/set'
 
 import Chart from '../presentational/Chart.jsx'
 import Theme from '../presentational/Theme.jsx'
+import Data from './Data.jsx'
 import DesignFiles from '../themes'
 
 import './Main.css'
@@ -115,6 +116,7 @@ class Main extends Component {
 					height={height}
 					loadTheme={this.loadTheme}
 				/>
+				<Data />
 			</div>
 		)
 	}

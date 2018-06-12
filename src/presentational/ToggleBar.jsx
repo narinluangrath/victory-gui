@@ -64,15 +64,15 @@ function Toggles( props ) {
 				</AnotherDropdown>
 			</div>
 			<div className='toggles-item'>
-				<div><p>Enable Zoom</p></div>
+				<div><p>Zoom</p></div>
 				<Toggle checked={enableZoom} onChange={toggleZoom} />
 			</div>
 			<div className='toggles-item'>
-				<div><p>Enable Tooltips</p></div>
+				<div><p>Tooltips</p></div>
 				<Toggle checked={enableTooltips} onChange={toggleTooltips} />
 			</div>		
 			<div className='toggles-item'>
-				<div><p>Enable Points</p></div>
+				<div><p>Show Points</p></div>
 				<Toggle checked={enablePoints} onChange={togglePoints} />
 			</div>						
 		</div>
