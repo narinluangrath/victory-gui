@@ -15,7 +15,8 @@
 	top: 0px;
 	right: 0px;
 	background-color: rgb(36, 40, 42);
-	height: 100%;
+	height: calc( 100% - 10px );
+	transition: width .1s linear;
 }
 
 .data .sidebar.open {

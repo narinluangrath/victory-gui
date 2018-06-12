@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import cn from 'classnames'
 
 import MenuIcon from '../icons/menu.svg'
-import DataSidebar from '../presentational/DataSidebar.jsx'
+import DataSidebar from './DataSidebar.jsx'
 import './Data.css'
 
 class Data extends Component {
@@ -25,7 +25,7 @@ class Data extends Component {
 	}
 
 	render() {
-		const { data } = this.props
+		const { data, changeData } = this.props
 		const { open } = this.state
 
 		return (
@@ -34,7 +34,7 @@ class Data extends Component {
 					<div className='menu-icon' onClick={this.openSidebar}>
 						<MenuIcon />
 					</div>
-					{ open && <DataSidebar data={data} /> }
+					{ open && <DataSidebar data={data} changeData={changeData}/> }
 				</div>
 			</div>
 		)

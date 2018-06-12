@@ -68,12 +68,7 @@ class Main extends Component {
 	}
 
 	changeData( value ) {
-		try {
-			const newData = JSON.parse( value )
-			this.setState( { data : newData, dataTemp : value } )		
-		} catch (e) {
-			this.setState( { dataTemp : value } )
-		}
+		this.setState( { data : value } )
 	}
 
 	changeTheme( field, value ) {
@@ -90,7 +85,7 @@ class Main extends Component {
 
 	render () {
 		console.log( JSON.stringify( this.state, null , 2 ) )
-		const { theme, data, dataTemp, chart, enableZoom, interpolation, backgroundColor, enableTooltips, width, height, enablePoints } = this.state
+		const { theme, data, changeData, chart, enableZoom, interpolation, backgroundColor, enableTooltips, width, height, enablePoints } = this.state
 		return (
 			<div className='main'>
 				<Theme 
@@ -116,7 +111,7 @@ class Main extends Component {
 					height={height}
 					loadTheme={this.loadTheme}
 				/>
-				<Data data={data} />
+				<Data data={data} changeData={this.changeData} />
 			</div>
 		)
 	}

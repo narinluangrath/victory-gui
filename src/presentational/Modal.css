@@ -1,0 +1,41 @@
+.modal {
+	position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 100px;
+  background-color: rgba(0, 0, 0, 0.6);  
+}
+
+.modal .content {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: flex-start;	
+  background-color: rgb(36, 40, 42);
+  border-radius: 5;
+  width: 80%;
+  height: 80%;
+  margin: 0px auto;
+  padding: 15;	
+}
+
+.modal .content .close-icon {
+	align-self: flex-end;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	width: 20px;
+	height: 20px;
+}
+
+.modal .content .close-icon svg {
+	fill: white;
+	width: 15px;
+	height: 15px;
+}
+
+.modal .content .close-icon svg:hover {
+}
