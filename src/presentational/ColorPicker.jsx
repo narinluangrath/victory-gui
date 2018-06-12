@@ -31,7 +31,7 @@ function ColorPicker( props ) {
 	]
 
 	function handleInputChange( event ) {
-		const text = (event.target.value).replace( '#', '' )
+		const text = (event.target.value).trim().replace( '#', '' )
 		if ( text.length <= 6) {
 			onChange( `#${text}` )
 		}

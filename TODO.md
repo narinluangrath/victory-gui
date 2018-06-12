@@ -5,7 +5,7 @@
 		- Tooltips [x]
 		- Show Points [x]
 
-- Additional menu bar
+- Additional menu bar [x]
 		- Load Prebuilt Theme:
 		- Google Chart
 		- Looker Charts
