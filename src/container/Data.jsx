@@ -24,8 +24,8 @@ class Data extends Component {
 		super( props ) 
 		this.state = { 
 			showModal : false, 
-			modalText : JSON.stringify( this.props.data ),
-			validationText : null,
+			modalText : JSON.stringify( this.props.data, null, 2 ),
+			validationText : '',
 		}
 		this.openModal = this.openModal.bind( this )
 		this.closeModal = this.closeModal.bind( this )
@@ -41,9 +41,7 @@ class Data extends Component {
 		this.setState( { showModal : false } )
 	}
 
-	onChangeHandler( event ) {
-		event.preventDefault()
-		const text = event.target.value 
+	onChangeHandler( text ) {
 		this.setState( { modalText : text } )
 	}
 
@@ -60,7 +58,7 @@ class Data extends Component {
 		const json = this.validateJson( this.state.modalText )
 		if ( json ) {
 			changeData( json )
-			this.setState( { validationText : 'Save successful' }, () => setTimeout( () => this.setState( { validationText : null } ), 3000 ) )
+			this.setState( { validationText : 'Save successful' }, () => setTimeout( () => this.setState( { validationText : '' } ), 3000 ) )
 			this.closeModal
 		} else {
 			console.error( 'invalid json' )
@@ -79,10 +77,12 @@ class Data extends Component {
 			      mode="json"
 			      theme="monokai"
 			      name="ace-editor"
+			      value={modalText}
+			      onChange={this.onChangeHandler}
 			      showPrintMargin={false}
 			    />
 					<div className='footer-modal'>
-						{ validationText && <p>{validationText}</p> }
+						<p>{validationText}</p>
 						<button className='button-modal' onClick={() => this.submitHandler( changeData )}> 
 							<p>Save Data</p>
 						</button>
