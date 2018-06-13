@@ -1,11 +1,16 @@
 .themebar {
 	width: calc( 100% - 20px );
-	height: 50px;
-	background-color: #1C2022;
+	display: flex;
+	flex-direction: column;
+}
+
+
+.themebar .buttons {
+	height: auto;
 	margin: 0px 10px 30px 10px;
 	display: flex;
 	flex-direction: row;
-	justify-content: flex-start;
+	justify-content: center;
 	align-items: center;
 	padding-left: 20px;
 	padding-right: 20px;
@@ -14,23 +19,42 @@
 }
 
 .themebar p {
-	font-weight: 400;
+	font-weight: 300;
+	font-size: .9rem;
+	font-style: italic;
 }
 
-.themebarbutton {
-	width: 100px;
-	height: 30px;
-	border-radius: 10px;
-	border: 2px solid #141618;
+button.themebarbutton {
+	width: 150px;
+	height: 50px;
+	border-radius: 50px;
+	border: 2px solid transparent;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
-	background-color: rgb(36, 40, 42);
+	background-color: #25282A;
 	margin-left: 20px;
+	transition: border .3s linear;
+	transition: background-color .05s linear;	
 }
 
-.themebarbutton:hover {
-	border: 2px solid #3A464E;
+button.themebarbutton p {
+	font-size: 1rem;
+	font-family: 'Roboto';
+	font-style: normal;
+	color: white;
+}
+
+button.themebarbutton:focus {
+	outline: none;
+}
+
+button.themebarbutton:active {
+	background-color: #141618;
+}
+
+button.themebarbutton:hover {
+	border: 2px solid #464F5D;
 	cursor: pointer;
 }
