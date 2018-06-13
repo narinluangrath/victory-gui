@@ -4,7 +4,7 @@ import { set } from '../utils'
 
 import Chart from '../presentational/Chart.jsx'
 import Theme from '../presentational/Theme.jsx'
-import Data from './Data.jsx'
+import Sidebar from './Sidebar.jsx'
 import DesignFiles from '../themes'
 
 import './Main.css'
@@ -86,6 +86,16 @@ class Main extends Component {
 	render () {
 
 		const { theme, data, changeData, chart, enableZoom, interpolation, backgroundColor, enableTooltips, width, height, enablePoints } = this.state
+		const sidebarProps = {
+			data,
+			changeData : this.changeData,
+			enableZoom, 
+			toggleZoom : this.toggleZoom, 
+			enableTooltips, 
+			toggleTooltips : this.toggleTooltips, 
+			enablePoints, 
+			togglePoints : this.togglePoints, 
+		}
 		return (
 			<div className='main'>
 				<Theme 
@@ -93,16 +103,17 @@ class Main extends Component {
 					changeTheme={this.changeTheme}
 					changeWidth={this.changeWidth}
 					changeHeight={this.changeHeight}
+					changeInterpolation={this.changeInterpolation}
+					interpolation={interpolation}
+					changeBackground={this.changeBackground}
+					backgroundColor={backgroundColor}
 				/>
 				<Chart 
 					theme={theme} 
 					data={data}
 					enableZoom={enableZoom}
 					toggleZoom={this.toggleZoom}
-					interpolation={interpolation}
-					changeInterpolation={this.changeInterpolation}
 					backgroundColor={backgroundColor}
-					changeBackground={this.changeBackground}
 					enableTooltips={enableTooltips}
 					toggleTooltips={this.toggleTooltips}
 					enablePoints={enablePoints}
@@ -110,8 +121,9 @@ class Main extends Component {
 					width={width}
 					height={height}
 					loadTheme={this.loadTheme}
+					interpolation={interpolation}					
 				/>
-				<Data data={data} changeData={this.changeData} />
+				<Sidebar {...sidebarProps} />
 			</div>
 		)
 	}

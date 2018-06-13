@@ -1,5 +1,5 @@
 import React from 'react'
-import { get, set } from '../utils'
+import { get } from '../utils'
 
 import Dropdown from '../container/Dropdown.jsx'
 import Attribute from '../container/Attribute.jsx'
@@ -29,9 +29,22 @@ function MenuAttribute( props ) {
 	)
 }
 
+const interpolationTypes = [
+	"basis",
+	"cardinal",
+	"catmullRom",
+	"linear",
+	"monotoneX",
+	"monotoneY",
+	"natural",
+	"step",
+	"stepAfter",
+	"stepBefore"
+]
+
 function Theme( props ) {
 
-	const { theme, changeTheme, changeWidth, changeHeight } = props
+	const { theme, changeTheme, changeWidth, changeHeight, interpolation, changeInterpolation, backgroundColor, changeBackground } = props
 
 	function getGridStyle( theme, field ) {
 		const val = get( theme, field )
@@ -49,7 +62,7 @@ function Theme( props ) {
 			<div className='title'>
 				<h2>Theme Design</h2>
 			</div>
-			<Dropdown title='General'>
+			<Dropdown title='Size and Padding'>
 				<Attribute
 					name='Width'
 					value={get(theme, 'chart.width')}
@@ -109,7 +122,18 @@ function Theme( props ) {
 						selected={get(theme, 'chart.padding.bottom')}
 						onChange={e => changeTheme('chart.padding.bottom', e)}
 					/>
-				</Attribute>																
+				</Attribute>
+			</Dropdown>
+			<Dropdown title='Background and Grid'>	
+				<Attribute 
+					name='Background Color'
+					value={backgroundColor}
+				>
+					<ColorPicker
+						value={backgroundColor}
+						onChange={changeBackground}
+					/>
+				</Attribute>																							
 				<ColorAttribute
 					name='Horizontal Grid Color'
 					accessor='dependentAxis.style.grid.stroke'
@@ -144,6 +168,16 @@ function Theme( props ) {
 				</Attribute>				
 			</Dropdown>
 			<Dropdown title='Line'>
+				<Attribute
+					name='Interpolation'
+					value={interpolation}
+				>
+					<Menu 
+						items={interpolationTypes}
+						selected={interpolation}
+						onChange={e => changeInterpolation(e)}
+					/>
+				</Attribute>				
 				<ColorAttribute
 					name='Line Color'
 					accessor='area.style.data.stroke'

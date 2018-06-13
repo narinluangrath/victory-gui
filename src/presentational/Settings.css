@@ -1,0 +1,23 @@
+.settings {
+	box-sizing: border-box;
+	width: 100%;
+	height: auto;
+}
+
+.toggle-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 20px;
+}
+
+.toggle-container p {
+	text-transform: uppercase;
+	font-weight: 400;	
+}
+
+.settings h2 {
+	color: rgb(108, 174, 221);
+	align-self: flex-start;
+}
