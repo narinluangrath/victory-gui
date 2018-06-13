@@ -34,6 +34,7 @@
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: center;
+	background-color: #1C2022;
 }
 
 .sidebar .icons .icon {
@@ -79,7 +80,6 @@
 	width: 270px;
 	box-sizing: border-box;
 	padding: 20px;
-	padding-left: 10px;
 	height: 100%;
 }
 

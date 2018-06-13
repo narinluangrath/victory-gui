@@ -8,7 +8,7 @@
   background-color: rgba(0, 0, 0, 0.6);  
 }
 
-.modal .content {
+.modal .modal-content {
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
@@ -18,24 +18,45 @@
   width: 80%;
   height: 80%;
   margin: 0px auto;
-  padding: 15;	
+  padding: 15px;
+  padding-top: 5px;	
 }
 
-.modal .content .close-icon {
-	align-self: flex-end;
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
-	width: 20px;
-	height: 20px;
+.modal .modal-content button.close-icon {
+  align-self: flex-end;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 35px;
+  height: 40px;
+  background-color: transparent;
+  border-radius: 50px;
+  border: none;
+  transition: background-color .1s linear;
+  padding: 0px;
+  margin: 0px;
+  margin-right: -10px;
 }
 
-.modal .content .close-icon svg {
-	fill: white;
+.modal .modal-content button.close-icon:focus {
+	outline: none;
+}
+
+.modal .modal-content button.close-icon svg {
+	fill: lightgrey;
 	width: 15px;
 	height: 15px;
 }
 
-.modal .content .close-icon svg:hover {
+.modal .modal-content button.close-icon:hover svg {
+	fill: white;
+}
+
+.modal .modal-content button.close-icon:hover {
+	background-color: #3A464E;
+}
+
+.modal .modal-content button.close-icon:active {
+	background-color: #313b42;
 }

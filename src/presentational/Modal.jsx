@@ -11,10 +11,10 @@ function Modal( props ) {
 
 	return (
 		<div className='modal'>
-			<div className='content'>
-				<div className='close-icon' onClick={onClose}>
+			<div className='modal-content'>
+				<button className='close-icon' onClick={onClose}>
 					<CloseIcon />
-				</div>
+				</button>
 				{ children }
 			</div>
 		</div>
