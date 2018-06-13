@@ -43,7 +43,7 @@
 	border-right: 1px solid lightgrey;
 }
 
-.modal-button {
+.data .button {
 	margin-top: 20px;
 	background-color: #1C2022;
 	width: 200px;
@@ -54,11 +54,46 @@
 	flex-direction: row;
 	justify-content: center;
 	align-items: center;
+	transition: background-color .3s linear;
 }
 
-.modal-button:hover {
+.data .button:hover {
 	background-color: #141618;
 	cursor: pointer;
+}
+
+.data button.button-modal {
+	align-self: flex-end;
+	margin-top: 20px;
+	width: 150px;
+	height: 50px;
+	font-size: 0.9rem;
+	border-radius: 50px;
+	font-weight: 400;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	border: none;
+	color: white;
+	background-color: #141618;
+	transition: all .3s linear;	
+	border: 1px solid grey;
+}
+
+.data button.button-modal p {
+	padding: 0px;
+	margin: 0px;
+}
+
+.data button.button-modal:hover {
+	background-color: #1C2022;
+	border: 1px solid white;
+	cursor: pointer;
+}
+
+.data button.button-modal:focus {
+	outline: none;
 }
 
 .data .modal textarea {
@@ -73,4 +108,10 @@
   padding: 10px;
 }
 
+.data .footer-modal {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
 

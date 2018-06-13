@@ -15,9 +15,13 @@ function Datum( props ) {
 }
 
 class Data extends Component {
-	constructor() {
-		super() 
-		this.state = { showModal : false, modalText : '' }
+	constructor( props ) {
+		super( props ) 
+		this.state = { 
+			showModal : false, 
+			modalText : JSON.stringify( this.props.data ),
+			validationText : null,
+		}
 		this.openModal = this.openModal.bind( this )
 		this.closeModal = this.closeModal.bind( this )
 		this.onChangeHandler = this.onChangeHandler.bind( this )
@@ -51,25 +55,34 @@ class Data extends Component {
 		const json = this.validateJson( this.state.modalText )
 		if ( json ) {
 			changeData( json )
+			this.setState( { validationText : 'Save successful' }, () => setTimeout( () => this.setState( { validationText : null } ), 3000 ) )
 			this.closeModal
 		} else {
 			console.error( 'invalid json' )
+			this.setState( { validationText : 'Invalid JSON' } )
 		}
 	}
 
 	render() {
 		const { data, changeData } = this.props
-		const { showModal, modalText } = this.state
+		const { showModal, modalText, validationText } = this.state
 		return (
 			<div className='data'>
+
 				<Modal show={showModal} onClose={this.closeModal}>
 					<textarea 
 						placeholder='Input JSON with shape [ { "x" : <num>, "y" : <num> } ... ]' 
 						value={modalText} 
 						onChange={this.onChangeHandler} 
 					/>
-					<button onClick={() => this.submitHandler( changeData )} />
+					<div className='footer-modal'>
+						{ validationText && <p>{validationText}</p> }
+						<button className='button-modal' onClick={() => this.submitHandler( changeData )}> 
+							<p>Save Data</p>
+						</button>
+					</div>
 				</Modal>
+
 				<h2>Data Editor</h2>
 				<div className='datum title'>
 					<div className='x'>X</div>
@@ -77,8 +90,8 @@ class Data extends Component {
 				</div>
 				{ data.map( (d, i) => <Datum x={d.x} y={d.y} key={d.x} isOdd={i%2===0} /> ).slice( 0, 10 ) }
 				{ data.length > 10 && <p>{`... and ${data.length - 10} more items`}</p>}
-				<div className='modal-button' onClick={this.openModal}>
-					<p>Load JSON</p>
+				<div className='button' onClick={this.openModal}>
+					<p>Edit JSON</p>
 				</div>
 			</div>
 		)

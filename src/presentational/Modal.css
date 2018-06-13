@@ -20,6 +20,7 @@
   margin: 0px auto;
   padding: 15px;
   padding-top: 5px;	
+  border: 3px solid #1c2022;  
 }
 
 .modal .modal-content button.close-icon {
