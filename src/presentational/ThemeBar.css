@@ -12,12 +12,13 @@
 	margin: 0px 10px 30px 10px;
 	display: flex;
 	flex-direction: row;
-	justify-content: center;
+	justify-content: flex-start;
 	align-items: center;
 	padding-left: 20px;
 	padding-right: 20px;
-	box-shadow: border-box;
+	box-sizing: border-box;
 	user-select: none;
+	flex-wrap: wrap;
 }
 
 .themebar p {
@@ -39,6 +40,7 @@ button.themebarbutton {
 	margin-left: 20px;
 	transition: border .3s linear;
 	transition: background-color .05s linear;	
+	margin-top: 20px;
 }
 
 button.themebarbutton p {

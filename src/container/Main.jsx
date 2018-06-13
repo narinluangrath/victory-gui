@@ -31,7 +31,7 @@ class Main extends Component {
 		this.state = DesignFiles.Dark
 		this.state.data = data
 		this.state.timeseriesData = timeseriesData
-		this.state.isTimeseries = false
+		this.state.isTimeseries = true
 
 		this.changeData = this.changeData.bind( this )
 		this.changeTheme = this.changeTheme.bind( this )

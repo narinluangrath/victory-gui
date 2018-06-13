@@ -20,7 +20,10 @@ function ThemeBar( props ) {
 				<ThemeBarButton name='Google' onClick={loadTheme}/>
 				<ThemeBarButton name='Dark' onClick={loadTheme}/>
 				<ThemeBarButton name='Beige' onClick={loadTheme}/>
-				<ThemeBarButton name='Purple' onClick={loadTheme}/>									
+				<ThemeBarButton name='Purple' onClick={loadTheme}/>		
+				<ThemeBarButton name='Space' onClick={loadTheme}/>		
+				<ThemeBarButton name='Sandy' onClick={loadTheme}/>		
+				<ThemeBarButton name='Earth' onClick={loadTheme}/>																										
 			</div>
 		</div>
 	)

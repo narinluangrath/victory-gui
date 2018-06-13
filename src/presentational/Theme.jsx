@@ -84,7 +84,7 @@ function Theme( props ) {
 				/>
 				<MenuAttribute
 					name='Height'
-					items={[200, 300, 400, 500, 600, 700, 800]}
+					items={[200, 300, 400]}
 					accessor='chart.height' 
 					theme={theme} 
 					changeTheme={changeTheme} 

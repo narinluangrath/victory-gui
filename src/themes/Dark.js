@@ -171,7 +171,7 @@ export default {
     "tooltip": {
       "style": {
         "textAnchor": "middle",
-        "fontFamily": "'Roboto', 'Helvetica Neue', Helvetica, sans-serif",
+        "fontFamily": "Montserrat",
         "fontSize": 12,
         "letterSpacing": "normal",
         "padding": 5,
@@ -181,9 +181,9 @@ export default {
         "pointerEvents": "none"
       },
       "flyoutStyle": {
-        "stroke": "#212121",
+        "stroke": "#3C4048",
         "strokeWidth": 1,
-        "fill": "#f0f0f0",
+        "fill": "#2A2E37",
         "pointerEvents": "none"
       },
       "cornerRadius": 5,
@@ -222,7 +222,8 @@ export default {
       "style": {
         "grid": {
           "stroke": "#3C4049",
-          "strokeDasharray": "None"
+          "strokeDasharray": "None",
+          "strokeWidth": "2px"
         },
         "axis": {
           "stroke": "transparent",
@@ -246,7 +247,8 @@ export default {
     "independentAxis": {
       "style": {
         "grid": {
-          "stroke": "transparent"
+          "stroke": "transparent",
+          "strokeWidth": "0px"
         },
         "tickLabels": {
           "fontFamily": "Montserrat",
@@ -272,7 +274,7 @@ export default {
   "backgroundColor": "#2A2E37",
   "enableZoom": true,
   "enableTooltips": false,
-  "enablePoints": false,
+  "enablePoints": true,
   "width": "800px",
   "height": "300px"
 }
