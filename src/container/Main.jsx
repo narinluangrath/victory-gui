@@ -84,7 +84,7 @@ class Main extends Component {
 	}
 
 	render () {
-
+		console.log( JSON.stringify( this.state, null, 2 ) )
 		const { theme, data, changeData, chart, enableZoom, interpolation, backgroundColor, enableTooltips, width, height, enablePoints } = this.state
 		const sidebarProps = {
 			data,

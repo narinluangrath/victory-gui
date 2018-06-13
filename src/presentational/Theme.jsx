@@ -298,7 +298,7 @@ function Theme( props ) {
 					changeTheme={changeTheme}
 				/>											
 				<MenuAttribute
-					name='Tick Label Font Size' 
+					name='Tick Label Padding' 
 					items={[0, 2, 4, 6, 8, 10]}
 					accessor='independentAxis.style.tickLabels.padding' 
 					append='px'
@@ -341,7 +341,7 @@ function Theme( props ) {
 					changeTheme={changeTheme}
 				/>											
 				<MenuAttribute
-					name='Tick Label Font Size' 
+					name='Tick Label Padding' 
 					items={[0, 2, 4, 6, 8, 10]}
 					accessor='dependentAxis.style.tickLabels.padding' 
 					append='px'
