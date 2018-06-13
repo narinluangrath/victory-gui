@@ -1,6 +1,6 @@
 .theme {
-	min-width: 250px;
-	max-width: 250px;
+	min-width: 300px;
+	max-width: 300px;
 	height: auto;
 	overflow-y: scroll;
 	background-color: rgb(36, 40, 42);

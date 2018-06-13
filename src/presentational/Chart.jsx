@@ -40,7 +40,7 @@ function Chart( props ) {
 						data={data} 
 						interpolation={interpolation}
 				    labels={d => d.y}
-						labelComponent={<VictoryTooltip />}
+						labelComponent={<VictoryTooltip flyoutStyle={theme.tooltip.flyoutStyle} style={theme.tooltip.style} />}
 					/>
 					{ enablePoints && <VictoryScatter data={data} size={get(theme, 'scatter.style.data.size') || 3}/> }
 				</VictoryChart>

@@ -4,8 +4,8 @@ export default {
       "style": {
         "data": {
           "fill": "transparent",
-          "strokeWidth": "2px",
-          "stroke": "#F1CB86",
+          "strokeWidth": "3px",
+          "stroke": "#31D6D0",
           "fillOpacity": 0
         },
         "labels": {
@@ -134,10 +134,10 @@ export default {
     "scatter": {
       "style": {
         "data": {
-          "fill": "#202C3B",
+          "fill": "#31D6D0",
           "opacity": 1,
-          "stroke": "#F1CB86",
-          "strokeWidth": "2px",
+          "stroke": "transparent",
+          "strokeWidth": 0,
           "size": 5
         },
         "labels": {
@@ -221,7 +221,7 @@ export default {
     "dependentAxis": {
       "style": {
         "grid": {
-          "stroke": "transparent",
+          "stroke": "#3C4049",
           "strokeDasharray": "None"
         },
         "axis": {
@@ -229,9 +229,9 @@ export default {
           "strokeWidth": "0px"
         },
         "tickLabels": {
-          "fill": "#8CEFBD",
-          "padding": 6,
-          "fontFamily": "Lato",
+          "fill": "#5B6675",
+          "padding": 10,
+          "fontFamily": "Montserrat",
           "fontSize": "12px"
         },
         "ticks": {
@@ -246,21 +246,21 @@ export default {
     "independentAxis": {
       "style": {
         "grid": {
-          "stroke": "#363B41"
+          "stroke": "transparent"
         },
         "tickLabels": {
-          "fontFamily": "Lato",
-          "fill": "#8CEFBD",
-          "padding": 2,
+          "fontFamily": "Montserrat",
+          "fill": "#5B6675",
+          "padding": 8,
           "fontSize": "12px"
         },
         "ticks": {
           "strokeWidth": "0px",
-          "stroke": "#"
+          "stroke": "transparent"
         },
         "axis": {
-          "stroke": "#404040",
-          "strokeWidth": "1px"
+          "stroke": "#3C4049",
+          "strokeWidth": "2px"
         }
       },
       "width": 350,
@@ -470,8 +470,8 @@ export default {
       "y": 76
     }
   ],
-  "interpolation": "linear",
-  "backgroundColor": "#1E2A38",
+  "interpolation": "natural",
+  "backgroundColor": "#2A2E37",
   "enableZoom": true,
   "enableTooltips": false,
   "enablePoints": false,

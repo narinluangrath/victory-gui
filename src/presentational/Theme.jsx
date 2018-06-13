@@ -149,7 +149,14 @@ function Theme( props ) {
 						selected={getGridStyle(theme, 'dependentAxis.style.grid.strokeDasharray')}
 						onChange={v => setGridStyle(v, 'dependentAxis.style.grid.strokeDasharray')} 
 					/>					
-				</Attribute>				
+				</Attribute>
+				<MenuAttribute
+					name='Horizontal Grid Thickness'
+					items={['0px', '1px', '2px', '3px', '4px', '5px']}
+					accessor='dependentAxis.style.grid.strokeWidth' 
+					theme={theme} 
+					changeTheme={changeTheme} 
+				/>					
 				<ColorAttribute
 					name='Vertical Grid Color'
 					accessor='independentAxis.style.grid.stroke'
@@ -165,7 +172,14 @@ function Theme( props ) {
 						selected={getGridStyle(theme, 'independentAxis.style.grid.strokeDasharray')}
 						onChange={v => setGridStyle(v, 'independentAxis.style.grid.strokeDasharray')} 
 					/>				
-				</Attribute>				
+				</Attribute>			
+				<MenuAttribute
+					name='Vertical Grid Thickness'
+					items={['0px', '1px', '2px', '3px', '4px', '5px']}
+					accessor='independentAxis.style.grid.strokeWidth' 
+					theme={theme} 
+					changeTheme={changeTheme} 
+				/>								
 			</Dropdown>
 			<Dropdown title='Line'>
 				<Attribute
@@ -348,6 +362,41 @@ function Theme( props ) {
 					theme={theme} 
 					changeTheme={changeTheme} 
 				/>	
+			</Dropdown>
+			<Dropdown title='Tooltips'>
+				<ColorAttribute
+					name='Background Color'
+					accessor='tooltip.flyoutStyle.fill'
+					theme={theme}
+					changeTheme={changeTheme}
+				/>		
+				<ColorAttribute
+					name='Outline Color'
+					accessor='tooltip.flyoutStyle.stroke'
+					theme={theme}
+					changeTheme={changeTheme}
+				/>				
+				<MenuAttribute
+					name='Outline Width' 
+					items={['0px', '1px', '2px', '3px', '4px', '5px']}
+					accessor='tooltip.flyoutStyle.strokeWidth' 
+					theme={theme} 
+					changeTheme={changeTheme} 
+				/>						
+				<MenuAttribute
+					name='Font Family' 
+					items={['Sans-serif', 'Roboto', 'Times', 'Lato', 'Montserrat']}
+					accessor='tooltip.style.fontFamily' 
+					theme={theme} 
+					changeTheme={changeTheme} 
+				/>	
+				<MenuAttribute
+					name='Font Size' 
+					items={['0px', '2px', '4px', '6px', '8px', '10px', '12px', '14px']}
+					accessor='tooltip.style.fontSize' 
+					theme={theme} 
+					changeTheme={changeTheme} 
+				/>													
 			</Dropdown>
 		</div>
 	)

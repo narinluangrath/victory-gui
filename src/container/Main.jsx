@@ -22,7 +22,7 @@ const data = Array
 class Main extends Component {
 	constructor() {
 		super()
-		this.state = DesignFiles.Google
+		this.state = DesignFiles.Dark
 		this.changeData = this.changeData.bind( this )
 		this.changeTheme = this.changeTheme.bind( this )
 		this.toggleZoom = this.toggleZoom.bind( this )
