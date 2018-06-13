@@ -61,7 +61,6 @@ class Data extends Component {
 			this.setState( { validationText : 'Save successful' }, () => setTimeout( () => this.setState( { validationText : '' } ), 3000 ) )
 			this.closeModal
 		} else {
-			console.error( 'invalid json' )
 			this.setState( { validationText : 'Invalid JSON' } )
 		}
 	}
@@ -80,6 +79,7 @@ class Data extends Component {
 			      value={modalText}
 			      onChange={this.onChangeHandler}
 			      showPrintMargin={false}
+	          editorProps={{$blockScrolling: true}}
 			    />
 					<div className='footer-modal'>
 						<p>{validationText}</p>

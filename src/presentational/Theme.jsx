@@ -23,9 +23,19 @@ function ColorAttribute( props ) {
 }
 
 function MenuAttribute( props ) {
-	const { name, accessor, theme, changeTheme } = props
+	const { name, items, accessor, theme, changeTheme, append, cb } = props
 	return (
-		<div/>
+		<Attribute
+			name={name}
+			value={get(theme, accessor) + (append || '')}
+		>
+			<Menu 
+				items={items}
+				append={append}
+				selected={get(theme, accessor)}
+				onChange={e => {changeTheme(accessor, e); cb && cb(e)}}
+			/>
+		</Attribute>	
 	)
 }
 
@@ -63,66 +73,56 @@ function Theme( props ) {
 				<h2>Theme Design</h2>
 			</div>
 			<Dropdown title='Size and Padding'>
-				<Attribute
+				<MenuAttribute
 					name='Width'
-					value={get(theme, 'chart.width')}
-				>
-					<Menu 
-						items={[200, 300, 400, 500, 600, 700, 800]}
-						selected={get(theme, 'chart.width')}
-						onChange={e => {changeTheme('chart.width', e); changeWidth(e)}}
-					/>
-				</Attribute>	
-				<Attribute
+					items={[200, 300, 400, 500, 600, 700, 800]}
+					accessor='chart.width' 
+					theme={theme} 
+					changeTheme={changeTheme} 
+					append='px'
+					cb={changeWidth}
+				/>
+				<MenuAttribute
 					name='Height'
-					value={get(theme, 'chart.height')}
-				>
-					<Menu 
-						items={[200, 300, 400, 500, 600, 700, 800]}
-						selected={get(theme, 'chart.height')}
-						onChange={e => {changeTheme('chart.height', e); changeHeight(e)}}
-					/>
-				</Attribute>					
-				<Attribute
-					name='Padding (Left)'
-					value={get(theme, 'chart.padding.left')}
-				>
-					<Menu 
-						items={[0, 10, 20, 30, 40, 50, 60]}
-						selected={get(theme, 'chart.padding.left')}
-						onChange={e => changeTheme('chart.padding.left', e)}
-					/>
-				</Attribute>			
-				<Attribute
+					items={[200, 300, 400, 500, 600, 700, 800]}
+					accessor='chart.height' 
+					theme={theme} 
+					changeTheme={changeTheme} 
+					append='px'
+					cb={changeHeight}
+				/>	
+				<MenuAttribute
 					name='Padding (Top)'
-					value={get(theme, 'chart.padding.top')}
-				>
-					<Menu 
-						items={[0, 10, 20, 30, 40, 50, 60]}
-						selected={get(theme, 'chart.padding.top')}
-						onChange={e => changeTheme('chart.padding.top', e)}
-					/>
-				</Attribute>		
-				<Attribute
+					items={[0, 10, 20, 30, 40, 50, 60]}
+					accessor='chart.padding.top' 
+					theme={theme} 
+					changeTheme={changeTheme} 
+					append='px'
+				/>			
+				<MenuAttribute
+					name='Padding (Left)'
+					items={[0, 10, 20, 30, 40, 50, 60]}
+					accessor='chart.padding.left' 
+					theme={theme} 
+					changeTheme={changeTheme} 
+					append='px'
+				/>		
+				<MenuAttribute
 					name='Padding (Right)'
-					value={get(theme, 'chart.padding.right')}
-				>
-					<Menu 
-						items={[0, 10, 20, 30, 40, 50, 60]}
-						selected={get(theme, 'chart.padding.right')}
-						onChange={e => changeTheme('chart.padding.right', e)}
-					/>
-				</Attribute>	
-				<Attribute
-					name='Padding (Bottom)'
-					value={get(theme, 'chart.padding.bottom')}
-				>
-					<Menu 
-						items={[0, 10, 20, 30, 40, 50, 60]}
-						selected={get(theme, 'chart.padding.bottom')}
-						onChange={e => changeTheme('chart.padding.bottom', e)}
-					/>
-				</Attribute>
+					items={[0, 10, 20, 30, 40, 50, 60]}
+					accessor='chart.padding.right' 
+					theme={theme} 
+					changeTheme={changeTheme} 
+					append='px'
+				/>	
+				<MenuAttribute
+					name='Padding (Buttom)'
+					items={[0, 10, 20, 30, 40, 50, 60]}
+					accessor='chart.padding.bottom' 
+					theme={theme} 
+					changeTheme={changeTheme} 
+					append='px'
+				/>			
 			</Dropdown>
 			<Dropdown title='Background and Grid'>	
 				<Attribute 
@@ -184,16 +184,26 @@ function Theme( props ) {
 					theme={theme}
 					changeTheme={changeTheme}
 				/>
-				<Attribute 
+				<MenuAttribute
 					name='Line Width' 
-					value={get(theme,'area.style.data.strokeWidth')}
-				>
-					<Menu 
-						items={['0px', '1px', '2px', '3px', '4px', '5px']}
-						selected={get(theme,'area.style.data.strokeWidth')}
-						onChange={v => changeTheme('area.style.data.strokeWidth',v)} 
-					/>
-				</Attribute>
+					items={['0px', '1px', '2px', '3px', '4px', '5px']}
+					accessor='area.style.data.strokeWidth' 
+					theme={theme} 
+					changeTheme={changeTheme} 
+				/>						
+				<ColorAttribute
+					name='Fill (Under Line)'
+					accessor='area.style.data.fill'
+					theme={theme}
+					changeTheme={changeTheme}
+				/>			
+				<MenuAttribute
+					name='Fill (Under Line) Opacity'  
+					items={[0, 0.2, 0.4, 0.6, 0.8, 1]}
+					accessor='area.style.data.fillOpacity' 
+					theme={theme} 
+					changeTheme={changeTheme} 
+				/>																		
 				<ColorAttribute
 					name='Dot Color'
 					accessor='scatter.style.data.fill'
@@ -202,10 +212,11 @@ function Theme( props ) {
 				/>	
 				<Attribute 
 					name='Dot Size' 
-					value={get(theme,'scatter.style.data.size')}
+					value={get(theme,'scatter.style.data.size') + 'px'}
 				>
 					<Menu 
 						items={[1, 2, 3, 4, 5]}
+						append='px'
 						selected={get(theme,'scatter.style.data.size')}
 						onChange={v => changeTheme('scatter.style.data.size',v)} 
 					/>
@@ -215,33 +226,14 @@ function Theme( props ) {
 					accessor='scatter.style.data.stroke'
 					theme={theme}
 					changeTheme={changeTheme}
-				/>													
-				<Attribute 
+				/>					
+				<MenuAttribute
 					name='Dot Outline Size' 
-					value={get(theme,'scatter.style.data.strokeWidth')}
-				>
-					<Menu 
-						items={['0px', '1px', '2px', '3px', '4px', '5px']}
-						selected={get(theme,'scatter.style.data.strokeWidth')}
-						onChange={v => changeTheme('scatter.style.data.strokeWidth',v)} 
-					/>
-				</Attribute>				
-				<ColorAttribute
-					name='Fill'
-					accessor='area.style.data.fill'
-					theme={theme}
-					changeTheme={changeTheme}
-				/>						
-				<Attribute 
-					name='Fill Opacity' 
-					value={get(theme,'area.style.data.fillOpacity')}
-				>
-					<Menu 
-						items={[0, 0.2, 0.4, 0.6, 0.8, 1]}
-						selected={get(theme,'area.style.data.fillOpacity')}
-						onChange={v => changeTheme('area.style.data.fillOpacity',v)} 
-					/>
-				</Attribute>								
+					items={['0px', '1px', '2px', '3px', '4px', '5px']}
+					accessor='scatter.style.data.strokeWidth' 
+					theme={theme} 
+					changeTheme={changeTheme} 
+				/>															
 			</Dropdown>
 			<Dropdown title='Axis'>
 				<ColorAttribute
@@ -250,32 +242,26 @@ function Theme( props ) {
 					theme={theme}
 					changeTheme={changeTheme}
 				/>	
-				<Attribute 
+				<MenuAttribute
 					name='X-Axis Width' 
-					value={get(theme, 'independentAxis.style.axis.strokeWidth')}
-				>
-					<Menu 
-						items={['0px', '1px', '2px', '3px', '4px', '5px']}
-						selected={get(theme,'independentAxis.style.axis.strokeWidth')}
-						onChange={v => changeTheme('independentAxis.style.axis.strokeWidth',v)} 
-					/>				
-				</Attribute>
+					items={['0px', '1px', '2px', '3px', '4px', '5px']}
+					accessor='independentAxis.style.axis.strokeWidth' 
+					theme={theme} 
+					changeTheme={changeTheme} 
+				/>					
 				<ColorAttribute
 					name='Y-Axis Color'
 					accessor='dependentAxis.style.axis.stroke'
 					theme={theme}
 					changeTheme={changeTheme}
-				/>					
-				<Attribute 
+				/>			
+				<MenuAttribute
 					name='Y-Axis Width' 
-					value={get(theme, 'dependentAxis.style.axis.strokeWidth')}
-				>
-					<Menu 
-						items={['0px', '1px', '2px', '3px', '4px', '5px']}
-						selected={get(theme,'dependentAxis.style.axis.strokeWidth')}
-						onChange={v => changeTheme('dependentAxis.style.axis.strokeWidth',v)} 
-					/>				
-				</Attribute>			
+					items={['0px', '1px', '2px', '3px', '4px', '5px']}
+					accessor='dependentAxis.style.axis.strokeWidth' 
+					theme={theme} 
+					changeTheme={changeTheme} 
+				/>										
 			</Dropdown>
 			<Dropdown title='X-Axis Tick Marks'>
 				<ColorAttribute
@@ -283,53 +269,42 @@ function Theme( props ) {
 					accessor='independentAxis.style.ticks.stroke'
 					theme={theme}
 					changeTheme={changeTheme}
-				/>								
-				<Attribute 
+				/>
+				<MenuAttribute
 					name='Tick Width' 
-					value={get(theme, 'independentAxis.style.ticks.strokeWidth')}
-				>
-					<Menu 
-						items={['0px', '1px', '2px', '3px', '4px', '5px']}
-						selected={get(theme,'independentAxis.style.ticks.strokeWidth')}
-						onChange={v => changeTheme('independentAxis.style.ticks.strokeWidth',v)} 
-					/>				
-				</Attribute>
-				<Attribute 
+					items={['0px', '1px', '2px', '3px', '4px', '5px']}
+					accessor='independentAxis.style.ticks.strokeWidth' 
+					theme={theme} 
+					changeTheme={changeTheme} 
+				/>	
+				<MenuAttribute
 					name='Tick Label Font' 
-					value={get(theme, 'independentAxis.style.tickLabels.fontFamily')}
-				>
-					<Menu 
-						items={['Sans-serif', 'Roboto', 'Times', 'Lato', 'Montserrat']}
-						selected={get(theme,'independentAxis.style.tickLabels.fontFamily')}
-						onChange={v => changeTheme('independentAxis.style.tickLabels.fontFamily',v)} 
-					/>				
-				</Attribute>		
-				<Attribute 
+					items={['Sans-serif', 'Roboto', 'Times', 'Lato', 'Montserrat']}
+					accessor='independentAxis.style.tickLabels.fontFamily' 
+					theme={theme} 
+					changeTheme={changeTheme} 
+				/>						
+				<MenuAttribute
 					name='Tick Label Font Size' 
-					value={get(theme, 'independentAxis.style.tickLabels.fontSize')}
-				>
-					<Menu 
-						items={['0px', '2px', '4px', '6px', '8px', '10px', '12px', '14px']}
-						selected={get(theme,'independentAxis.style.tickLabels.fontSize')}
-						onChange={v => changeTheme('independentAxis.style.tickLabels.fontSize',v)} 
-					/>				
-				</Attribute>	
+					items={['0px', '2px', '4px', '6px', '8px', '10px', '12px', '14px']}
+					accessor='independentAxis.style.tickLabels.fontSize' 
+					theme={theme} 
+					changeTheme={changeTheme} 
+				/>						
 				<ColorAttribute
 					name='Tick Label Color'
 					accessor='independentAxis.style.tickLabels.fill'
 					theme={theme}
 					changeTheme={changeTheme}
 				/>											
-				<Attribute 
-					name='Tick Label Padding' 
-					value={get(theme, 'independentAxis.style.tickLabels.padding')}
-				>
-					<Menu 
-						items={[0, 2, 4, 6, 8, 10]}
-						selected={get(theme,'independentAxis.style.tickLabels.padding')}
-						onChange={v => changeTheme('independentAxis.style.tickLabels.padding',v)} 
-					/>			
-				</Attribute>	
+				<MenuAttribute
+					name='Tick Label Font Size' 
+					items={[0, 2, 4, 6, 8, 10]}
+					accessor='independentAxis.style.tickLabels.padding' 
+					append='px'
+					theme={theme} 
+					changeTheme={changeTheme} 
+				/>	
 			</Dropdown>
 			<Dropdown title='Y-Axis Tick Marks'>
 				<ColorAttribute
@@ -337,53 +312,42 @@ function Theme( props ) {
 					accessor='dependentAxis.style.ticks.stroke'
 					theme={theme}
 					changeTheme={changeTheme}
-				/>										
-				<Attribute 
+				/>
+				<MenuAttribute
 					name='Tick Width' 
-					value={get(theme, 'dependentAxis.style.ticks.strokeWidth')}
-				>
-					<Menu 
-						items={['0px', '1px', '2px', '3px', '4px', '5px']}
-						selected={get(theme,'dependentAxis.style.ticks.strokeWidth')}
-						onChange={v => changeTheme('dependentAxis.style.ticks.strokeWidth',v)} 
-					/>				
-				</Attribute>		
-				<Attribute 
+					items={['0px', '1px', '2px', '3px', '4px', '5px']}
+					accessor='dependentAxis.style.ticks.strokeWidth' 
+					theme={theme} 
+					changeTheme={changeTheme} 
+				/>	
+				<MenuAttribute
 					name='Tick Label Font' 
-					value={get(theme, 'dependentAxis.style.tickLabels.fontFamily')}
-				>
-					<Menu 
-						items={['Sans-serif', 'Roboto', 'Times', 'Lato', 'Montserrat']}
-						selected={get(theme,'dependentAxis.style.tickLabels.fontFamily')}
-						onChange={v => changeTheme('dependentAxis.style.tickLabels.fontFamily',v)} 
-					/>				
-				</Attribute>		
-				<Attribute 
+					items={['Sans-serif', 'Roboto', 'Times', 'Lato', 'Montserrat']}
+					accessor='dependentAxis.style.tickLabels.fontFamily' 
+					theme={theme} 
+					changeTheme={changeTheme} 
+				/>						
+				<MenuAttribute
 					name='Tick Label Font Size' 
-					value={get(theme, 'dependentAxis.style.tickLabels.fontSize')}
-				>
-					<Menu 
-						items={['0px', '2px', '4px', '6px', '8px', '10px', '12px', '14px']}
-						selected={get(theme,'dependentAxis.style.tickLabels.fontSize')}
-						onChange={v => changeTheme('dependentAxis.style.tickLabels.fontSize',v)} 
-					/>				
-				</Attribute>	
+					items={['0px', '2px', '4px', '6px', '8px', '10px', '12px', '14px']}
+					accessor='dependentAxis.style.tickLabels.fontSize' 
+					theme={theme} 
+					changeTheme={changeTheme} 
+				/>						
 				<ColorAttribute
 					name='Tick Label Color'
 					accessor='dependentAxis.style.tickLabels.fill'
 					theme={theme}
 					changeTheme={changeTheme}
-				/>																
-				<Attribute 
-					name='Tick Label Padding' 
-					value={get(theme, 'dependentAxis.style.tickLabels.padding')}
-				>
-					<Menu 
-						items={[0, 2, 4, 6, 8, 10]}
-						selected={get(theme,'dependentAxis.style.tickLabels.padding')}
-						onChange={v => changeTheme('dependentAxis.style.tickLabels.padding',v)} 
-					/>			
-				</Attribute>		
+				/>											
+				<MenuAttribute
+					name='Tick Label Font Size' 
+					items={[0, 2, 4, 6, 8, 10]}
+					accessor='dependentAxis.style.tickLabels.padding' 
+					append='px'
+					theme={theme} 
+					changeTheme={changeTheme} 
+				/>	
 			</Dropdown>
 		</div>
 	)
