@@ -29,6 +29,7 @@ function Chart( props ) {
 	return (
 		<div className='chart'>
 			<ThemeBar loadTheme={loadTheme}/>
+			<h2>Chart Preview</h2>
 			<div className='victory' style={{backgroundColor, width, height}}>
 				<VictoryChart 
 					theme={theme} 
