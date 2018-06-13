@@ -13,14 +13,13 @@
 	flex-direction: column;
 	justify-content: flex-start;
 	align-items: flex-start;	
-  background-color: rgb(36, 40, 42);
+  background-color: #141618;
   border-radius: 5;
   width: 80%;
   height: 80%;
   margin: 0px auto;
   padding: 15px;
   padding-top: 5px;	
-  border: 3px solid #1c2022;  
 }
 
 .modal .modal-content button.close-icon {

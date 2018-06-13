@@ -4,6 +4,11 @@ import cn from 'classnames'
 import Modal from '../presentational/Modal.jsx'
 import './Data.css'
 
+import AceEditor from 'react-ace'
+import brace from 'brace'
+import 'brace/mode/json'
+import 'brace/theme/monokai'
+
 function Datum( props ) {
 	const { x, y, isOdd } = props
 	return (
@@ -70,11 +75,12 @@ class Data extends Component {
 			<div className='data'>
 
 				<Modal show={showModal} onClose={this.closeModal}>
-					<textarea 
-						placeholder='Input JSON with shape [ { "x" : <num>, "y" : <num> } ... ]' 
-						value={modalText} 
-						onChange={this.onChangeHandler} 
-					/>
+			    <AceEditor
+			      mode="json"
+			      theme="monokai"
+			      name="ace-editor"
+			      showPrintMargin={false}
+			    />
 					<div className='footer-modal'>
 						{ validationText && <p>{validationText}</p> }
 						<button className='button-modal' onClick={() => this.submitHandler( changeData )}> 
