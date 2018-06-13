@@ -34,6 +34,10 @@ class Data extends Component {
 		this.submitHandler = this.submitHandler.bind( this )
 	}
 
+	componentWillReceiveProps( props ) {
+		this.setState( { modalText : JSON.stringify( props.data, null, 2 ) } )
+	}
+
 	openModal() {
 		this.setState( { showModal : true } )
 	}
