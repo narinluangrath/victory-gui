@@ -32,7 +32,7 @@ class Sidebar extends Component {
 	}
 
 	render() {
-		const { data, changeData, enableZoom, toggleZoom, enableTooltips, toggleTooltips, enablePoints, togglePoints } = this.props
+		const { data, changeData, isTimeseries, toggleTimeseries, enableZoom, toggleZoom, enableTooltips, toggleTooltips, enablePoints, togglePoints } = this.props
 		const { open, selected } = this.state
 
 		const settingsProps = {
@@ -41,11 +41,11 @@ class Sidebar extends Component {
 			enableTooltips, 
 			toggleTooltips, 
 			enablePoints, 
-			togglePoints 
+			togglePoints,
 		}
 
 		const renderContent = selected === 'Settings' ? <Settings { ...settingsProps } /> : 
-													selected === 'Data' ? <Data data={data} changeData={changeData} /> :
+													selected === 'Data' ? <Data data={data} changeData={changeData} isTimeseries={isTimeseries} toggleTimeseries={toggleTimeseries} /> :
 													null
 
 		return (

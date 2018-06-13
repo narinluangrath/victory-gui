@@ -1,13 +1,14 @@
 import React, { Component } from 'react'
 import cn from 'classnames'
-
-import Modal from '../presentational/Modal.jsx'
-import './Data.css'
-
 import AceEditor from 'react-ace'
 import brace from 'brace'
 import 'brace/mode/json'
 import 'brace/theme/monokai'
+
+import Modal from '../presentational/Modal.jsx'
+import Toggle from '../presentational/Toggle.jsx'
+import './Data.css'
+
 
 function Datum( props ) {
 	const { x, y, isOdd } = props
@@ -66,7 +67,7 @@ class Data extends Component {
 	}
 
 	render() {
-		const { data, changeData } = this.props
+		const { data, changeData, isTimeseries, toggleTimeseries } = this.props
 		const { showModal, modalText, validationText } = this.state
 		return (
 			<div className='data'>
@@ -90,11 +91,15 @@ class Data extends Component {
 				</Modal>
 
 				<h2>Data Editor</h2>
+				<div className='toggle-container'>
+					<div><p>Timeseries</p></div>
+					<Toggle checked={isTimeseries} onChange={toggleTimeseries} />
+				</div>			
 				<div className='datum title'>
 					<div className='x'>X</div>
 					<div className='y'>Y</div>
 				</div>
-				{ data.map( (d, i) => <Datum x={d.x} y={d.y} key={d.x} isOdd={i%2===0} /> ).slice( 0, 10 ) }
+				{ data.map( (d, i) => <Datum x={isTimeseries ? (new Date(d.x)).toLocaleDateString() : d.x} y={d.y} key={d.x} isOdd={i%2===0} /> ).slice( 0, 10 ) }
 				{ data.length > 10 && <p>{`... and ${data.length - 10} more items`}</p>}
 				<div className='button' onClick={this.openModal}>
 					<p>Edit JSON</p>

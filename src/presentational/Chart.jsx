@@ -22,7 +22,8 @@ function Chart( props ) {
 		enableTooltips,
 		enablePoints,
 		togglePoints,
-		loadTheme } = props
+		loadTheme,
+		isTimeseries } = props
 	const opts = [ enableZoom && 'zoom', enableTooltips && 'voronoi' ].filter( x => x != null && x != false )
 	const VictoryZoomVoronoiContainer = createContainer( ...opts )
 
@@ -32,6 +33,7 @@ function Chart( props ) {
 			<h2>Chart Preview</h2>
 			<div className='victory' style={{backgroundColor, width, height}}>
 				<VictoryChart 
+				  scale={{ x : isTimeseries ? 'time' : 'linear' }}
 					theme={theme} 
 					containerComponent={<VictoryZoomVoronoiContainer />}
 					domainPadding={{y : [0,5]}}

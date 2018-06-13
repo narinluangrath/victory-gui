@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import { VictoryTheme } from 'victory'
-import { set } from '../utils'
+import moment from 'moment'
 
 import Chart from '../presentational/Chart.jsx'
 import Theme from '../presentational/Theme.jsx'
 import Sidebar from './Sidebar.jsx'
 import DesignFiles from '../themes'
+import { set } from '../utils'
 
 import './Main.css'
 
@@ -16,13 +17,22 @@ const numbers = [
 ]
 
 const data = Array
-						.from( { length : 50 }, (_, i) => i )
+						.from( { length : 30 }, (_, i) => i )
 						.map( i => ({ x : i, y : numbers[i%(numbers.length)] }) )
+
+const timeseriesData = Array
+											.from( { length : 30 }, (_, i) => i )
+											.map( i => ({ x : Date.now() - 24*60*60*1000*i, y : numbers[i%(numbers.length)] }) )
+											.reverse()
 
 class Main extends Component {
 	constructor() {
 		super()
 		this.state = DesignFiles.Dark
+		this.state.data = data
+		this.state.timeseriesData = timeseriesData
+		this.state.isTimeseries = false
+
 		this.changeData = this.changeData.bind( this )
 		this.changeTheme = this.changeTheme.bind( this )
 		this.toggleZoom = this.toggleZoom.bind( this )
@@ -33,6 +43,7 @@ class Main extends Component {
 		this.changeHeight = this.changeHeight.bind( this )
 		this.togglePoints = this.togglePoints.bind( this )
 		this.loadTheme = this.loadTheme.bind( this )
+		this.toggleTimeseries = this.toggleTimeseries.bind( this )
 	}
 
 	changeWidth( width ) {
@@ -67,8 +78,17 @@ class Main extends Component {
 		return JSON.parse( JSON.stringify( obj ) )
 	}
 
+	toggleTimeseries() {
+		console.log( 'jfiewof')
+		this.setState( prev => ({ isTimeseries : !prev.isTimeseries }))
+	}
+
 	changeData( value ) {
-		this.setState( { data : value } )
+		this.setState( prev => (
+		  prev.isTimeseries ? 
+		  ({ timeseriesData : value }) :
+		  ({ data : value }) )
+		)
 	}
 
 	changeTheme( field, value ) {
@@ -85,9 +105,9 @@ class Main extends Component {
 
 	render () {
 		console.log( JSON.stringify( this.state, null, 2 ) )
-		const { theme, data, changeData, chart, enableZoom, interpolation, backgroundColor, enableTooltips, width, height, enablePoints } = this.state
+		const { theme, data, timeseriesData, isTimeseries, changeData, chart, enableZoom, interpolation, backgroundColor, enableTooltips, width, height, enablePoints } = this.state
 		const sidebarProps = {
-			data,
+			data : isTimeseries ? timeseriesData : data,
 			changeData : this.changeData,
 			enableZoom, 
 			toggleZoom : this.toggleZoom, 
@@ -95,6 +115,8 @@ class Main extends Component {
 			toggleTooltips : this.toggleTooltips, 
 			enablePoints, 
 			togglePoints : this.togglePoints, 
+			isTimeseries,
+			toggleTimeseries : this.toggleTimeseries,
 		}
 		return (
 			<div className='main'>
@@ -110,7 +132,7 @@ class Main extends Component {
 				/>
 				<Chart 
 					theme={theme} 
-					data={data}
+					data={isTimeseries ? timeseriesData : data}
 					enableZoom={enableZoom}
 					toggleZoom={this.toggleZoom}
 					backgroundColor={backgroundColor}
@@ -121,7 +143,8 @@ class Main extends Component {
 					width={width}
 					height={height}
 					loadTheme={this.loadTheme}
-					interpolation={interpolation}					
+					interpolation={interpolation}	
+					isTimeseries={isTimeseries}				
 				/>
 				<Sidebar {...sidebarProps} />
 			</div>
