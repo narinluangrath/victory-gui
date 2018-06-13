@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { VictoryTheme } from 'victory'
-import moment from 'moment'
 
 import Chart from '../presentational/Chart.jsx'
 import Theme from '../presentational/Theme.jsx'

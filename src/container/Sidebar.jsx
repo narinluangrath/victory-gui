@@ -5,6 +5,7 @@ import Settings from '../presentational/Settings.jsx'
 import Data from './Data.jsx'
 import SettingsIcon from '../icons/settings.svg'
 import DataIcon from '../icons/data.svg'
+import ExportIcon from '../icons/export.svg'
 import './Sidebar.css'
 
 class Sidebar extends Component {
@@ -59,7 +60,11 @@ class Sidebar extends Component {
 						<div className={cn('icon',{active: selected==='Data'})} onClick={() => {this.openSidebar(); this.setSelected('Data')}}>
 							<DataIcon />
 							<p>Data</p>
-						</div>											
+						</div>		
+						<div className={cn('icon',{active: selected==='Export'})} onClick={() => {this.openSidebar(); this.setSelected('Export')}}>
+							<ExportIcon />
+							<p>Export</p>
+						</div>																	
 					</div>
 					{ open && 
 					<div className='content'>
