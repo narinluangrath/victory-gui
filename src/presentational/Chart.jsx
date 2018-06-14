@@ -1,6 +1,6 @@
 import React from 'react'
 import { VictoryChart, VictoryScatter, VictoryTooltip, VictoryLine, VictoryAxis, VictoryArea, VictoryZoomContainer, createContainer, VictoryVoronoiContainer } from 'victory'
-import get from 'lodash/get'
+import { get } from '../utils'
 
 import ThemeBar from './ThemeBar.jsx'
 import './Chart.css'

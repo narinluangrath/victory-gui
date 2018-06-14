@@ -1,0 +1,25 @@
+.export p {
+	font-style: italic;
+	font-size: 0.9rem;
+}
+
+.export .button {
+	margin-top: 20px;
+	background-color: #1C2022;
+	width: 200px;
+	height: 40px;
+	font-size: 0.9rem;
+	font-weight: 400;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	transition: background-color .3s linear;
+	color: lightgrey;
+	border: none;
+}
+
+.export .button:hover {
+	background-color: #141618;
+	cursor: pointer;
+}

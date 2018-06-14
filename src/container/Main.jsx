@@ -103,7 +103,7 @@ class Main extends Component {
 	}
 
 	render () {
-		console.log( JSON.stringify( this.state, null, 2 ) )
+
 		const { theme, data, timeseriesData, isTimeseries, changeData, chart, enableZoom, interpolation, backgroundColor, enableTooltips, width, height, enablePoints } = this.state
 		const sidebarProps = {
 			data : isTimeseries ? timeseriesData : data,
@@ -116,6 +116,11 @@ class Main extends Component {
 			togglePoints : this.togglePoints, 
 			isTimeseries,
 			toggleTimeseries : this.toggleTimeseries,
+			theme,
+			backgroundColor,
+			interpolation,
+			width,
+			height,
 		}
 		return (
 			<div className='main'>

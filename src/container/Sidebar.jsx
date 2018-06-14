@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import cn from 'classnames'
 
 import Settings from '../presentational/Settings.jsx'
+import Export from '../presentational/Export.jsx'
 import Data from './Data.jsx'
 import SettingsIcon from '../icons/settings.svg'
 import DataIcon from '../icons/data.svg'
@@ -33,7 +34,24 @@ class Sidebar extends Component {
 	}
 
 	render() {
-		const { data, changeData, isTimeseries, toggleTimeseries, enableZoom, toggleZoom, enableTooltips, toggleTooltips, enablePoints, togglePoints } = this.props
+
+		const { 
+			data, 
+			changeData, 
+			isTimeseries, 
+			toggleTimeseries, 
+			enableZoom, 
+			toggleZoom, 
+			enableTooltips, 
+			toggleTooltips, 
+			enablePoints, 
+			togglePoints,
+			theme,
+			backgroundColor,
+			interpolation,
+			width,
+			height, } = this.props
+
 		const { open, selected } = this.state
 
 		const settingsProps = {
@@ -47,6 +65,7 @@ class Sidebar extends Component {
 
 		const renderContent = selected === 'Settings' ? <Settings { ...settingsProps } /> : 
 													selected === 'Data' ? <Data data={data} changeData={changeData} isTimeseries={isTimeseries} toggleTimeseries={toggleTimeseries} /> :
+													selected === 'Export' ? <Export {...this.props} /> :
 													null
 
 		return (
