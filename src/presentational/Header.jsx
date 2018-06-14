@@ -31,13 +31,13 @@ const Header = ( props ) => {
 				<h1>Victory Chart Design Studio</h1>
 			</div>
 			<div className='right'>
-				<Link href='http://github.com'>
+				<Link href='https://github.com/narinluangrath/victory-gui'>
 					<GithubIcon />
 					<p>Source</p>
 				</Link>
 				<Link href='http://www.narinluangrath.com'>
 					<InfoIcon />
-					<p>About</p>
+					<p>About Me</p>
 				</Link>
 			</div>
 		</div>
