@@ -40,7 +40,7 @@ export default function VictoryWrapper( ) {
 			    labels={d => d.y}
 					labelComponent={<VictoryTooltip flyoutStyle={theme.tooltip.flyoutStyle} style={theme.tooltip.style} />}
 				/>
-				${ enablePoints && `<VictoryScatter data={data} size={${pointSize || 3}}/>` }
+				${ enablePoints ? `<VictoryScatter data={data} size={${pointSize || 3}}/>` : null }
 			</VictoryChart>
 		</div>
 	)
